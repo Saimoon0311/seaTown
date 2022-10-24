@@ -6,6 +6,9 @@ import {
   Image,
   StyleSheet,
   FlatList,
+  ImageBackground,
+  Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {
@@ -21,13 +24,14 @@ import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButto
 const ServicesDetailsScreen = ({route, navigation}) => {
   const [txt, setTxt] = useState();
   const items = route.params.item;
-  const OurProffessional = () => {
+
+  const OurProffessional = props => {
     return (
       <View style={styles.listContainer}>
         <Text>Our Professional</Text>
         <View>
           <FlatList
-            data={items?.electricServices}
+            data={props?.data}
             keyExtractor={(item, index) => index.toString()}
             numColumns={1}
             horizontal
@@ -76,8 +80,44 @@ const ServicesDetailsScreen = ({route, navigation}) => {
       </View>
     );
   };
-  console.log(5465465, items);
-  return (
+
+  const SellingPermitForn = () => {
+    return (
+      <View style={{height: hp('100')}}>
+        <ImageBackground
+          resizeMethod="contain"
+          style={{
+            width: Dimensions.get('screen').width,
+            height: Dimensions.get('screen').height,
+            alignItems: 'center',
+          }}
+          source={require('../../../images/permitFormPic.png')}
+        >
+          <Image
+            resizeMode="contain"
+            style={styles.imageView}
+            source={require('../../../images/PermitBadge.png')}
+          />
+          <Text
+            style={{
+              ...styles.textView,
+            }}
+          >
+            Selling Permit for Vessel In U.A.E Territorial Water
+          </Text>
+          <TouchableOpacity
+            style={styles.btnView}
+            onPress={() => {
+              navigation.navigate('PermitFormScreen');
+            }}
+          >
+            <Text style={styles.textBtn}>Sailing Permit Form</Text>
+          </TouchableOpacity>
+        </ImageBackground>
+      </View>
+    );
+  };
+  return items?.permitForm == false ? (
     <>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
@@ -139,7 +179,9 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             {items?.des}
           </Text>
         </View>
-        {items?.electricServices?.length > 0 && <OurProffessional />}
+        {items?.Professional?.length > 0 && (
+          <OurProffessional data={items?.Professional} />
+        )}
       </ScrollView>
       <View style={styles.bottomBarView}>
         <View style={styles.bottomInerTxtView}>
@@ -168,6 +210,10 @@ const ServicesDetailsScreen = ({route, navigation}) => {
         />
       </View>
     </>
+  ) : (
+    // <View style={styles.sellingMainView}>
+    <SellingPermitForn />
+    // </View>
   );
 };
 

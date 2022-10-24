@@ -33,4 +33,5 @@ export const color = {
   pendingText: '#C5CA5B',
   inputColor: '#DDE4EA',
   backgroundGrayLight: '#EDF1F3',
+  textBtnBrown: '#5A2C0B',
 };
