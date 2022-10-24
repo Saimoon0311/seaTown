@@ -53,8 +53,7 @@ const HomeScreen = ({navigation}) => {
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       rating: 4,
       // ProName: 'Our Professional',
-
-      electricServices: [
+      Professional: [
         {
           id: 1,
           profession: 'electrician',
@@ -86,6 +85,29 @@ const HomeScreen = ({navigation}) => {
       innerImage: require('../../../images/MechinacalServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       rating: 4,
+      Professional: [
+        {
+          id: 1,
+          profession: 'electrician',
+          name: 'Emerson Bator',
+          rating: 4.5,
+          image: require('../../../images/1.png'),
+        },
+        {
+          id: 2,
+          profession: 'electrician',
+          name: 'Terry Dorwat',
+          rating: 4.5,
+          image: require('../../../images/2.png'),
+        },
+        {
+          id: 3,
+          profession: 'electrician',
+          name: 'Nolan David',
+          rating: 4.5,
+          image: require('../../../images/3.png'),
+        },
+      ],
     },
     {
       id: 6,
@@ -102,6 +124,7 @@ const HomeScreen = ({navigation}) => {
       id: 7,
       image: require('../../../images/Customer.png'),
       text: 'Customer Services',
+      permitForm: true,
     },
     {
       id: 8,

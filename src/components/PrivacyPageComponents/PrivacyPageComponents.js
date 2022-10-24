@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-const PrivacyPageComponents = props => {
+const                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  PrivacyPageComponents = props => {
   console.log(45, props);
   return (
     <>

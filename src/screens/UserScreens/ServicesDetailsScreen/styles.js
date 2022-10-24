@@ -65,4 +65,37 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
   },
+  sellingMainView: {
+    // marginTop: hp('6'),
+    flex: 1,
+    width: wp('100'),
+    height: hp('100'),
+  },
+  imageView: {
+    left: wp('2'),
+    marginTop: hp('10 '),
+  },
+  textView: {
+    textAlign: 'center',
+    marginTop: hp('6'),
+    color: 'white',
+    fontSize: hp('2.6'),
+    fontWeight: 'bold',
+    width: wp('65'),
+    // top: hp('15'),
+  },
+  textBtn: {
+    color: color.textBtnBrown,
+    fontSize: hp('1.5'),
+  },
+  btnView: {
+    backgroundColor: 'white',
+    height: hp('6.5'),
+    width: wp('75'),
+    position: 'absolute',
+    bottom: hp('5'),
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

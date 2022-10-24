@@ -106,6 +106,10 @@ const StackNavigatior = ({style, navigation}) => {
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="PrivacyPolicy" component={screens.PrivacyPolicy} />
       <Stack.Screen
+        name="PermitFormScreen"
+        component={screens.PermitFormScreen}
+      />
+      <Stack.Screen
         name="ServicesDetailsScreen"
         component={screens.ServicesDetailsScreen}
       />
