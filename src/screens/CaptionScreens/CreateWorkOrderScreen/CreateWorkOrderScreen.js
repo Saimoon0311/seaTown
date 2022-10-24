@@ -29,7 +29,11 @@ const CreateWorkOrderScreen = ({navigation}) => {
         <View style={styles.txtInput}>
           <View style={{...styles.disContainer, width: wp(width)}}>
             <TextInput
-              style={{color: 'black', flex: 1}}
+              style={{
+                color: 'black',
+                flex: 1,
+                height: hp('3'),
+              }}
               placeholder={props?.placeholder}
               placeholderTextColor={color.textImagebackgroundColor}
             />

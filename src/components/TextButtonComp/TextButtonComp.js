@@ -14,8 +14,9 @@ const TextButtonComp = props => {
         style={{marginRight: wp('2')}}
         name={props?.name}
         size={hp('2.5')}
+        color={'black'}
       />
-      <Text>{props?.text}</Text>
+      <Text style={{color: 'black'}}>{props?.text}</Text>
     </TouchableOpacity>
   );
 };

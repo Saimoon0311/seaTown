@@ -27,6 +27,7 @@ import {captionScreens} from '../screens/CaptionScreens/index';
 import Drawernavigation from './Drawernavigation';
 import ChangePasswordScreen from '../screens/ChangePassword/ChangePassword';
 import TermOfServices from '../screens/TermOfServices';
+import DrawerComp from '../components/DrawerComp/DrawerComp';
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator(); //Bilal
@@ -93,6 +94,10 @@ const StackNavigatior = ({style, navigation}) => {
             component={GuiderBottomNavigation}
           />
         ) : ( */}
+      <Stack.Screen
+        name="CaptainLoginScreen"
+        component={captionScreens.CaptainLoginScreen}
+      />
       <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
       <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
@@ -113,6 +118,13 @@ const StackNavigatior = ({style, navigation}) => {
       <Stack.Screen
         name="UserBottomnavigation"
         component={UserBottomnavigation}
+      />
+      <Stack.Screen
+        options={{
+          animation: 'none',
+        }}
+        name="DrawerComp"
+        component={DrawerComp}
       />
       <Stack.Screen
         name="CaptionBottomNavigation"

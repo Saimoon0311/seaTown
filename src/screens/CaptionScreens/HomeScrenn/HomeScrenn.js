@@ -9,8 +9,10 @@ import {
 } from 'react-native-responsive-screen';
 import {styles} from './styles';
 import {BookingViewComp} from '../../../components/BookingViewComp/BookingViewComp';
+import {DrawerComp} from '../../../components/DrawerComp/DrawerComp';
 
 const GuiderHomeScreen = ({navigation}) => {
+  const [isDrawer, setIsDrawer] = useState(false);
   const [bookings, setBookings] = useState([
     {
       id: 1,
@@ -86,26 +88,28 @@ const GuiderHomeScreen = ({navigation}) => {
     setLoading(false);
   }, 2000);
   return (
-    <View style={{flex: 1}}>
-      <HeaderComp
-        notificationPress={() => navigation.navigate('NotificationScreen')}
-        heading={'Home'}
-        notification={true}
-        openDrawer={() => navigation.openDrawer()}
-      />
-      <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
-        <WeatherHomeComp onPress={() => console.log(71)} />
-        <TextHeadingCom
-          heading="Recent Booking"
-          style={{
-            marginTop: hp('2'),
-            marginLeft: hp('2'),
-            marginBottom: hp('1'),
-          }}
+    <>
+      <View style={{flex: 1}}>
+        <HeaderComp
+          notificationPress={() => navigation.navigate('NotificationScreen')}
+          heading={'Home'}
+          notification={true}
+          openDrawer={() => navigation.navigate('DrawerComp')}
         />
-        <BookingViewComp onPress={item => navigates(item)} data={bookings} />
-      </ScrollView>
-    </View>
+        <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
+          <WeatherHomeComp onPress={() => console.log(71)} />
+          <TextHeadingCom
+            heading="Recent Booking"
+            style={{
+              marginTop: hp('2'),
+              marginLeft: hp('2'),
+              marginBottom: hp('1'),
+            }}
+          />
+          <BookingViewComp onPress={item => navigates(item)} data={bookings} />
+        </ScrollView>
+      </View>
+    </>
   );
 };
 

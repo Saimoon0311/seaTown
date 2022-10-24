@@ -31,8 +31,7 @@ export const BookingViewComp = props => {
     return (
       <TouchableOpacity
         onPress={() => props?.onPress(data)}
-        style={styles.mainView}
-      >
+        style={styles.mainView}>
         <View style={styles.leftView}>
           <CircleImage image={data.innerImage} />
         </View>
@@ -46,8 +45,7 @@ export const BookingViewComp = props => {
             style={{
               ...styles.statusText,
               color: checkStatus(data.status),
-            }}
-          >
+            }}>
             {data.status}{' '}
           </Text>
         </View>
@@ -78,12 +76,12 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 5,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
     borderRadius: 10,
-    elevation: 5,
     marginBottom: hp('2'),
   },
   leftView: {
