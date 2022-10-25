@@ -31,7 +31,10 @@ export const color = {
   darkGreen: '#00712f',
   lightPurple: '#D8CCE8',
   pendingText: '#C5CA5B',
-  inputColor: '#DDE4EA',
+  themeColorDarkinputColor: '#DDE4EA',
   backgroundGrayLight: '#EDF1F3',
   textBtnBrown: '#5A2C0B',
+  textInputColor: '#A6AEB6',
+  orangeColor: '#FE6220',
+  paidColor: '#49A8FF',
 };
