@@ -131,7 +131,10 @@ const ServicesDetailsScreen = ({route, navigation}) => {
       </>
     );
   };
-  return items?.permitForm == false ? (
+  return items?.permitForm == true ? (
+    <SellingPermitForn />
+  ) : (
+    // <View style={styles.sellingMainView}>
     <>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
@@ -224,9 +227,6 @@ const ServicesDetailsScreen = ({route, navigation}) => {
         />
       </View>
     </>
-  ) : (
-    // <View style={styles.sellingMainView}>
-    <SellingPermitForn />
     // </View>
   );
 };
