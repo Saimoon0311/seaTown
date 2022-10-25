@@ -20,6 +20,7 @@ import StarRating from 'react-native-star-rating-widget';
 import {color} from '../../../components/color';
 import {globalStyles} from '../../../config/globalStyles';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const ServicesDetailsScreen = ({route, navigation}) => {
   const [txt, setTxt] = useState();
@@ -47,16 +48,14 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                       marginTop: hp('1'),
                       color: color.lightBlueColor,
                       fontSize: hp('1.3'),
-                    }}
-                  >
+                    }}>
                     {item?.profession}
                   </Text>
                   <Text
                     style={{
                       ...globalStyles.globalTextStyles4,
                       fontSize: hp('1.5'),
-                    }}
-                  >
+                    }}>
                     {item?.name}
                   </Text>
                   <View style={{flexDirection: 'row', marginTop: hp('0.5')}}>
@@ -83,41 +82,53 @@ const ServicesDetailsScreen = ({route, navigation}) => {
 
   const SellingPermitForn = () => {
     return (
-      <View style={{height: hp('100')}}>
-        <ImageBackground
-          resizeMethod="contain"
-          style={{
-            width: Dimensions.get('screen').width,
-            height: Dimensions.get('screen').height,
-            alignItems: 'center',
-          }}
-          source={require('../../../images/permitFormPic.png')}
-        >
-          <Image
-            resizeMode="contain"
-            style={styles.imageView}
-            source={require('../../../images/PermitBadge.png')}
-          />
-          <Text
+      <>
+        <View style={{height: hp('100')}}>
+          <ImageBackground
+            resizeMethod="contain"
             style={{
-              ...styles.textView,
+              width: Dimensions.get('screen').width,
+              height: Dimensions.get('screen').height,
+              alignItems: 'center',
             }}
-          >
-            Selling Permit for Vessel In U.A.E Territorial Water
-          </Text>
-          <TouchableOpacity
-            style={styles.btnView}
-            onPress={() => {
-              navigation.navigate('PermitFormScreen');
-            }}
-          >
-            <Text style={styles.textBtn}>Sailing Permit Form</Text>
-          </TouchableOpacity>
-        </ImageBackground>
-      </View>
+            source={require('../../../images/permitFormPic.png')}>
+            <Ionicons
+              name={'arrow-back'}
+              color={color.white}
+              size={hp('3')}
+              style={{
+                alignSelf: 'baseline',
+                marginTop: hp('6'),
+                marginLeft: wp('3'),
+              }}
+              onPress={() => navigation.goBack()}
+            />
+            <Image
+              resizeMode="contain"
+              style={styles.imageView}
+              source={require('../../../images/PermitBadge.png')}
+            />
+            <Text
+              style={{
+                ...styles.textView,
+              }}>
+              Selling Permit for Vessel In U.A.E Territorial Water
+            </Text>
+            <TouchableOpacity
+              style={styles.btnView}
+              onPress={() => {
+                navigation.navigate('PermitFormScreen');
+              }}>
+              <Text style={styles.textBtn}>Sailing Permit Form</Text>
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
+      </>
     );
   };
-  return items?.permitForm == false ? (
+  return items?.permitForm == true ? (
+    <SellingPermitForn />
+  ) : (
     <>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
@@ -142,8 +153,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                 flexDirection: 'row',
                 marginTop: hp('0.9'),
                 alignItems: 'center',
-              }}
-            >
+              }}>
               <StarRating
                 rating={items.rating}
                 maxStars={5}
@@ -160,8 +170,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                   fontSize: hp('1.5'),
                   fontWeight: 'bold',
                   textAlignVertical: 'center',
-                }}
-              >
+                }}>
                 {items?.rating}
               </Text>
             </View>
@@ -174,8 +183,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               color: color.lightBlueColor,
               textAlign: 'justify',
               lineHeight: hp('2'),
-            }}
-          >
+            }}>
             {items?.des}
           </Text>
         </View>
@@ -193,8 +201,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               ...globalStyles.globalTextStyles2,
               color: color.lightBlueColor,
               fontSize: hp('2'),
-            }}
-          >
+            }}>
             per hour
           </Text>
         </View>
@@ -210,9 +217,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
         />
       </View>
     </>
-  ) : (
     // <View style={styles.sellingMainView}>
-    <SellingPermitForn />
     // </View>
   );
 };

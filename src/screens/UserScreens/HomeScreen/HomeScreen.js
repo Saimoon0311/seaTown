@@ -153,7 +153,7 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
-        openDrawer={() => navigation.openDrawer()}
+        openDrawer={() => navigation.navigate('DrawerComp')}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />
@@ -164,16 +164,14 @@ const HomeScreen = ({navigation}) => {
           />
           <TouchableOpacity
             onPress={() => navigation.navigate('RequestOfServices')}
-            style={styles.requestSmallButton}
-          >
+            style={styles.requestSmallButton}>
             <Foundation
               name="page-edit"
               color={color.textPrimaryColor}
               size={hp('3')}
             />
             <Text
-              style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}
-            >
+              style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}>
               Request a service
             </Text>
           </TouchableOpacity>
