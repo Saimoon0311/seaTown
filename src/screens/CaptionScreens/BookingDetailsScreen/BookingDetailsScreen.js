@@ -317,6 +317,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
             </View>
             <View style={styles.rememberView}>
               <CheckBox
+                tintColors="red"
                 disabled={false}
                 value={toggleCheckBox}
                 onValueChange={newValue => setToggleCheckBox(newValue)}
@@ -325,6 +326,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
             </View>
             <View style={styles.rememberView}>
               <CheckBox
+                tintColors="red"
                 disabled={false}
                 value={toggleCheckBox}
                 onValueChange={newValue => setToggleCheckBox(newValue)}

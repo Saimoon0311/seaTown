@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-const                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  PrivacyPageComponents = props => {
+const PrivacyPageComponents = props => {
   console.log(45, props);
   return (
     <>
@@ -39,13 +39,16 @@ const styles = StyleSheet.create({
     fontSize: hp('3.1'),
     fontWeight: 'bold',
     fontFamily: 'Helvetica',
+    color: 'black',
   },
   dateTxt: {
     fontSize: hp('1.8'),
+    color: 'black',
     // fontWeight: 'bold',
     fontFamily: 'Helvetica',
   },
   desTxt: {
+    color: 'black',
     marginTop: hp('3'),
     fontSize: hp('1.8'),
     textAlign: 'justify',

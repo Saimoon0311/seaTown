@@ -93,7 +93,7 @@ const GuiderBookingScreen = ({navigation}) => {
         heading={'Bookings'}
         notification={true}
         search={true}
-        openDrawer={() => navigation.openDrawer()}
+        openDrawer={() => navigation.navigate('DrawerComp')}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <View

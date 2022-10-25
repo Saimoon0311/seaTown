@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Pressable,
+  ImageBackground,
+} from 'react-native';
 import {color} from '../color';
 import {
   widthPercentageToDP as wp,
@@ -24,9 +31,16 @@ const DrawerComp = ({navigation}) => {
     navigation.navigate(screenName);
   };
   return (
-    <View style={styles.mainView}>
-      <View style={styles.leftView}>
-        <View style={{marginTop: hp('12'), marginLeft: wp('5')}}>
+    <ImageBackground
+      source={require('../../images/SeaTow-(User-Flow).png')}
+      style={styles.mainView}>
+      <Animatable.View
+        delay={150}
+        easing={'linear'}
+        direction={'normal'}
+        animation="fadeInLeft"
+        style={styles.leftView}>
+        <View style={{marginTop: hp('10'), marginLeft: wp('5')}}>
           <Text style={styles.topHeading}>Menu</Text>
           <View>
             <View style={styles.innerView}>
@@ -90,17 +104,19 @@ const DrawerComp = ({navigation}) => {
               </RadioGroup>
             )}
           </View>
-          <TouchableOpacity
-            onPress={() => navigateScreens('ChangePasswordScreen')}
-            style={styles.innerView}>
-            <Ionicons
-              name="lock-closed-outline"
-              size={hp('3')}
-              color={color.yellowTxtColor}
-              style={{marginRight: wp('2')}}
-            />
-            <Text style={styles.labelStyle}>Change Password</Text>
-          </TouchableOpacity>
+          <View>
+            <TouchableOpacity
+              onPress={() => navigateScreens('ChangePasswordScreen')}
+              style={styles.innerView}>
+              <Ionicons
+                name="lock-closed-outline"
+                size={hp('3')}
+                color={color.yellowTxtColor}
+                style={{marginRight: wp('2')}}
+              />
+              <Text style={styles.labelStyle}>Change Password</Text>
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity style={styles.innerView}>
             <Ionicons
               name="notifications-outline"
@@ -140,6 +156,7 @@ const DrawerComp = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
+          onPress={() => navigateScreens('CaptainLoginScreen')}
           style={{
             ...styles.innerView,
             position: 'absolute',
@@ -161,9 +178,9 @@ const DrawerComp = ({navigation}) => {
             Logout
           </Text>
         </TouchableOpacity>
-      </View>
+      </Animatable.View>
       <Animatable.View
-        delay={200}
+        delay={100}
         easing={'linear'}
         direction={'normal'}
         animation="fadeInUpBig">
@@ -186,7 +203,7 @@ const DrawerComp = ({navigation}) => {
           />
         </Pressable>
       </Animatable.View>
-    </View>
+    </ImageBackground>
   );
 };
 

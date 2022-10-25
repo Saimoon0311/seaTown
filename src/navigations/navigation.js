@@ -28,6 +28,7 @@ import Drawernavigation from './Drawernavigation';
 import ChangePasswordScreen from '../screens/ChangePassword/ChangePassword';
 import TermOfServices from '../screens/TermOfServices';
 import DrawerComp from '../components/DrawerComp/DrawerComp';
+import UserTopTabs from './TopBarNavigation';
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator(); //Bilal
@@ -94,11 +95,11 @@ const StackNavigatior = ({style, navigation}) => {
             component={GuiderBottomNavigation}
           />
         ) : ( */}
+      <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
       <Stack.Screen
         name="CaptainLoginScreen"
         component={captionScreens.CaptainLoginScreen}
       />
-      <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
       <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
       <Stack.Screen
@@ -123,6 +124,7 @@ const StackNavigatior = ({style, navigation}) => {
         name="UserBottomnavigation"
         component={UserBottomnavigation}
       />
+      <Stack.Screen name="UserTopTabs" component={UserTopTabs} />
       <Stack.Screen
         options={{
           animation: 'none',

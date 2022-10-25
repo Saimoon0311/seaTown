@@ -57,9 +57,7 @@ export const BookingViewComp = props => {
     <FlatList
       data={props?.data}
       keyExtractor={(item, index) => index.toString()}
-      contentContainerStyle={{
-        alignSelf: 'center',
-      }}
+      contentContainerStyle={{}}
       renderItem={({item}) => {
         return <RenderView data={item} />;
       }}
@@ -83,6 +81,7 @@ export const styles = StyleSheet.create({
     elevation: 10,
     borderRadius: 10,
     marginBottom: hp('2'),
+    alignSelf: 'center',
   },
   leftView: {
     width: wp('20'),
