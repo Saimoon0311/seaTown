@@ -11,19 +11,19 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import {styles} from './style';
+import {styles} from './styles';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '../../../components/color';
+import {color} from '../../components/color';
 import {useDispatch} from 'react-redux';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
-import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
-import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
+import {TextHeadingCom} from '../../components/TextHeadingCom/TextHeadingCom';
+import {LoginInputComp} from '../../components/LoginInputComp/LoginInputComp';
+import {ButtonThemeComp} from '../../components/ButtonThemeComp/ButtonThemeComp';
 
-const ResetPasswordScreen = ({route, navigation}) => {
+const ChangePasswordScreen = ({route, navigation}) => {
   const disptach = useDispatch();
   const emailRef = useRef();
   const LoginType = route.params;
@@ -33,6 +33,7 @@ const ResetPasswordScreen = ({route, navigation}) => {
   const [resetPassword, setResetPassword] = useState({
     newPassword: '',
     confirmPassword: '',
+    oldPassword: '',
   });
   const [isloading, setLoading] = useState(false);
   const [isFocused, setIsFocused] = useState({
@@ -40,6 +41,7 @@ const ResetPasswordScreen = ({route, navigation}) => {
     // password: false,
     newPassword: false,
     confirmPassword: false,
+    oldPassword: false,
   });
   const handleClick = () => setShow(!show);
   const [show, setShow] = useState(false);
@@ -79,7 +81,7 @@ const ResetPasswordScreen = ({route, navigation}) => {
       />
     );
   };
-  const {newPassword, confirmPassword} = resetPassword;
+  const {newPassword, confirmPassword, oldPassword} = resetPassword;
   const updateState = data =>
     setResetPassword(() => ({...resetPassword, ...data}));
   // Focused handler
@@ -162,12 +164,12 @@ const ResetPasswordScreen = ({route, navigation}) => {
       style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
-          source={require('../../../images/Loginogo.png')}
+          source={require('../../images/Loginogo.png')}
           style={styles.topImage}
           resizeMode="contain"
         />
         <TextHeadingCom
-          heading={'Reset Password'}
+          heading={'Change Password'}
           style={{marginTop: hp('10')}}
         />
         <Text
@@ -179,6 +181,20 @@ const ResetPasswordScreen = ({route, navigation}) => {
           }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </Text>
+        <LoginInputComp
+          value={oldPassword}
+          onChangeText={oldPassword => updateState({oldPassword})}
+          inputText="Password"
+          placeholder="Enter Old Password"
+          onFocus={() => handleInputFocus('oldPassword')}
+          onBlur={() => handleInputBlur('oldPassword')}
+          secureTextEntry={show ? false : true}
+          eyeIconPress={handleClick}
+          eyeIconName={show ? 'eye-outline' : 'eye-off-outline'}
+          isFocused={isFocused.oldPassword}
+          eyeIcon={true}
+          style={{marginTop: hp('2')}}
+        />
         <LoginInputComp
           value={newPassword}
           onChangeText={newPassword => updateState({newPassword})}
@@ -209,8 +225,8 @@ const ResetPasswordScreen = ({route, navigation}) => {
         />
 
         <ButtonThemeComp
-          onPress={() => navigation.navigate('Drawernavigation')}
-          text={'Submit'}
+          onPress={() => navigation.navigate('OtpScreen')}
+          text={'Reset'}
           style={{marginTop: hp('2')}}
         />
       </ScrollView>
@@ -218,4 +234,4 @@ const ResetPasswordScreen = ({route, navigation}) => {
   );
 };
 
-export default ResetPasswordScreen;
+export default ChangePasswordScreen;

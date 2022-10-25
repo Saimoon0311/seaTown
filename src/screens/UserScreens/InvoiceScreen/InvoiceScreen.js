@@ -232,7 +232,10 @@ const InvoiceScreen = () => {
   };
   return (
     <View style={{flex: 1}}>
-      <HeaderComp heading={'Invoices'} />
+      <HeaderComp
+        openDrawer={() => navigation.navigate('DrawerComp')}
+        heading={'Invoices'}
+      />
       <FlatList
         data={services}
         keyExtractor={(item, index) => index.toString()}

@@ -76,7 +76,7 @@ const BookingScreen = ({navigation}) => {
         heading={'My Bookings'}
         notification={true}
         search={true}
-        openDrawer={() => navigation.openDrawer()}
+        openDrawer={() => navigation.navigate('DrawerComp')}
       />
       <UserBookingViewComp onPress={item => navigates(item)} data={bookings} />
     </View>

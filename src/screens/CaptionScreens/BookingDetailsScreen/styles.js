@@ -106,6 +106,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     padding: 10,
+    paddingTop: hp('2'),
     borderRadius: 10,
     alignSelf: 'center',
     // marginTop: hp('2'),
@@ -115,6 +116,7 @@ export const styles = StyleSheet.create({
     // alignItems: 'center',
     height: hp('15'),
     width: wp('70'),
+    // backgroundColor: 'red',
   },
   centerViewTopText: {
     flexDirection: 'row',

@@ -79,6 +79,7 @@ const GuiderProfileScreen = ({navigation}) => {
         editPress={() => navigation.navigate('UpadateProfileScreen')}
         heading={'Profile'}
         edit={true}
+        openDrawer={() => navigation.navigate('DrawerComp')}
       />
       <ScrollView>
         <CircleImage

@@ -19,11 +19,11 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 5,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-    elevation: 8,
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
     marginTop: hp('1'),
   },
   image: {

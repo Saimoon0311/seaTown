@@ -28,7 +28,7 @@ import CheckBox from '@react-native-community/checkbox';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp';
 
-const LoginScreen = ({route, navigation}) => {
+const CaptainLoginScreen = ({route, navigation}) => {
   const disptach = useDispatch();
   const emailRef = useRef();
   const LoginType = route.params;
@@ -185,7 +185,7 @@ const LoginScreen = ({route, navigation}) => {
           </TouchableOpacity>
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('UserBottomnavigation')}
+          onPress={() => navigation.navigate('Drawernavigation')}
           // onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Login'}
           style={{marginTop: hp('2')}}
@@ -196,16 +196,16 @@ const LoginScreen = ({route, navigation}) => {
           style={{marginTop: hp('2')}}
         /> */}
       </ScrollView>
-      <BottomTextComp
+      {/* <BottomTextComp
         onPress={() => navigation.navigate('SignUpScreen')}
         note={"Don't have account ? "}
         heading={'Sign Up'}
-      />
+      /> */}
     </KeyboardAvoidingView>
   );
 };
 
-export default LoginScreen;
+export default CaptainLoginScreen;
 // {/* <ImageBackground
 // style={styles.backgroundImage}
 // source={require('../../images/background.png')}>

@@ -153,7 +153,7 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
-        openDrawer={() => navigation.openDrawer()}
+        openDrawer={() => navigation.navigate('DrawerComp')}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />

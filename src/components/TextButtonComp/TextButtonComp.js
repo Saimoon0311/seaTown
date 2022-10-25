@@ -14,54 +14,21 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {color} from '../color';
 import {LoginInputComp} from '../LoginInputComp/LoginInputComp';
-const TextInputWithTextCom = props => {
+const TextButtonComp = props => {
   return (
-    <View style={{justifyContent: 'space-between'}}>
-      <Text style={styles.upperTxt}>{props?.upperText}</Text>
-      <View
-        style={{
-          ...styles.inputView,
-          ...props.style,
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
-          shadowOpacity: 0.2,
-          shadowRadius: 1.41,
-
-          elevation: 2,
-        }}
-      >
-        <TextInput
-          style={{...props.textInputstyle}}
-          ref={props?.ref}
-          placeholder={props?.placeholder}
-          placeholderTextColor={color.themeColorDark}
-          keyboardType={props?.keyboardType}
-          secureTextEntry={props?.secureTextEntry}
-          editable={props?.editable}
-          onChangeText={props?.onChangeText}
-          value={props?.value}
-          onFocus={props?.onFocus}
-          onBlur={props?.onBlur}
-          autoCapitalize={props?.autoCapitalize}
-        />
-        {props.showIcon == true && (
-          <Ionicons
-            size={hp('2')}
-            color={color.textPrimaryColor}
-            name={props?.iconName}
-          />
-        )}
-      </View>
-
-      {/* </View> */}
-    </View>
+    <TouchableOpacity onPress={() => props?.onPress()} style={styles.container}>
+      <Entypo
+        style={{marginRight: wp('2')}}
+        name={props?.name}
+        size={hp('2.5')}
+        color={'black'}
+      />
+      <Text style={{color: 'black'}}>{props?.text}</Text>
+    </TouchableOpacity>
   );
 };
 
-export default TextInputWithTextCom;
+export default TextButtonComp;
 
 const styles = StyleSheet.create({
   container: {

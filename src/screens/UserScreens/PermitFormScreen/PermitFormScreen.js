@@ -20,7 +20,7 @@ import StarRating from 'react-native-star-rating-widget';
 import {color} from '../../../components/color';
 import {globalStyles} from '../../../config/globalStyles';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
-import TextInputWithTextCom from '../../../components/TextButtonComp/TextButtonComp';
+import TextInputWithTextCom from '../../../components/TextInputWithTextCom/TextInputWithTextCom';
 const PermitFormScreen = ({route, navigation}) => {
   return (
     <>

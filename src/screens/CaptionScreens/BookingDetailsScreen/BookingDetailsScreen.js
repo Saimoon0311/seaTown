@@ -33,11 +33,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
     ServicesRequestCompleted: false,
     BookingCancellReason: false,
   });
-  const {
-    TrackViewState,
-    ServicesRequestCompleted,
-    BookingCancellReason,
-  } = checkRenderView;
+  const {TrackViewState, ServicesRequestCompleted, BookingCancellReason} =
+    checkRenderView;
   const updateState = data =>
     setcheckRenderView(() => ({...checkRenderView, ...data}));
 
@@ -87,8 +84,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
                 color: color.themeColorDark,
                 marginLeft: hp('1'),
                 fontSize: hp('1.7'),
-              }}
-            >
+              }}>
               35.5 miles away
             </Text>
           </View>
@@ -98,8 +94,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
               justifyContent: 'space-between',
               width: wp('43'),
               marginLeft: hp('1'),
-            }}
-          >
+            }}>
             <ActionButtonComp image={require('../../../images/Vector.png')} />
             <ActionButtonComp image={require('../../../images/Chat.png')} />
             <ActionButtonComp image={require('../../../images/Call.png')} />
@@ -187,8 +182,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
       <>
         <UserDetailsView />
         <View
-          style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}
-        >
+          style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}>
           <TextHeadingCom
             heading="Cancellation Reason"
             style={{
@@ -311,10 +305,10 @@ const BookingDetailsScreen = ({route, navigation}) => {
             style={{
               height: hp('15'),
               justifyContent: 'space-between',
-            }}
-          >
+            }}>
             <View style={styles.rememberView}>
               <CheckBox
+                tintColors="red"
                 disabled={false}
                 value={toggleCheckBox}
                 onValueChange={newValue => setToggleCheckBox(newValue)}
@@ -323,6 +317,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
             </View>
             <View style={styles.rememberView}>
               <CheckBox
+                tintColors="red"
                 disabled={false}
                 value={toggleCheckBox}
                 onValueChange={newValue => setToggleCheckBox(newValue)}
@@ -331,6 +326,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
             </View>
             <View style={styles.rememberView}>
               <CheckBox
+                tintColors="red"
                 disabled={false}
                 value={toggleCheckBox}
                 onValueChange={newValue => setToggleCheckBox(newValue)}
@@ -444,8 +440,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
           </View>
           <TouchableOpacity style={styles.priceButton}>
             <Text
-              style={{color: 'white', fontWeight: 'bold', fontSize: hp('1.6')}}
-            >
+              style={{color: 'white', fontWeight: 'bold', fontSize: hp('1.6')}}>
               AED 500
             </Text>
           </TouchableOpacity>
