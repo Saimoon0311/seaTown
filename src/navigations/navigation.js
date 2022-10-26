@@ -102,6 +102,11 @@ const StackNavigatior = ({style, navigation}) => {
       />
       <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
+      <Stack.Screen name="ProfileScreen" component={screens.ProfileScreen} />
+      <Stack.Screen
+        name="UpadateProfileScreen"
+        component={screens.UpadateProfileScreen}
+      />
       <Stack.Screen
         name="UserBookingDetailsScreen"
         component={screens.UserBookingDetailsScreen}
@@ -123,6 +128,10 @@ const StackNavigatior = ({style, navigation}) => {
       <Stack.Screen
         name="ServicesDetailsScreen"
         component={screens.ServicesDetailsScreen}
+      />
+      <Stack.Screen
+        name="SelectPaymentScreen"
+        component={screens.SelectPaymentScreen}
       />
       <Stack.Screen
         name="UserBottomnavigation"
@@ -158,10 +167,10 @@ const StackNavigatior = ({style, navigation}) => {
         name="RequestOfServices"
         component={screens.RequestOfServices}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="UpadateProfileScreen"
         component={captionScreens.UpadateProfileScreen}
-      />
+      /> */}
       <Stack.Screen
         name="CreateWorkOrderScreen"
         component={captionScreens.CreateWorkOrderScreen}

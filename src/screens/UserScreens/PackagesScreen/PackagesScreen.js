@@ -12,7 +12,7 @@ import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeCo
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 import {styles} from './styles';
 
-const PackagesScreen = () => {
+const PackagesScreen = ({navigation}) => {
   const isCarousel = useRef(null);
   //   const [packageDetails, setPackageDetails] = useState([
   //     {
@@ -134,7 +134,7 @@ const PackagesScreen = () => {
           })}
         </View>
         <CommonButtonComp
-          onPress={() => console.log('gf')}
+          onPress={() => navigation.navigate('SelectPaymentScreen')}
           text="Buy Now"
           textStyle={{
             color: 'black',

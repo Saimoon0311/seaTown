@@ -32,9 +32,15 @@ const BookingDetailsScreen = ({route, navigation}) => {
     TrackViewState: false,
     ServicesRequestCompleted: false,
     BookingCancellReason: false,
+    LeaveAReview: false,
   });
-  const {TrackViewState, ServicesRequestCompleted, BookingCancellReason} =
-    checkRenderView;
+  const [reviewRating, setReviewRating] = useState('2');
+  const {
+    TrackViewState,
+    ServicesRequestCompleted,
+    BookingCancellReason,
+    LeaveAReview,
+  } = checkRenderView;
   const updateState = data =>
     setcheckRenderView(() => ({...checkRenderView, ...data}));
 
@@ -115,7 +121,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
     return (
       <View style={{width: wp('90'), alignSelf: 'center', marginTop: hp('6')}}>
         <TextHeadingCom
-          heading="Reviews"
+          heading="Asigned Captain"
           style={{
             // marginLeft: hp('1'),
             fontWeight: '500',
@@ -152,60 +158,39 @@ const BookingDetailsScreen = ({route, navigation}) => {
             </View>
           </View>
         </View>
-        <Text style={{...styles.messageText, color: 'black'}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
       </View>
     );
   };
   const CompletedView = () => {
     return (
       <View>
-        <UserDetailsView />
         <ReviewView />
         <CommonButtonComp
-          text="Create Work Order"
+          text="Leave A Review"
           viewStyle={{width: wp('90'), marginTop: hp('3')}}
-          onPress={() => navigation.navigate('CreateWorkOrderScreen')}
+          onPress={() => updateState({LeaveAReview: true})}
         />
       </View>
     );
   };
   const CancellationView = () => {
     return (
-      <>
-        <UserDetailsView />
-        <View
-          style={{width: wp('90'), alignSelf: 'center', marginTop: hp('2')}}>
-          <TextHeadingCom
-            heading="Cancellation Reason"
-            style={{
-              fontWeight: 'normal',
-              fontSize: hp('1.8'),
-            }}
-          />
-          <TextHeadingCom
-            heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            style={{
-              fontWeight: 'normal',
-              marginTop: hp('1'),
-              color: 'red',
-              fontSize: hp('1.5'),
-            }}
-          />
-        </View>
-      </>
+      <View
+        style={{...styles.bottomScheduleView, backgroundColor: color.lightRed}}>
+        <Text style={{...styles.bottomScheduleText, color: color.badgeColor}}>
+          Awaiting admin approval, you will recieve a booking confirmation
+          shortly{' '}
+        </Text>
+      </View>
     );
   };
   const ScheduleView = () => {
     return (
-      <View>
-        <UserDetailsView />
-        <CommonButtonComp
-          text="Start"
-          viewStyle={{width: wp('90'), marginTop: hp('3')}}
-          onPress={() => updateState({TrackViewState: true})}
-        />
+      <View style={styles.bottomScheduleView}>
+        <Text style={styles.bottomScheduleText}>
+          Awaiting admin approval, you will recieve a booking confirmation
+          shortly{' '}
+        </Text>
       </View>
     );
   };
@@ -357,6 +342,94 @@ const BookingDetailsScreen = ({route, navigation}) => {
       </View>
     );
   };
+  const InputView = props => {
+    let width = props.width ?? '90';
+    let height = props.height ?? '6';
+    return (
+      <View
+        style={{
+          ...styles.inputView,
+          ...props?.style,
+          height: hp(height),
+          width: wp(width),
+        }}>
+        <Text style={styles.leftText}>{props?.coordArea}</Text>
+        <Text style={styles.rightText}>{props?.coordenates}</Text>
+        {props.icoNotShow != true && (
+          <Ionicons
+            name={props?.name ?? 'ios-locate-outline'}
+            color={color.textPrimaryColor}
+            size={hp('2')}
+          />
+        )}
+      </View>
+    );
+  };
+  const LeaveAReviewView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView, height: hp('60')}}>
+          <View style={styles.centerViewTopText}>
+            <TextHeadingCom
+              style={{
+                fontSize: hp('1.9'),
+                fontWeight: 'normal',
+                textAlign: 'center',
+              }}
+              heading="Review"
+            />
+            <TextHeadingCom
+              style={{
+                fontSize: hp('1.5'),
+                fontWeight: 'normal',
+                textAlign: 'center',
+                marginTop: hp('2'),
+                color: color.textInputColor,
+              }}
+              heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            />
+            <StarRating
+              rating={reviewRating}
+              maxStars={5}
+              color={color.yellowTxtColor}
+              starSize={wp('12')}
+              style={{marginTop: hp('2')}}
+              enableSwiping={true}
+              onChange={e => setReviewRating(e)}
+            />
+            <InputView coordArea={'Good Work'} width={'70'} icoNotShow={true} />
+          </View>
+
+          <TextInput
+            multiline
+            numberOfLines={10}
+            style={styles.input}
+            onChangeText={onChangeNumber}
+            value={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+            // value={number}
+            placeholder="Type your message"
+            keyboardType="numeric"
+          />
+
+          {/* <Text
+            style={{
+              textAlign: 'right',
+              marginTop: hp('0.5'),
+              color: color.themeColorDark,
+            }}>
+            0/500
+          </Text> */}
+          <CommonButtonComp
+            onPress={() => {
+              updateState({LeaveAReview: false});
+            }}
+            viewStyle={{width: wp('70')}}
+            text={'Submit'}
+          />
+        </View>
+      </View>
+    );
+  };
   const UserDetailsView = () => {
     return (
       <>
@@ -468,6 +541,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
       {TrackViewState && <TrackView />}
       {ServicesRequestCompleted && <ServicesRequestView />}
       {BookingCancellReason && <BookingCancellReasonView />}
+      {LeaveAReview && <LeaveAReviewView />}
     </View>
   );
 };

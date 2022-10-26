@@ -38,4 +38,5 @@ export const color = {
   orangeColor: '#FE6220',
   paidColor: '#49A8FF',
   lightPurpleView: '#213A7B1A',
+  lightRed: '#F3D2D2',
 };

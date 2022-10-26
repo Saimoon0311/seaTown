@@ -86,9 +86,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
         <View style={{height: hp('100')}}>
           <ImageBackground
             style={{
-              width: Dimensions.get('screen').width,
-              height: Dimensions.get('screen').height,
-              alignItems: 'center',
+              ...styles.textView,
             }}
             source={require('../../../images/permitFormPic.png')}>
             <Ionicons
@@ -125,6 +123,11 @@ const ServicesDetailsScreen = ({route, navigation}) => {
       </>
     );
   };
+  // const ReportIncidentForm = () => {
+  //   return <View style={{flex: 1, backgroundColor: 'red'}}>
+
+  //   </View>;
+  // };
   return items?.permitForm == true ? (
     <SellingPermitForn />
   ) : (

@@ -19,12 +19,16 @@ const TextButtonComp = props => {
     <TouchableOpacity
       onPress={() => props?.onPress()}
       style={{...styles.container, ...props.viewStyle}}>
-      <Entypo
-        style={{marginRight: wp('2')}}
-        name={props?.name}
-        size={hp('2.5')}
-        color={color.textPrimaryColor}
-      />
+      {props?.changeIcon ? (
+        props.changeIcon
+      ) : (
+        <Entypo
+          style={{marginRight: wp('2')}}
+          name={props?.name}
+          size={hp('2.5')}
+          color={color.textPrimaryColor}
+        />
+      )}
       <Text style={styles.upperTxt}>{props?.text}</Text>
     </TouchableOpacity>
   );
