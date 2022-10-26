@@ -36,7 +36,7 @@ const BookingScreen = ({navigation}) => {
     {
       id: 5,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       status: 'Schedule',
       innerImage: require('../../../images/ElectricalServices.png'),
     },
@@ -69,6 +69,9 @@ const BookingScreen = ({navigation}) => {
       innerImage: require('../../../images/MechinacalServices.png'),
     },
   ]);
+  const navigates = item => {
+    navigation.navigate('UserBookingDetailsScreen', {item: item});
+  };
   return (
     <View style={{flex: 1}}>
       <HeaderComp

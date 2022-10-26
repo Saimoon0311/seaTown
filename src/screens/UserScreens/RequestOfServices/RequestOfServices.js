@@ -40,7 +40,7 @@ const RequestOfServices = ({navigation}) => {
         <Text style={styles.rightText}>{props?.coordenates}</Text>
         {props.icoNotShow != true && (
           <Ionicons
-            name={props.name ?? 'ios-locate-outline'}
+            name={props?.name ?? 'ios-locate-outline'}
             color={color.textPrimaryColor}
             size={hp('2')}
           />
@@ -128,21 +128,20 @@ const RequestOfServices = ({navigation}) => {
             />
           </ImageBackground>
         </View>
-        <TextButtonComp text={'Attachments'} name={'attachment'} />
+        <TextButtonComp
+          viewStyle={{marginTop: hp('3')}}
+          text={'Attachments'}
+          name={'attachment'}
+        />
         <ButtonThemeComp
           style={{
-            backgroundColor: 'red',
-            marginLeft: wp('6'),
-            marginTop: hp('2'),
+            // backgroundColor: 'red',
+            // marginLeft: wp('6'),
+            marginTop: hp('3'),
+            width: wp('90'),
           }}
-          text={'Reports'}
+          text={'Submit Request'}
         />
-
-        <Text
-          style={{textAlign: 'center', width: wp('88'), marginTop: hp('1')}}>
-          *Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec risus
-          velit arcu faucibus aliquet
-        </Text>
       </ScrollView>
     </>
   );

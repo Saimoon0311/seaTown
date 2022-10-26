@@ -124,14 +124,14 @@ const HomeScreen = ({navigation}) => {
       id: 7,
       image: require('../../../images/Customer.png'),
       text: 'Customer Services',
-      permitForm: true,
     },
     {
       id: 8,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       innerImage: require('../../../images/MechinacalServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
+      permitForm: true,
     },
     {
       id: 9,

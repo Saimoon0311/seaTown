@@ -133,7 +133,7 @@ const InvoiceScreen = ({navigation}) => {
       id: 8,
       paid: true,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       innerImage: require('../../../images/MechinacalServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },

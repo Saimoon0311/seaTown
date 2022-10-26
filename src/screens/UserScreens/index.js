@@ -1,4 +1,5 @@
 import PrivacyPolicy from '../PrivacyPolicy';
+import UserBookingDetailsScreen from './BookingDetailsScreen/BookingDetailsScreen';
 import BookingScreen from './BookingScreen/BookingScreen';
 import EmergncySOSScreen from './EmergncySOSScreen/EmergncySOSScreen';
 import ForgetScreen from './ForgetScreen/ForgetScreen';
@@ -13,6 +14,7 @@ import RequestOfServices from './RequestOfServices/RequestOfServices';
 import ResetPasswordScreen from './ResetPasswordScreen/ResetPasswordScreen';
 import ServicesDetailsScreen from './ServicesDetailsScreen/ServicesDetailsScreen';
 import SignUpScreen from './SignUpScreen/signUpScreen';
+
 export const screens = {
   LoginScreen,
   SignUpScreen,
@@ -29,4 +31,5 @@ export const screens = {
   RequestOfServices,
   PrivacyPolicy,
   PermitFormScreen,
+  UserBookingDetailsScreen,
 };

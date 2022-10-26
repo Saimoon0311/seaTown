@@ -32,7 +32,7 @@ export const UserBookingViewComp = props => {
     const {data} = prop;
     return (
       <TouchableOpacity
-        onPress={() => console.log('alksf')}
+        onPress={() => props.onPress(data)}
         style={styles.mainView}>
         <View>
           <View style={styles.leftView}>

@@ -37,4 +37,5 @@ export const color = {
   textInputColor: '#A6AEB6',
   orangeColor: '#FE6220',
   paidColor: '#49A8FF',
+  lightPurpleView: '#213A7B1A',
 };

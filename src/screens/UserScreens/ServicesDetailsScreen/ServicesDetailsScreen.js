@@ -85,7 +85,6 @@ const ServicesDetailsScreen = ({route, navigation}) => {
       <>
         <View style={{height: hp('100')}}>
           <ImageBackground
-            resizeMethod="contain"
             style={{
               width: Dimensions.get('screen').width,
               height: Dimensions.get('screen').height,
@@ -112,7 +111,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               style={{
                 ...styles.textView,
               }}>
-              Selling Permit for Vessel In U.A.E Territorial Water
+              Sailing Permit for Vessel In U.A.E Territorial Water
             </Text>
             <TouchableOpacity
               style={styles.btnView}
@@ -211,6 +210,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             marginRight: wp('4'),
             width: wp('30'),
           }}
+          onPress={() => navigation.navigate('RequestOfServices')}
           textStyle={{
             fontWeight: '600',
           }}
