@@ -145,7 +145,6 @@ const InvoiceScreen = ({navigation}) => {
     },
   ]);
   const InvoiceComponent = ({getData}) => {
-    console.log(1555, getData);
     return (
       <View style={styles.topView}>
         <View
@@ -195,7 +194,8 @@ const InvoiceScreen = ({navigation}) => {
               <Text
                 style={{
                   color: color.white,
-                  // textAlign: 'center',
+                  fontSize: hp('1.6'),
+                  textAlign: 'center',
                 }}>
                 Paid
               </Text>
@@ -206,6 +206,7 @@ const InvoiceScreen = ({navigation}) => {
                 style={{
                   color: color.white,
                   textAlign: 'center',
+                  fontSize: hp('1.6'),
                 }}>
                 Payment Due
               </Text>
@@ -226,7 +227,7 @@ const InvoiceScreen = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <HeaderComp
-        openDrawer={() => navigation.navigate('DrawerComp')}
+        openDrawer={() => navigation.navigate('UserDrawerComp')}
         heading={'Invoices'}
       />
       <FlatList

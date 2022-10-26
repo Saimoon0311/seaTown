@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-// import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import SkeletonContent from 'react-native-skeleton-content';
 import {styles} from './styles';
 
 export const UserHomeServicesComp = props => {
@@ -16,8 +16,7 @@ export const UserHomeServicesComp = props => {
         style={{
           ...styles.touchView,
           backgroundColor: data?.id == 2 ? 'yellow' : 'white',
-        }}
-      >
+        }}>
         <Image
           source={data?.image}
           resizeMode="contain"
@@ -33,28 +32,27 @@ export const UserHomeServicesComp = props => {
   };
   const LoadingView = () => {
     return (
-      // <SkeletonPlaceholder>
-      <View
-        style={{
-          width: wp('100'),
-          alignItems: 'center',
-          marginTop: hp('2'),
+      <SkeletonContent
+        containerStyle={{
+          ...styles.flatListView,
           flexDirection: 'row',
+          display: 'flex',
           flexWrap: 'wrap',
-          justifyContent: 'center',
         }}
-      >
-        {rederView()}
-        {rederView()}
-        {rederView()}
-        {rederView()}
-        {rederView()}
-        {rederView()}
-        {rederView()}
-        {rederView()}
-        {rederView()}
-      </View>
-      // {/* </SkeletonPlaceholder> */}
+        animationType="pulse"
+        isLoading={props.isloading}
+        layout={[
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+          {...styles.touchView},
+        ]}
+      />
     );
   };
   return props?.isloading ? (

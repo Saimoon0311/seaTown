@@ -15,6 +15,7 @@ import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButto
 
 const SelectPaymentScreen = ({navigation}) => {
   const [radio, setRadio] = useState(0);
+  const [showPremimu, setShowPremium] = useState(false);
   const CardViewComp = props => {
     return (
       <View style={styles.cardView}>
@@ -45,6 +46,41 @@ const SelectPaymentScreen = ({navigation}) => {
                 : color.textInputColor
             }
             size={hp('4')}
+          />
+        </View>
+      </View>
+    );
+  };
+  const PremimumView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView, height: hp('40')}}>
+          <Image
+            source={require('../../../images/premimum.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          />
+          <TextHeadingCom
+            heading="Welcome To Primium!"
+            style={{textAlign: 'center', color: color.orangeColo}}
+          />
+          <TextHeadingCom
+            heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus nulla aliquet malesuada morbi purus."
+            style={{
+              textAlign: 'center',
+              color: color.textInputColor,
+              fontSize: hp('1.6'),
+              width: wp('65'),
+              alignSelf: 'center',
+              fontWeight: 'normal',
+            }}
+          />
+          <CommonButtonComp
+            onPress={() => {
+              setShowPremium(false), navigation.goBack();
+            }}
+            viewStyle={{width: wp('70'), marginBottom: hp('2')}}
+            text={'Ok Great'}
           />
         </View>
       </View>
@@ -83,8 +119,10 @@ const SelectPaymentScreen = ({navigation}) => {
       />
       <CommonButtonComp
         text="Pay Now"
+        onPress={() => setShowPremium(true)}
         viewStyle={{position: 'absolute', bottom: hp('6'), width: wp('90')}}
       />
+      {showPremimu && <PremimumView />}
     </View>
   );
 };

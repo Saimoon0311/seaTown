@@ -129,11 +129,13 @@ const RequestOfServices = ({navigation}) => {
           </ImageBackground>
         </View>
         <TextButtonComp
+          onPress={() => console.log('oejdoejd')}
           viewStyle={{marginTop: hp('3')}}
           text={'Attachments'}
           name={'attachment'}
         />
         <ButtonThemeComp
+          onPress={() => console.log('oejdoejd')}
           style={{
             // backgroundColor: 'red',
             // marginLeft: wp('6'),

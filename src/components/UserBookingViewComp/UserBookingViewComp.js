@@ -115,7 +115,7 @@ export const UserBookingViewComp = props => {
 export const styles = StyleSheet.create({
   mainView: {
     width: wp('90'),
-    height: hp('15'),
+    // height: hp('15'),
     backgroundColor: 'white',
     flexDirection: 'row',
     shadowColor: '#000',
@@ -129,6 +129,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
     marginBottom: hp('2'),
     alignSelf: 'center',
+    paddingBottom: hp('1'),
   },
   leftView: {
     width: wp('88'),

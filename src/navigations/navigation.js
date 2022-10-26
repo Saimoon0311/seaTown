@@ -146,6 +146,13 @@ const StackNavigatior = ({style, navigation}) => {
         component={DrawerComp}
       />
       <Stack.Screen
+        options={{
+          animation: 'none',
+        }}
+        name="UserDrawerComp"
+        component={screens.UserDrawerComp}
+      />
+      <Stack.Screen
         name="CaptionBottomNavigation"
         component={CaptionBottomNavigation}
       />

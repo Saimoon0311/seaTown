@@ -40,4 +40,23 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  trackMainView: {
+    position: 'absolute',
+    height: hp('100'),
+    width: wp('100'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(42,42,42,0.6)',
+    top: 0,
+    bottom: 0,
+    zIndex: 1,
+  },
+  trackInnerView: {
+    width: wp('85'),
+    height: hp('35'),
+    backgroundColor: 'white',
+    borderRadius: 10,
+    top: hp('-3'),
+    justifyContent: 'space-around',
+  },
 });

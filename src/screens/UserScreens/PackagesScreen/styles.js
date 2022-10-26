@@ -11,6 +11,10 @@ export const styles = StyleSheet.create({
     height: hp('65'),
     marginTop: hp('2'),
     alignItems: 'center',
+    overflow: 'hidden',
+    marginLeft: wp('5'),
+    marginRight: wp('2'),
+    borderRadius: 20,
   },
   priceText: {color: 'white', fontSize: hp('3'), marginTop: hp('2')},
   centerView: {

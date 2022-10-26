@@ -1,3 +1,4 @@
+import UserDrawerComp from '../../components/UserDrawerComp/UserDrawerComp';
 import PrivacyPolicy from '../PrivacyPolicy';
 import UserBookingDetailsScreen from './BookingDetailsScreen/BookingDetailsScreen';
 import BookingScreen from './BookingScreen/BookingScreen';
@@ -37,4 +38,5 @@ export const screens = {
   ProfileScreen,
   UpadateProfileScreen,
   SelectPaymentScreen,
+  UserDrawerComp,
 };

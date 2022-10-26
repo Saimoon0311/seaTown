@@ -157,14 +157,15 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
-        openDrawer={() => navigation.navigate('DrawerComp')}
+        openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
+      <ScrollView
+        contentContainerStyle={{paddingBottom: hp('2'), paddingTop: hp('2')}}>
         <WeatherHomeComp onPress={() => console.log(71)} />
         <View style={styles.serContainer}>
           <TextHeadingCom
             heading="Services"
-            style={{marginTop: hp('2'), marginLeft: hp('2')}}
+            style={{marginTop: hp('2'), marginLeft: hp('3')}}
           />
           <TouchableOpacity
             onPress={() => navigation.navigate('RequestOfServices')}

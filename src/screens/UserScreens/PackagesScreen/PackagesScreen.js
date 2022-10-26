@@ -111,7 +111,7 @@ const PackagesScreen = ({navigation}) => {
     return (
       <ImageBackground
         source={data.image}
-        resizeMode="contain"
+        // resizeMode="contain"
         style={{...styles.imageBackgroundView, ...data.style}}>
         <TextHeadingCom heading="Our Prices" style={styles.priceText} />
         <TextHeadingCom
@@ -178,7 +178,12 @@ const PackagesScreen = ({navigation}) => {
             );
         }}
         /> */}
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+      <ScrollView
+        contentContainerStyle={{
+          justifyContent: 'space-between',
+        }}
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}>
         <PackagesCard data={packages[0]} />
         <PackagesCard data={packages[1]} />
       </ScrollView>
