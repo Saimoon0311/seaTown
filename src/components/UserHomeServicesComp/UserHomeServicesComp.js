@@ -63,9 +63,9 @@ export const UserHomeServicesComp = props => {
     // rederView()
     <FlatList
       data={props?.data}
-      keyExtractor={(item, index) => index.toString()}
+      keyExtractor={(item, index) => item.id}
+      // keyExtractor={(item, index) => `key-${index}`}
       numColumns={3}
-      style={{}}
       contentContainerStyle={styles.flatListView}
       renderItem={({item}) => {
         return <RederView data={item} />;

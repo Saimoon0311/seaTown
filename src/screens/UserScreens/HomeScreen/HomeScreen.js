@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
@@ -148,6 +148,7 @@ const HomeScreen = ({navigation}) => {
   setTimeout(() => {
     setLoading(false);
   }, 2000);
+
   return (
     <View style={{flex: 1}}>
       <HeaderComp
