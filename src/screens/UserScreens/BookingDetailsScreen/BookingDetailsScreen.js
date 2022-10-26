@@ -261,7 +261,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
     return (
       <View style={styles.trackMainView}>
         <View style={{...styles.trackInnerView, height: hp('60')}}>
-          <View style={styles.centerViewTopText}>
+          <View style={{...styles.centerViewTopText, flexDirection: 'row'}}>
             <TextHeadingCom
               style={{
                 fontSize: hp('1.9'),

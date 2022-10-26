@@ -2,6 +2,11 @@ import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
 import {UserBookingViewComp} from '../../../components/UserBookingViewComp/UserBookingViewComp';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 const BookingScreen = ({navigation}) => {
   const [bookings, setBookings] = useState([
     {
@@ -78,9 +83,11 @@ const BookingScreen = ({navigation}) => {
         notificationPress={() => navigation.navigate('NotificationScreen')}
         heading={'My Bookings'}
         notification={true}
+        searchPress={() => console.log('shfs')}
         search={true}
         openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
+      {/* <View style={{marginTop: hp('3')}} /> */}
       <UserBookingViewComp onPress={item => navigates(item)} data={bookings} />
     </View>
   );

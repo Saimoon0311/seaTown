@@ -32,7 +32,6 @@ const CreateWorkOrderScreen = ({navigation}) => {
               style={{
                 color: 'black',
                 flex: 1,
-                height: hp('3'),
               }}
               placeholder={props?.placeholder}
               placeholderTextColor={color.textImagebackgroundColor}
@@ -72,7 +71,7 @@ const CreateWorkOrderScreen = ({navigation}) => {
           <TextHeadingCom
             heading="Your Work Order has been Submit to Admin!"
             style={{
-              marginTop: hp('0.8'),
+              marginTop: hp('5'),
               width: wp('70'),
 
               textAlign: 'center',
@@ -91,14 +90,16 @@ const CreateWorkOrderScreen = ({navigation}) => {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: color.white,
-        }}>
+        }}
+      >
         <View style={{paddingBottom: hp('3')}}>
           <View style={styles.detailsView}>
             <View
               style={{
                 width: wp('40'),
                 justifyContent: 'space-between',
-              }}>
+              }}
+            >
               <Text style={styles.leftText}>Booking ID</Text>
               <Text style={styles.leftText}>Date</Text>
               <Text style={styles.leftText}>Bill to</Text>
@@ -108,7 +109,8 @@ const CreateWorkOrderScreen = ({navigation}) => {
                 width: wp('40'),
                 justifyContent: 'space-between',
                 alignItems: 'flex-end',
-              }}>
+              }}
+            >
               <Text style={styles.rightText}>#00068</Text>
               <Text style={styles.rightText}>13 Dec 2022</Text>
               <Text style={styles.rightText}>Alfonso Vaccaro</Text>

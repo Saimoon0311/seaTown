@@ -29,9 +29,11 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: color.textPrimaryColor,
     backgroundColor: 'white',
-    height: hp('6'),
+    height: hp('6.5'),
+    paddingRight: wp('3'),
+    paddingLeft: wp('3'),
+
     borderRadius: 10,
-    padding: 10,
   },
   selTxt: {
     color: color.lightBlueColor,
@@ -87,6 +89,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     top: hp('-3'),
-    justifyContent: 'space-around',
+    paddingTop: hp('2'),
   },
 });

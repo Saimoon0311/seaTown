@@ -1,10 +1,17 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, FlatList, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import SkeletonContent from 'react-native-skeleton-content';
+import {color} from '../color';
 import {styles} from './styles';
 
 export const UserHomeServicesComp = props => {
@@ -30,36 +37,42 @@ export const UserHomeServicesComp = props => {
     // const {data} = props;
     return <TouchableOpacity style={{...styles.touchView}}></TouchableOpacity>;
   };
-  const LoadingView = () => {
-    return (
-      <SkeletonContent
-        containerStyle={{
-          ...styles.flatListView,
-          flexDirection: 'row',
-          display: 'flex',
-          flexWrap: 'wrap',
-        }}
-        animationType="pulse"
-        isLoading={props.isloading}
-        layout={[
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-          {...styles.touchView},
-        ]}
-      />
-    );
-  };
+  // const LoadingView = () => {
+  //   return (
+  //     <SkeletonContent
+  //       containerStyle={{
+  //         ...styles.flatListView,
+  //         flexDirection: 'row',
+  //         display: 'flex',
+  //         flexWrap: 'wrap',
+  //       }}
+  //       animationType="pulse"
+  //       isLoading={props.isloading}
+  //       layout={[
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //         {...styles.touchView},
+  //       ]}
+  //     />
+  //   );
+  // };
   return props?.isloading ? (
-    <LoadingView />
+    // <LoadingView />
+    <ActivityIndicator
+      size={hp('10')}
+      color={color.textPrimaryColor}
+      style={{alignSelf: 'center', marginTop: hp('20')}}
+    />
   ) : (
     // rederView()
     <FlatList
+      nestedScrollEnabled={true}
       data={props?.data}
       keyExtractor={(item, index) => index.toString()}
       numColumns={3}

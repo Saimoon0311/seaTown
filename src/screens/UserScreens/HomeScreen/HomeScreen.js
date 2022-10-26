@@ -141,8 +141,6 @@ const HomeScreen = ({navigation}) => {
   ]);
   const [loading, setLoading] = useState(true);
   const navigates = item => {
-    console.log('item', item);
-
     item.text == 'Report Incident'
       ? navigation.navigate('RequestOfServices', {item: item})
       : navigation.navigate('ServicesDetailsScreen', {item: item});
@@ -157,6 +155,7 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
+        searchPress={() => console.log('shfs')}
         openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
       <ScrollView
@@ -176,7 +175,11 @@ const HomeScreen = ({navigation}) => {
               size={hp('3')}
             />
             <Text
-              style={{color: 'black', fontSize: hp('2'), marginLeft: wp('2')}}>
+              style={{
+                color: color.textPrimaryColor,
+                fontSize: hp('2'),
+                marginLeft: wp('2'),
+              }}>
               Request a service
             </Text>
           </TouchableOpacity>

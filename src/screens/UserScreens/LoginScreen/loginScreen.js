@@ -30,9 +30,8 @@ import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp'
 
 const LoginScreen = ({route, navigation}) => {
   const disptach = useDispatch();
-  const emailRef = useRef();
   const LoginType = route.params;
-  const [isKeyboardVisible, setKeyboardVisible] = useState(hp('0'));
+  const [isKeyboardVisible, setKeyboardVisible] = useState('flex');
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const [loginUser, setLoginUser] = useState({
@@ -112,13 +111,13 @@ const LoginScreen = ({route, navigation}) => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       () => {
-        setKeyboardVisible(hp('35')); // or some other action
+        setKeyboardVisible('none'); // or some other action
       },
     );
     const keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       () => {
-        setKeyboardVisible(hp('0')); // or some other action
+        setKeyboardVisible('flex'); // or some other action
       },
     );
 
@@ -132,7 +131,10 @@ const LoginScreen = ({route, navigation}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
       style={styles.container}>
-      <StatusBar hidden={false} barStyle={'dark-content'} />
+      <StatusBar
+        hidden={false}
+        barStyle={Platform.OS == 'ios' ? 'dark-content' : 'default'}
+      />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
           source={require('../../../images/Loginogo.png')}
@@ -144,7 +146,6 @@ const LoginScreen = ({route, navigation}) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </Text>
         <LoginInputComp
-          ref={emailRef}
           value={email}
           onChangeText={email => updateState({email})}
           inputText="Email"
@@ -173,14 +174,16 @@ const LoginScreen = ({route, navigation}) => {
         <View style={styles.rememberView}>
           <CheckBox
             disabled={false}
+            tintColors={'black'}
             value={toggleCheckBox}
             onValueChange={newValue => setToggleCheckBox(newValue)}
           />
           <Text style={styles.rememberText}>Remember me</Text>
           <TouchableOpacity
             style={{marginLeft: 'auto'}}
-            // onPress={() => navigation.navigate('ForgetScreen')}
-            onPress={() => navigation.navigate('PrivacyPolicy')}>
+            onPress={() => navigation.navigate('ForgetScreen')}
+            // onPress={() => navigation.navigate('PrivacyPolicy')}
+          >
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
         </View>
@@ -197,6 +200,7 @@ const LoginScreen = ({route, navigation}) => {
         /> */}
       </ScrollView>
       <BottomTextComp
+        style={{display: isKeyboardVisible}}
         onPress={() => navigation.navigate('SignUpScreen')}
         note={"Don't have account ? "}
         heading={'Sign Up'}

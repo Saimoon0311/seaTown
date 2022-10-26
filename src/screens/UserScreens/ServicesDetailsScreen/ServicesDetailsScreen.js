@@ -30,7 +30,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
     return (
       <View style={styles.listContainer}>
         <Text>Our Professional</Text>
-        <View>
+        <View style={{flex: 1, alignSelf: 'center'}}>
           <FlatList
             data={props?.data}
             keyExtractor={(item, index) => index.toString()}
@@ -86,7 +86,9 @@ const ServicesDetailsScreen = ({route, navigation}) => {
         <View style={{height: hp('100')}}>
           <ImageBackground
             style={{
-              ...styles.textView,
+              width: Dimensions.get('screen').width,
+              height: Dimensions.get('screen').height,
+              alignItems: 'center',
             }}
             source={require('../../../images/permitFormPic.png')}>
             <Ionicons
@@ -157,7 +159,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                 alignItems: 'center',
               }}>
               <StarRating
-                rating={items.rating}
+                rating={items?.rating}
                 maxStars={5}
                 color={color.yellowTxtColor}
                 starSize={wp('4.5')}

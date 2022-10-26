@@ -201,9 +201,10 @@ const DrawerComp = ({navigation}) => {
             style={{
               width: wp('30'),
               height: hp('80'),
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              overflow: 'hidden',
+              marginRight: wp('-3'),
+              // borderTopLeftRadius: 20,
+              // borderBottomLeftRadius: 20,
+              // overflow: 'hidden',
             }}
             source={require('../../images/drawerRight.png')}
             resizeMode="contain"

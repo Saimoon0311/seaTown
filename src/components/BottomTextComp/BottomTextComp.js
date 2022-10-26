@@ -9,7 +9,7 @@ import {styles} from './styles';
 
 export const BottomTextComp = props => {
   return (
-    <View style={styles.mainView}>
+    <View style={{...styles.mainView, ...props?.style}}>
       <Text style={{color: color.themeColorDark, fontSize: hp('1.5')}}>
         {props?.note}
       </Text>

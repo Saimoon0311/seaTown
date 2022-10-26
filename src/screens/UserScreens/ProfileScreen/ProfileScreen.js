@@ -79,7 +79,7 @@ const ProfileScreen = ({navigation}) => {
         editPress={() => navigation.navigate('UpadateProfileScreen')}
         heading={'Profile'}
         edit={true}
-        openDrawer={() => navigation.navigate('DrawerComp')}
+        openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
       <ScrollView>
         <CircleImage
@@ -91,7 +91,7 @@ const ProfileScreen = ({navigation}) => {
             marginTop: hp('2'),
           }}
         />
-        <Text style={styles.captionText}>Caption</Text>
+        <Text style={styles.captionText}>User</Text>
         <TextHeadingCom
           heading="Brandon Westervelt"
           style={{marginTop: hp('2'), textAlign: 'center'}}

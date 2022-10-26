@@ -52,6 +52,7 @@ const TextInputWithTextCom = props => {
             size={hp('2')}
             color={color.textPrimaryColor}
             name={props?.iconName}
+            style={{marginRight: wp('2')}}
           />
         )}
       </View>
@@ -83,6 +84,13 @@ const styles = StyleSheet.create({
     marginTop: hp('3'),
   },
   inputView: {
+    borderRadius: 10,
+    paddingLeft: wp('3'),
+    marginTop: hp('1'),
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: wp('80'),
+    height: hp('6'),
     // borderRadius: 10,
     // // paddingLeft: wp('3'),
     // marginTop: hp('1'),
@@ -100,13 +108,13 @@ const styles = StyleSheet.create({
     // height: hp('6'),
     width: wp('90'),
     backgroundColor: 'white',
-    height: hp('6'),
-    padding: 10,
+    // height: hp('6'),
+    // padding: 10,
     borderRadius: 10,
     borderColor: color.textInputColor,
     borderWidth: 1,
-    marginTop: hp('1'),
+    // marginTop: hp('1'),
     justifyContent: 'space-between',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
 });
