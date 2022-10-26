@@ -141,7 +141,11 @@ const HomeScreen = ({navigation}) => {
   ]);
   const [loading, setLoading] = useState(true);
   const navigates = item => {
-    navigation.navigate('ServicesDetailsScreen', {item: item});
+    console.log('item', item);
+
+    item.text == 'Report Incident'
+      ? navigation.navigate('RequestOfServices', {item: item})
+      : navigation.navigate('ServicesDetailsScreen', {item: item});
   };
   setTimeout(() => {
     setLoading(false);

@@ -85,56 +85,57 @@ const ServicesDetailsScreen = ({route, navigation}) => {
   const SellingPermitForn = () => {
     return (
       <>
-        <View style={{height: hp('100')}}>
-          <ImageBackground
-            resizeMethod="contain"
+        <ImageBackground
+          style={{
+            width: Dimensions.get('screen').width,
+            height: Dimensions.get('screen').height,
+            alignItems: 'center',
+          }}
+          source={require('../../../images/permitFormPic.png')}
+        >
+          <Ionicons
+            name={'arrow-back'}
+            color={color.white}
+            size={hp('3')}
             style={{
-              width: Dimensions.get('screen').width,
-              height: Dimensions.get('screen').height,
-              alignItems: 'center',
+              alignSelf: 'baseline',
+              marginTop: hp('6'),
+              marginLeft: wp('3'),
             }}
-            source={require('../../../images/permitFormPic.png')}
+            onPress={() => navigation.goBack()}
+          />
+          <Image
+            resizeMode="contain"
+            style={styles.imageView}
+            source={require('../../../images/PermitBadge.png')}
+          />
+          <Text
+            style={{
+              ...styles.textView,
+            }}
           >
-            <Ionicons
-              name={'arrow-back'}
-              color={color.white}
-              size={hp('3')}
-              style={{
-                alignSelf: 'baseline',
-                marginTop: hp('6'),
-                marginLeft: wp('3'),
-              }}
-              onPress={() => navigation.goBack()}
-            />
-            <Image
-              resizeMode="contain"
-              style={styles.imageView}
-              source={require('../../../images/PermitBadge.png')}
-            />
-            <Text
-              style={{
-                ...styles.textView,
-              }}
-            >
-              Selling Permit for Vessel In U.A.E Territorial Water
-            </Text>
-            <TouchableOpacity
-              style={styles.btnView}
-              onPress={() => {
-                navigation.navigate('PermitFormScreen');
-              }}
-            >
-              <Text style={styles.textBtn}>Sailing Permit Form</Text>
-            </TouchableOpacity>
-          </ImageBackground>
-        </View>
+            Selling Permit for Vessel In U.A.E Territorial Water
+          </Text>
+          <TouchableOpacity
+            style={styles.btnView}
+            onPress={() => {
+              navigation.navigate('PermitFormScreen');
+            }}
+          >
+            <Text style={styles.textBtn}>Sailing Permit Form</Text>
+          </TouchableOpacity>
+        </ImageBackground>
       </>
     );
   };
+  // const ReportIncidentForm = () => {
+  //   return <View style={{flex: 1, backgroundColor: 'red'}}>
+
+  //   </View>;
+  // };
   return items?.permitForm == true ? (
     <SellingPermitForn />
   ) : (
-    // <View style={styles.sellingMainView}>
     <>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
