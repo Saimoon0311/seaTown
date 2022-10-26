@@ -45,7 +45,7 @@ const GuiderBookingScreen = ({navigation}) => {
     {
       id: 5,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       status: 'Cancelled',
       innerImage: require('../../../images/ElectricalServices.png'),
     },

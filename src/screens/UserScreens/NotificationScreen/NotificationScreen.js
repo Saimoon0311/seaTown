@@ -32,7 +32,7 @@ const NotificationScreen = ({navigation}) => {
     {
       id: 5,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
     },
     {
       id: 6,

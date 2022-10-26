@@ -8,7 +8,7 @@ import {
 import {color} from '../../../components/color';
 import {globalStyles} from '../../../config/globalStyles';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
-const InvoiceScreen = () => {
+const InvoiceScreen = ({navigation}) => {
   const [services, setServices] = useState([
     {
       id: 1,
@@ -133,7 +133,7 @@ const InvoiceScreen = () => {
       id: 8,
       paid: true,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       innerImage: require('../../../images/MechinacalServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
     },
@@ -152,8 +152,7 @@ const InvoiceScreen = () => {
           style={{
             flexDirection: 'row',
             marginRight: wp('8'),
-          }}
-        >
+          }}>
           <Image
             resizeMode="contain"
             style={{
@@ -172,16 +171,14 @@ const InvoiceScreen = () => {
                 fontSize: hp('2.1'),
                 marginRight: hp('0.5'),
                 marginBottom: hp('0.3'),
-              }}
-            >
+              }}>
               #00068
             </Text>
             <Text
               style={{
                 color: color.textInputColor,
                 marginRight: hp('0.5'),
-              }}
-            >
+              }}>
               21 feb, 2022
             </Text>
           </View>
@@ -194,14 +191,12 @@ const InvoiceScreen = () => {
                 ...styles.paymentView,
                 width: wp('18'),
                 backgroundColor: color.paidColor,
-              }}
-            >
+              }}>
               <Text
                 style={{
                   color: color.white,
-                  textAlign: 'center',
-                }}
-              >
+                  // textAlign: 'center',
+                }}>
                 Paid
               </Text>
             </View>
@@ -211,8 +206,7 @@ const InvoiceScreen = () => {
                 style={{
                   color: color.white,
                   textAlign: 'center',
-                }}
-              >
+                }}>
                 Payment Due
               </Text>
             </View>
@@ -222,8 +216,7 @@ const InvoiceScreen = () => {
               ...globalStyles.globalTextStyles4,
               fontSize: hp('2.2'),
               textAlign: 'center',
-            }}
-          >
+            }}>
             AED 750
           </Text>
         </View>

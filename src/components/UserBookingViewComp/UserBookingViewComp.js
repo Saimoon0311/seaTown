@@ -32,9 +32,8 @@ export const UserBookingViewComp = props => {
     const {data} = prop;
     return (
       <TouchableOpacity
-        onPress={() => console.log('alksf')}
-        style={styles.mainView}
-      >
+        onPress={() => props.onPress(data)}
+        style={styles.mainView}>
         <View>
           <View style={styles.leftView}>
             <View>
@@ -51,8 +50,7 @@ export const UserBookingViewComp = props => {
                 style={{
                   ...styles.statusText,
                   color: checkStatus(data.status),
-                }}
-              >
+                }}>
                 {data.status}
               </Text>
             </View>
@@ -65,8 +63,7 @@ export const UserBookingViewComp = props => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginRight: wp('2'),
-              }}
-            >
+              }}>
               <View style={styles.innerlastView}>
                 <CircleImage
                   styles={{
@@ -94,8 +91,7 @@ export const UserBookingViewComp = props => {
                   fontSize: hp('2'),
                   marginTop: hp('1'),
                   color: checkStatus(data.status),
-                }}
-              >
+                }}>
                 AED 750
               </Text>
             </View>
@@ -109,9 +105,6 @@ export const UserBookingViewComp = props => {
     <FlatList
       data={props?.data}
       keyExtractor={(item, index) => index.toString()}
-      contentContainerStyle={{
-        alignSelf: 'center',
-      }}
       renderItem={({item}) => {
         return <RenderView data={item} />;
       }}
@@ -135,6 +128,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 5,
     marginBottom: hp('2'),
+    alignSelf: 'center',
   },
   leftView: {
     width: wp('88'),

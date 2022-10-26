@@ -128,7 +128,7 @@ const HomeScreen = ({navigation}) => {
     {
       id: 8,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       innerImage: require('../../../images/MechinacalServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       permitForm: true,
@@ -141,8 +141,6 @@ const HomeScreen = ({navigation}) => {
   ]);
   const [loading, setLoading] = useState(true);
   const navigates = item => {
-    console.log('item', item);
-
     item.text == 'Report Incident'
       ? navigation.navigate('RequestOfServices', {item: item})
       : navigation.navigate('ServicesDetailsScreen', {item: item});
@@ -157,6 +155,7 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
+        searchPress={() => console.log('search')}
         openDrawer={() => navigation.navigate('DrawerComp')}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>

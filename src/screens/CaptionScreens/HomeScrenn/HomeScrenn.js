@@ -46,7 +46,7 @@ const GuiderHomeScreen = ({navigation}) => {
     {
       id: 5,
       image: require('../../../images/Permit.png'),
-      text: 'Selling Permit',
+      text: 'Sailing Permit',
       status: 'Schedule',
       innerImage: require('../../../images/ElectricalServices.png'),
     },

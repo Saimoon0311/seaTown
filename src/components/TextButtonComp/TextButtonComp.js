@@ -16,14 +16,16 @@ import {color} from '../color';
 import {LoginInputComp} from '../LoginInputComp/LoginInputComp';
 const TextButtonComp = props => {
   return (
-    <TouchableOpacity onPress={() => props?.onPress()} style={styles.container}>
+    <TouchableOpacity
+      onPress={() => props?.onPress()}
+      style={{...styles.container, ...props.viewStyle}}>
       <Entypo
         style={{marginRight: wp('2')}}
         name={props?.name}
         size={hp('2.5')}
-        color={'black'}
+        color={color.textPrimaryColor}
       />
-      <Text style={{color: 'black'}}>{props?.text}</Text>
+      <Text style={styles.upperTxt}>{props?.text}</Text>
     </TouchableOpacity>
   );
 };
@@ -41,13 +43,15 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: hp('1'),
     color: 'black',
-    backgroundColor: 'white',
+    backgroundColor: color.lightPurpleView,
+    borderColor: color.textPrimaryColor,
+    borderStyle: 'dashed',
+    justifyContent: 'center',
   },
   upperTxt: {
-    color: color.textBackgroundColor,
+    color: color.textPrimaryColor,
     fontWeight: '500',
-    fontSize: hp('1.5'),
-    marginTop: hp('3'),
+    fontSize: hp('1.7'),
   },
   inputView: {
     // borderRadius: 10,

@@ -30,7 +30,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
     return (
       <View style={styles.listContainer}>
         <Text>Our Professional</Text>
-        <View>
+        <View style={{flex: 1, alignSelf: 'center'}}>
           <FlatList
             data={props?.data}
             keyExtractor={(item, index) => index.toString()}
@@ -85,46 +85,48 @@ const ServicesDetailsScreen = ({route, navigation}) => {
   const SellingPermitForn = () => {
     return (
       <>
-        <ImageBackground
-          style={{
-            width: Dimensions.get('screen').width,
-            height: Dimensions.get('screen').height,
-            alignItems: 'center',
-          }}
-          source={require('../../../images/permitFormPic.png')}
-        >
-          <Ionicons
-            name={'arrow-back'}
-            color={color.white}
-            size={hp('3')}
+        <View style={{height: hp('100')}}>
+          <ImageBackground
             style={{
-              alignSelf: 'baseline',
-              marginTop: hp('6'),
-              marginLeft: wp('3'),
+              width: Dimensions.get('screen').width,
+              height: Dimensions.get('screen').height,
+              alignItems: 'center',
             }}
-            onPress={() => navigation.goBack()}
-          />
-          <Image
-            resizeMode="contain"
-            style={styles.imageView}
-            source={require('../../../images/PermitBadge.png')}
-          />
-          <Text
-            style={{
-              ...styles.textView,
-            }}
+            source={require('../../../images/permitFormPic.png')}
           >
-            Selling Permit for Vessel In U.A.E Territorial Water
-          </Text>
-          <TouchableOpacity
-            style={styles.btnView}
-            onPress={() => {
-              navigation.navigate('PermitFormScreen');
-            }}
-          >
-            <Text style={styles.textBtn}>Sailing Permit Form</Text>
-          </TouchableOpacity>
-        </ImageBackground>
+            <Ionicons
+              name={'arrow-back'}
+              color={color.white}
+              size={hp('3')}
+              style={{
+                alignSelf: 'baseline',
+                marginTop: hp('6'),
+                marginLeft: wp('3'),
+              }}
+              onPress={() => navigation.goBack()}
+            />
+            <Image
+              resizeMode="contain"
+              style={styles.imageView}
+              source={require('../../../images/PermitBadge.png')}
+            />
+            <Text
+              style={{
+                ...styles.textView,
+              }}
+            >
+              Sailing Permit for Vessel In U.A.E Territorial Water
+            </Text>
+            <TouchableOpacity
+              style={styles.btnView}
+              onPress={() => {
+                navigation.navigate('PermitFormScreen');
+              }}
+            >
+              <Text style={styles.textBtn}>Sailing Permit Form</Text>
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
       </>
     );
   };
@@ -163,7 +165,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               }}
             >
               <StarRating
-                rating={items.rating}
+                rating={items?.rating}
                 maxStars={5}
                 color={color.yellowTxtColor}
                 starSize={wp('4.5')}
@@ -222,12 +224,14 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             marginRight: wp('4'),
             width: wp('30'),
           }}
+          onPress={() => navigation.navigate('RequestOfServices')}
           textStyle={{
             fontWeight: '600',
           }}
         />
       </View>
     </>
+    // <View style={styles.sellingMainView}>
     // </View>
   );
 };

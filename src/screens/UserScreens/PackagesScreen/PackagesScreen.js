@@ -104,10 +104,6 @@ const PackagesScreen = () => {
       type: 'Yearly',
       text: yearlyText,
       buttonColor: 'white',
-      style: {
-        width: wp('90'),
-        height: hp('73'),
-      },
     },
   ]);
   const PackagesCard = props => {

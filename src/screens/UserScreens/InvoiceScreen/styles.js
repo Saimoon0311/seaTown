@@ -36,10 +36,12 @@ export const styles = StyleSheet.create({
     height: hp('3.2'),
     marginBottom: hp('0.5'),
     width: wp('26'),
-    padding: 5,
+    // padding: 5,
     alignSelf: 'flex-end',
     backgroundColor: color.orangeColor,
     borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   flatListView: {
     marginBottom: hp('6'),

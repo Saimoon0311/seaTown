@@ -279,10 +279,14 @@ export default function SignUpScreen({navigation}) {
           />
           <Text style={styles.rememberText}>Accept Terms of Services</Text>
         </View>
-        <ButtonThemeComp text={'Sign Up'} style={{marginTop: hp('2')}} />
+        <ButtonThemeComp
+          onPress={() => navigation.navigate('OtpScreen')}
+          text={'Sign Up'}
+          style={{marginTop: hp('2')}}
+        />
       </ScrollView>
       <BottomTextComp
-        onPress={() => navigation.navigate('SignUpScreen')}
+        onPress={() => navigation.navigate('LoginScreen')}
         note={"Don't have account ? "}
         heading={'Sign Up'}
       />

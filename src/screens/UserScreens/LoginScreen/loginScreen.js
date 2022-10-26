@@ -32,7 +32,7 @@ const LoginScreen = ({route, navigation}) => {
   const disptach = useDispatch();
   const emailRef = useRef();
   const LoginType = route.params;
-  const [isKeyboardVisible, setKeyboardVisible] = useState(hp('0'));
+  const [isKeyboardVisible, setKeyboardVisible] = useState('flex');
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const [loginUser, setLoginUser] = useState({
@@ -112,13 +112,13 @@ const LoginScreen = ({route, navigation}) => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       () => {
-        setKeyboardVisible(hp('35')); // or some other action
+        setKeyboardVisible('none'); // or some other action
       },
     );
     const keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       () => {
-        setKeyboardVisible(hp('0')); // or some other action
+        setKeyboardVisible('flex'); // or some other action
       },
     );
 
@@ -131,7 +131,8 @@ const LoginScreen = ({route, navigation}) => {
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}>
+      style={styles.container}
+    >
       <StatusBar hidden={false} barStyle={'dark-content'} />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
@@ -179,8 +180,9 @@ const LoginScreen = ({route, navigation}) => {
           <Text style={styles.rememberText}>Remember me</Text>
           <TouchableOpacity
             style={{marginLeft: 'auto'}}
-            // onPress={() => navigation.navigate('ForgetScreen')}
-            onPress={() => navigation.navigate('PrivacyPolicy')}>
+            onPress={() => navigation.navigate('ForgetScreen')}
+            // onPress={() => navigation.navigate('PrivacyPolicy')}
+          >
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
         </View>
@@ -197,6 +199,7 @@ const LoginScreen = ({route, navigation}) => {
         /> */}
       </ScrollView>
       <BottomTextComp
+        style={{display: isKeyboardVisible}}
         onPress={() => navigation.navigate('SignUpScreen')}
         note={"Don't have account ? "}
         heading={'Sign Up'}

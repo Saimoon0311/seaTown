@@ -103,6 +103,10 @@ const StackNavigatior = ({style, navigation}) => {
       <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
       <Stack.Screen
+        name="UserBookingDetailsScreen"
+        component={screens.UserBookingDetailsScreen}
+      />
+      <Stack.Screen
         name="ResetPasswordScreen"
         component={screens.ResetPasswordScreen}
       />
