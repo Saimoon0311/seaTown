@@ -9,7 +9,7 @@ const MemberShipScreen = ({navigation}) => {
       <HeaderComp
         notificationPress={() => navigation.navigate('NotificationScreen')}
         heading={'Membership Plane'}
-        openDrawer={() => navigation.navigate('DrawerComp')}
+        openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
       <UserTopTabs />
     </View>

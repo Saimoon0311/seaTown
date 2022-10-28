@@ -30,7 +30,7 @@ const BookingScreen = ({navigation}) => {
       id: 4,
       image: require('../../../images/Customer.png'),
       text: 'Customer Services',
-      status: 'In Progress',
+      status: 'Cancelled',
       innerImage: require('../../../images/RefullingServices.png'),
     },
     {
@@ -52,7 +52,7 @@ const BookingScreen = ({navigation}) => {
       image: require('../../../images/Electrician.png'),
       text: 'Electrical Services',
       innerImage: require('../../../images/ElectricalServices.png'),
-      status: 'In Progress',
+      status: 'Cancelled',
     },
     {
       id: 8,
@@ -79,7 +79,7 @@ const BookingScreen = ({navigation}) => {
         heading={'My Bookings'}
         notification={true}
         search={true}
-        openDrawer={() => navigation.navigate('DrawerComp')}
+        openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
       <UserBookingViewComp onPress={item => navigates(item)} data={bookings} />
     </View>

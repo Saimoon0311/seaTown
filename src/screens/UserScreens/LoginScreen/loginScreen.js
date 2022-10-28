@@ -30,7 +30,6 @@ import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp'
 
 const LoginScreen = ({route, navigation}) => {
   const disptach = useDispatch();
-  const emailRef = useRef();
   const LoginType = route.params;
   const [isKeyboardVisible, setKeyboardVisible] = useState('flex');
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -131,8 +130,7 @@ const LoginScreen = ({route, navigation}) => {
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}
-    >
+      style={styles.container}>
       <StatusBar hidden={false} barStyle={'dark-content'} />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
@@ -145,7 +143,6 @@ const LoginScreen = ({route, navigation}) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </Text>
         <LoginInputComp
-          ref={emailRef}
           value={email}
           onChangeText={email => updateState({email})}
           inputText="Email"

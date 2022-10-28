@@ -80,7 +80,8 @@ const StackNavigatior = ({style, navigation}) => {
         //     />
         //   </TouchableOpacity>
         // ),
-      }}>
+      }}
+    >
       {/* {userData?.data?.user_role == 0 ? (
           <>
             <Stack.Screen name="MybottomTabs" component={MybottomTabs} />
@@ -102,6 +103,12 @@ const StackNavigatior = ({style, navigation}) => {
       />
       <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
+      <Stack.Screen name="ProfileScreen" component={screens.ProfileScreen} />
+      <Stack.Screen name="WeatherScreen" component={screens.WeatherScreen} />
+      <Stack.Screen
+        name="UpadateProfileScreen"
+        component={screens.UpadateProfileScreen}
+      />
       <Stack.Screen
         name="UserBookingDetailsScreen"
         component={screens.UserBookingDetailsScreen}
@@ -125,6 +132,10 @@ const StackNavigatior = ({style, navigation}) => {
         component={screens.ServicesDetailsScreen}
       />
       <Stack.Screen
+        name="SelectPaymentScreen"
+        component={screens.SelectPaymentScreen}
+      />
+      <Stack.Screen
         name="UserBottomnavigation"
         component={UserBottomnavigation}
       />
@@ -135,6 +146,13 @@ const StackNavigatior = ({style, navigation}) => {
         }}
         name="DrawerComp"
         component={DrawerComp}
+      />
+      <Stack.Screen
+        options={{
+          animation: 'none',
+        }}
+        name="UserDrawerComp"
+        component={screens.UserDrawerComp}
       />
       <Stack.Screen
         name="CaptionBottomNavigation"
@@ -158,10 +176,10 @@ const StackNavigatior = ({style, navigation}) => {
         name="RequestOfServices"
         component={screens.RequestOfServices}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="UpadateProfileScreen"
         component={captionScreens.UpadateProfileScreen}
-      />
+      /> */}
       <Stack.Screen
         name="CreateWorkOrderScreen"
         component={captionScreens.CreateWorkOrderScreen}
@@ -182,10 +200,12 @@ function CustomDrawerContent(props) {
           style={[
             styles.menuItemsCard,
             {backgroundColor: '#fff2df', width: width, height: width},
-          ]}>
+          ]}
+        >
           <>
             <View
-              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}>
+              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}
+            >
               <Feather travel name="briefcase" size={25} color="#fbae41" />
               <DrawerItem
                 label="Screen1"
@@ -214,7 +234,8 @@ function CustomDrawerContent(props) {
           style={[
             styles.menuItemsCard,
             {backgroundColor: '#EFFFD5', width: width, height: width},
-          ]}>
+          ]}
+        >
           <View style={[styles.circleContainer, {backgroundColor: '#b5ff39'}]}>
             <Feather Medical name="briefcase" size={25} color="#609806" />
           </View>

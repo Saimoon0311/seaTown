@@ -20,7 +20,7 @@ import {Switch} from 'react-native-paper';
 // import {Radio, RadioGroup} from '@ui-kitten/components';
 import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button';
 
-const DrawerComp = ({navigation}) => {
+const UserDrawerComp = ({navigation}) => {
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [checked, setChecked] = useState('first');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -32,6 +32,8 @@ const DrawerComp = ({navigation}) => {
   };
   return (
     <ImageBackground
+      resizeMethod="auto"
+      resizeMode="contain"
       source={require('../../images/SeaTow-(User-Flow).png')}
       style={styles.mainView}>
       <Animatable.View
@@ -43,68 +45,41 @@ const DrawerComp = ({navigation}) => {
         <View style={{marginTop: hp('10'), marginLeft: wp('5')}}>
           <Text style={styles.topHeading}>Menu</Text>
           <View>
-            <View style={styles.innerView}>
+            <TouchableOpacity
+              onPress={() => navigateScreens('ProfileScreen')}
+              style={styles.innerView}>
               <Ionicons
-                name={'ios-stopwatch-outline'}
+                name={'person-outline'}
                 size={hp('3')}
                 color={color.yellowTxtColor}
                 style={{marginRight: wp('2')}}
               />
-              <Text style={styles.labelStyle}>Availability</Text>
-              <MaterialIcons
-                name={show ? 'keyboard-arrow-down' : 'keyboard-arrow-right'}
-                size={hp('3.5')}
-                onPress={() => setShow(!show)}
-                color={color.yellowTxtColor}
-                style={{marginLeft: 'auto'}}
-              />
-            </View>
-            {show && (
-              <RadioGroup
-                style={{
-                  marginTop: hp('2'),
-                  marginLeft: wp('6'),
-                  height: hp('15'),
-                  justifyContent: 'space-between',
-                }}
-                color={color.alertBackgroundColor}
-                onSelect={(index, value) => setSelectedIndex(value, index)}>
-                <RadioButton value={'item1'}>
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontSize: hp('2'),
-                      marginLeft: wp('2'),
-                    }}>
-                    Available
-                  </Text>
-                </RadioButton>
-
-                <RadioButton value={'item2'}>
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontSize: hp('2'),
-                      marginLeft: wp('2'),
-                    }}>
-                    On Duty
-                  </Text>
-                </RadioButton>
-
-                <RadioButton value={'item3'}>
-                  <Text
-                    style={{
-                      color: 'white',
-                      fontSize: hp('2'),
-                      marginLeft: wp('2'),
-                    }}>
-                    Offline
-                  </Text>
-                </RadioButton>
-              </RadioGroup>
-            )}
+              <Text style={styles.labelStyle}>My Profile</Text>
+            </TouchableOpacity>
           </View>
           <View>
+            <TouchableOpacity
+              onPress={() => navigateScreens('PermitFormScreen')}
+              style={styles.innerView}>
+              <Ionicons
+                name="md-newspaper-outline"
+                size={hp('3')}
+                color={color.yellowTxtColor}
+                style={{marginRight: wp('2')}}
+              />
+              <Text style={styles.labelStyle}>Permit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigateScreens('SelectPaymentScreen')}
+              style={styles.innerView}>
+              <Ionicons
+                name="wallet-outline"
+                size={hp('3')}
+                color={color.yellowTxtColor}
+                style={{marginRight: wp('2')}}
+              />
+              <Text style={styles.labelStyle}>Payment Methods</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigateScreens('ChangePasswordScreen')}
               style={styles.innerView}>
@@ -198,16 +173,15 @@ const DrawerComp = ({navigation}) => {
             elevation: 24,
           }}>
           <Image
+            source={require('../../images/userDrawer.png')}
             style={{
               width: wp('30'),
               height: hp('80'),
-              marginRight: wp('-3'),
-              // borderTopLeftRadius: 20,
-              // borderBottomLeftRadius: 20,
-              // overflow: 'hidden',
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              overflow: 'hidden',
             }}
-            source={require('../../images/drawerRight.png')}
-            resizeMode="contain"
+            // resizeMode="contain"
           />
         </Pressable>
       </Animatable.View>
@@ -215,4 +189,4 @@ const DrawerComp = ({navigation}) => {
   );
 };
 
-export default DrawerComp;
+export default UserDrawerComp;

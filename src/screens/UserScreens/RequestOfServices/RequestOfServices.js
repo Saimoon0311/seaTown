@@ -36,8 +36,7 @@ const RequestOfServices = ({route, navigation}) => {
           ...props?.style,
           height: hp(height),
           width: wp(width),
-        }}
-      >
+        }}>
         <Text style={styles.leftText}>{props?.coordArea}</Text>
         <Text style={styles.rightText}>{props?.coordenates}</Text>
         {props.icoNotShow != true && (
@@ -100,16 +99,14 @@ const RequestOfServices = ({route, navigation}) => {
             textAlign: 'right',
             marginTop: hp('0.5'),
             color: color.themeColorDark,
-          }}
-        >
+          }}>
           0/500
         </Text>
         <View style={{flexDirection: 'row'}}>
           <ImageBackground
             resizeMode="contain"
             style={styles.ImageBackgroundContainer}
-            source={require('../../../images/image1.png')}
-          >
+            source={require('../../../images/image1.png')}>
             <MaterialIcons
               name="cancel"
               size={hp('2.5')}
@@ -125,8 +122,7 @@ const RequestOfServices = ({route, navigation}) => {
           <ImageBackground
             resizeMode="contain"
             style={styles.ImageBackgroundContainer}
-            source={require('../../../images/image2.png')}
-          >
+            source={require('../../../images/image2.png')}>
             <MaterialIcons
               name="cancel"
               size={hp('2.5')}
@@ -140,12 +136,13 @@ const RequestOfServices = ({route, navigation}) => {
           </ImageBackground>
         </View>
         <TextButtonComp
+          onPress={() => console.log('oejdoejd')}
           viewStyle={{marginTop: hp('3')}}
           text={'Attachments'}
           name={'attachment'}
         />
         <ButtonThemeComp
-          onPress={() => console.log('Report')}
+          onPress={() => console.log('oejdoejd')}
           style={{
             // backgroundColor: 'red',
             // marginLeft: wp('6'),

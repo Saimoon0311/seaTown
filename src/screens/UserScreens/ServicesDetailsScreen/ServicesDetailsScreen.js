@@ -48,16 +48,14 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                       marginTop: hp('1'),
                       color: color.lightBlueColor,
                       fontSize: hp('1.3'),
-                    }}
-                  >
+                    }}>
                     {item?.profession}
                   </Text>
                   <Text
                     style={{
                       ...globalStyles.globalTextStyles4,
                       fontSize: hp('1.5'),
-                    }}
-                  >
+                    }}>
                     {item?.name}
                   </Text>
                   <View style={{flexDirection: 'row', marginTop: hp('0.5')}}>
@@ -92,8 +90,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               height: Dimensions.get('screen').height,
               alignItems: 'center',
             }}
-            source={require('../../../images/permitFormPic.png')}
-          >
+            source={require('../../../images/permitFormPic.png')}>
             <Ionicons
               name={'arrow-back'}
               color={color.white}
@@ -113,16 +110,14 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             <Text
               style={{
                 ...styles.textView,
-              }}
-            >
+              }}>
               Sailing Permit for Vessel In U.A.E Territorial Water
             </Text>
             <TouchableOpacity
               style={styles.btnView}
               onPress={() => {
                 navigation.navigate('PermitFormScreen');
-              }}
-            >
+              }}>
               <Text style={styles.textBtn}>Sailing Permit Form</Text>
             </TouchableOpacity>
           </ImageBackground>
@@ -162,8 +157,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                 flexDirection: 'row',
                 marginTop: hp('0.9'),
                 alignItems: 'center',
-              }}
-            >
+              }}>
               <StarRating
                 rating={items?.rating}
                 maxStars={5}
@@ -180,8 +174,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
                   fontSize: hp('1.5'),
                   fontWeight: 'bold',
                   textAlignVertical: 'center',
-                }}
-              >
+                }}>
                 {items?.rating}
               </Text>
             </View>
@@ -194,8 +187,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               color: color.lightBlueColor,
               textAlign: 'justify',
               lineHeight: hp('2'),
-            }}
-          >
+            }}>
             {items?.des}
           </Text>
         </View>
@@ -213,8 +205,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               ...globalStyles.globalTextStyles2,
               color: color.lightBlueColor,
               fontSize: hp('2'),
-            }}
-          >
+            }}>
             per hour
           </Text>
         </View>

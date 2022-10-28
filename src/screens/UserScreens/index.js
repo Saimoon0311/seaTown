@@ -1,3 +1,4 @@
+import UserDrawerComp from '../../components/UserDrawerComp/UserDrawerComp';
 import PrivacyPolicy from '../PrivacyPolicy';
 import UserBookingDetailsScreen from './BookingDetailsScreen/BookingDetailsScreen';
 import BookingScreen from './BookingScreen/BookingScreen';
@@ -10,11 +11,14 @@ import MemberShipScreen from './MemberShipScreen/MemberShipScreen';
 import NotificationScreen from './NotificationScreen/NotificationScreen';
 import OtpScreen from './OtpScreen/OtpScreen';
 import PermitFormScreen from './PermitFormScreen/PermitFormScreen';
+import WeatherScreen from './WeatherScreen/WeatherScreen';
+import ProfileScreen from './ProfileScreen/ProfileScreen';
 import RequestOfServices from './RequestOfServices/RequestOfServices';
 import ResetPasswordScreen from './ResetPasswordScreen/ResetPasswordScreen';
+import SelectPaymentScreen from './SelectPaymentScreen/SelectPaymentScreen';
 import ServicesDetailsScreen from './ServicesDetailsScreen/ServicesDetailsScreen';
 import SignUpScreen from './SignUpScreen/signUpScreen';
-
+import UpadateProfileScreen from './UpadateProfileScreen/UpadateProfileScreen';
 export const screens = {
   LoginScreen,
   SignUpScreen,
@@ -32,4 +36,9 @@ export const screens = {
   PrivacyPolicy,
   PermitFormScreen,
   UserBookingDetailsScreen,
+  ProfileScreen,
+  UpadateProfileScreen,
+  SelectPaymentScreen,
+  UserDrawerComp,
+  WeatherScreen,
 };

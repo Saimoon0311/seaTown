@@ -119,6 +119,7 @@ const PermitFormScreen = ({route, navigation}) => {
           flexDirection: 'row',
           width: wp('25'),
           justifyContent: 'space-between',
+          alignItems: 'center',
           ...styles,
         }}
       >

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
@@ -148,7 +148,6 @@ const HomeScreen = ({navigation}) => {
   setTimeout(() => {
     setLoading(false);
   }, 2000);
-
   return (
     <View style={{flex: 1}}>
       <HeaderComp
@@ -156,15 +155,16 @@ const HomeScreen = ({navigation}) => {
         heading={'Home'}
         notification={true}
         search={true}
-        searchPress={() => console.log('search')}
-        openDrawer={() => navigation.navigate('DrawerComp')}
+        openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: hp('2')}}>
-        <WeatherHomeComp onPress={() => console.log(71)} />
+      <ScrollView
+        contentContainerStyle={{paddingBottom: hp('2'), paddingTop: hp('2')}}
+      >
+        <WeatherHomeComp onPress={() => navigation.navigate('WeatherScreen')} />
         <View style={styles.serContainer}>
           <TextHeadingCom
             heading="Services"
-            style={{marginTop: hp('2'), marginLeft: hp('2')}}
+            style={{marginTop: hp('2'), marginLeft: hp('3')}}
           />
           <TouchableOpacity
             onPress={() => navigation.navigate('RequestOfServices')}

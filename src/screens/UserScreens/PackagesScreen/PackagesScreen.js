@@ -12,7 +12,7 @@ import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeCo
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 import {styles} from './styles';
 
-const PackagesScreen = () => {
+const PackagesScreen = ({navigation}) => {
   const isCarousel = useRef(null);
   //   const [packageDetails, setPackageDetails] = useState([
   //     {
@@ -111,7 +111,7 @@ const PackagesScreen = () => {
     return (
       <ImageBackground
         source={data.image}
-        resizeMode="contain"
+        // resizeMode="contain"
         style={{...styles.imageBackgroundView, ...data.style}}>
         <TextHeadingCom heading="Our Prices" style={styles.priceText} />
         <TextHeadingCom
@@ -134,7 +134,7 @@ const PackagesScreen = () => {
           })}
         </View>
         <CommonButtonComp
-          onPress={() => console.log('gf')}
+          onPress={() => navigation.navigate('SelectPaymentScreen')}
           text="Buy Now"
           textStyle={{
             color: 'black',
@@ -178,7 +178,12 @@ const PackagesScreen = () => {
             );
         }}
         /> */}
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+      <ScrollView
+        contentContainerStyle={{
+          justifyContent: 'space-between',
+        }}
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}>
         <PackagesCard data={packages[0]} />
         <PackagesCard data={packages[1]} />
       </ScrollView>
