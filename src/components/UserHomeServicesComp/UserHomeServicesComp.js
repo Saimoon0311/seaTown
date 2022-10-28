@@ -27,7 +27,7 @@ export const UserHomeServicesComp = props => {
         <Image
           source={data?.image}
           resizeMode="contain"
-          style={styles.innerImage}
+          style={{...styles.innerImage, ...data.style}}
         />
         <Text style={styles.innerText}>{data?.text}</Text>
       </TouchableOpacity>

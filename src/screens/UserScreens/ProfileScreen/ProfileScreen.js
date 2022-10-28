@@ -19,6 +19,7 @@ import {styles} from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
+import TextButtonComp from '../../../components/TextButtonComp/TextButtonComp';
 
 const ProfileScreen = ({navigation}) => {
   const ExperienceView = props => {
@@ -85,44 +86,69 @@ const ProfileScreen = ({navigation}) => {
         <CircleImage
           image={require('../../../images/Rectangle4307.png')}
           styles={{
-            width: Dimensions.get('window').width * 0.4,
-            height: Dimensions.get('window').width * 0.4,
+            width: Dimensions.get('window').width * 0.3,
+            height: Dimensions.get('window').width * 0.3,
             alignSelf: 'center',
             marginTop: hp('2'),
+            marginBottom: hp('3'),
           }}
         />
-        <Text style={styles.captionText}>User</Text>
+        {/* <Text style={styles.captionText}>User</Text>
         <TextHeadingCom
           heading="Brandon Westervelt"
           style={{marginTop: hp('2'), textAlign: 'center'}}
-        />
-        <View style={styles.mileText}>
+        /> */}
+        {/* <View style={styles.mileText}>
           <Ionicons
             name="location-outline"
             size={hp('2')}
             color={color.lightBlueColor}
           />
           <Text style={styles.dateTimeText}>7.5 mils</Text>
+        </View> */}
+        <View
+          style={{
+            height: hp('40'),
+            justifyContent: 'center',
+          }}>
+          <TouchableOpacity style={styles.button}>
+            <Feather
+              style={styles.image}
+              name={'phone'}
+              size={20}
+              color={color.textPrimaryColor}
+            />
+            <Text style={{...styles.text}}>5537-334543-345</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Ionicons
+              style={styles.image}
+              name={'mail-outline'}
+              size={20}
+              color={color.textPrimaryColor}
+            />
+            <Text style={{...styles.text}}>alfoneso_vac@gmail.com</Text>
+          </TouchableOpacity>
+          <TextButtonComp
+            onPress={() => console.log('oejdoejd')}
+            viewStyle={{
+              marginTop: hp('3'),
+              alignSelf: 'center',
+              backgroundColor: color.textPrimaryColor,
+            }}
+            textStyle={{
+              color: 'white',
+            }}
+            changeIcon={
+              <Image
+                resizeMode="contain"
+                source={require('../../../images/vip.png')}
+              />
+            }
+            text={' Become a Member'}
+          />
         </View>
-        <TouchableOpacity style={styles.button}>
-          <Feather
-            style={styles.image}
-            name={'phone'}
-            size={20}
-            color={color.textPrimaryColor}
-          />
-          <Text style={{...styles.text}}>5537-334543-345</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Ionicons
-            style={styles.image}
-            name={'mail-outline'}
-            size={20}
-            color={color.textPrimaryColor}
-          />
-          <Text style={{...styles.text}}>alfoneso_vac@gmail.com</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        {/* <TouchableOpacity style={styles.button}>
           <Feather
             style={styles.image}
             name={'clock'}
@@ -130,8 +156,8 @@ const ProfileScreen = ({navigation}) => {
             color={color.textPrimaryColor}
           />
           <Text style={{...styles.text}}>9AM - 5PM</Text>
-        </TouchableOpacity>
-        <TextHeadingCom
+        </TouchableOpacity> */}
+        {/* <TextHeadingCom
           heading="Experiences"
           style={{marginTop: hp('3'), marginLeft: wp('5')}}
         />
@@ -158,7 +184,7 @@ const ProfileScreen = ({navigation}) => {
           image={require('../../../images/pdf.png')}
           title={'Dubai Marine license'}
           work={'55kb'}
-        />
+        /> */}
       </ScrollView>
     </>
   );

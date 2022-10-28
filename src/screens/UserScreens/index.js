@@ -1,5 +1,6 @@
 import UserDrawerComp from '../../components/UserDrawerComp/UserDrawerComp';
 import PrivacyPolicy from '../PrivacyPolicy';
+import AllPermitScreen from './AllPermitScreen/AllPermitScreen';
 import UserBookingDetailsScreen from './BookingDetailsScreen/BookingDetailsScreen';
 import BookingScreen from './BookingScreen/BookingScreen';
 import EmergncySOSScreen from './EmergncySOSScreen/EmergncySOSScreen';
@@ -14,6 +15,7 @@ import PermitFormScreen from './PermitFormScreen/PermitFormScreen';
 import ProfileScreen from './ProfileScreen/ProfileScreen';
 import RequestOfServices from './RequestOfServices/RequestOfServices';
 import ResetPasswordScreen from './ResetPasswordScreen/ResetPasswordScreen';
+import SailingPermitDetails from './SailingPermitDetails/SailingPermitDetails';
 import SelectPaymentScreen from './SelectPaymentScreen/SelectPaymentScreen';
 import ServicesDetailsScreen from './ServicesDetailsScreen/ServicesDetailsScreen';
 import SignUpScreen from './SignUpScreen/signUpScreen';
@@ -39,4 +41,6 @@ export const screens = {
   UpadateProfileScreen,
   SelectPaymentScreen,
   UserDrawerComp,
+  AllPermitScreen,
+  SailingPermitDetails,
 };

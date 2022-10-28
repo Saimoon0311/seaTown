@@ -141,7 +141,10 @@ const UpadateProfileScreen = ({route, navigation}) => {
     );
   };
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+      }}>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={'Edit Profile'}
@@ -149,7 +152,9 @@ const UpadateProfileScreen = ({route, navigation}) => {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: 'white',
-          paddingBottom: hp('20'),
+          flex: 1,
+
+          // height: hp('100'),
         }}>
         <View>
           <CircleImage
@@ -233,7 +238,7 @@ const UpadateProfileScreen = ({route, navigation}) => {
           firstIconColor={color.textPrimaryColor}
           firstIcon="location-outline"
         />
-        <LoginInputComp
+        {/* <LoginInputComp
           style={styles.inputStyle}
           value={type}
           onChangeText={type => updateState({type})}
@@ -299,12 +304,14 @@ const UpadateProfileScreen = ({route, navigation}) => {
           image={require('../../../images/pdf.png')}
           title={'Dubai Marine license'}
           work={'55kb'}
-        />
+        /> */}
         <CommonButtonComp
           viewStyle={{
             width: wp('90'),
-            marginTop: hp('2'),
+            bottom: hp('7'),
+            position: 'absolute',
           }}
+          onPress={() => console.log('djhsfbkb')}
           text="Save Change"
         />
       </ScrollView>

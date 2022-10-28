@@ -132,6 +132,18 @@ const ServicesDetailsScreen = ({route, navigation}) => {
   // };
   return items?.permitForm == true ? (
     <SellingPermitForn />
+  ) : items?.text == 'Customer Services' ? (
+    <ImageBackground
+      style={{flex: 1}}
+      source={require('../../../images/chatScreen.jpg')}>
+      <Ionicons
+        name="ios-arrow-back"
+        color={'black'}
+        size={hp('4')}
+        onPress={() => navigation.goBack()}
+        style={{marginTop: hp('10'), marginLeft: wp('3')}}
+      />
+    </ImageBackground>
   ) : (
     <>
       <BackHeaderComp

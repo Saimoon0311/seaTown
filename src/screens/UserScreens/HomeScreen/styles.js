@@ -12,11 +12,11 @@ export const styles = StyleSheet.create({
     borderColor: color.textPrimaryColor,
     borderWidth: 1,
     borderRadius: 8,
-    backgroundColor: 'white',
     justifyContent: 'center',
     borderStyle: 'dashed',
     alignItems: 'center',
     marginTop: hp('2'),
+    backgroundColor: color.lightPurpleView,
     flexDirection: 'row',
   },
   serContainer: {

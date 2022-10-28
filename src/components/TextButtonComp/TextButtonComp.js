@@ -29,7 +29,9 @@ const TextButtonComp = props => {
           color={color.textPrimaryColor}
         />
       )}
-      <Text style={styles.upperTxt}>{props?.text}</Text>
+      <Text style={{...styles.upperTxt, ...props?.textStyle}}>
+        {props?.text}
+      </Text>
     </TouchableOpacity>
   );
 };

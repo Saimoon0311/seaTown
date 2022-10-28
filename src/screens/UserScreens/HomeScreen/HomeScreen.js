@@ -119,6 +119,7 @@ const HomeScreen = ({navigation}) => {
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       rating: 4,
       text: 'Road Insurance',
+      style: {width: wp('15')},
     },
     {
       id: 7,
@@ -154,8 +155,6 @@ const HomeScreen = ({navigation}) => {
         notificationPress={() => navigation.navigate('NotificationScreen')}
         heading={'Home'}
         notification={true}
-        search={true}
-        searchPress={() => console.log('shfs')}
         openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
       <ScrollView
@@ -176,7 +175,7 @@ const HomeScreen = ({navigation}) => {
             />
             <Text
               style={{
-                color: color.textPrimaryColor,
+                color: 'black',
                 fontSize: hp('2'),
                 marginLeft: wp('2'),
               }}>

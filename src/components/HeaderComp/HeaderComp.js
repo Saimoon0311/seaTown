@@ -23,15 +23,6 @@ export const HeaderComp = props => {
         <Text style={styles.headerText}>{props?.heading}</Text>
       </View>
       <View style={styles.headerRightView}>
-        {props.notification && (
-          <Ionicons
-            name="notifications-outline"
-            color={'black'}
-            size={hp('3')}
-            style={{marginRight: wp('3')}}
-            onPress={() => props.notificationPress()}
-          />
-        )}
         {props.search && (
           <Ionicons
             name="search"
@@ -39,6 +30,15 @@ export const HeaderComp = props => {
             size={hp('3')}
             style={{marginRight: wp('3')}}
             onPress={() => props.searchPress()}
+          />
+        )}
+        {props.notification && (
+          <Ionicons
+            name="notifications-outline"
+            color={'black'}
+            size={hp('3')}
+            style={{marginRight: wp('3')}}
+            onPress={() => props.notificationPress()}
           />
         )}
         {props.edit && (

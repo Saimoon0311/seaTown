@@ -104,8 +104,16 @@ const StackNavigatior = ({style, navigation}) => {
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
       <Stack.Screen name="ProfileScreen" component={screens.ProfileScreen} />
       <Stack.Screen
+        name="SailingPermitDetails"
+        component={screens.SailingPermitDetails}
+      />
+      <Stack.Screen
         name="UpadateProfileScreen"
         component={screens.UpadateProfileScreen}
+      />
+      <Stack.Screen
+        name="AllPermitScreen"
+        component={screens.AllPermitScreen}
       />
       <Stack.Screen
         name="UserBookingDetailsScreen"

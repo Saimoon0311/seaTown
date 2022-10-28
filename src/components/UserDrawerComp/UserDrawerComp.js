@@ -59,7 +59,7 @@ const UserDrawerComp = ({navigation}) => {
           </View>
           <View>
             <TouchableOpacity
-              onPress={() => navigateScreens('PermitFormScreen')}
+              onPress={() => navigateScreens('AllPermitScreen')}
               style={styles.innerView}>
               <Ionicons
                 name="md-newspaper-outline"
@@ -158,7 +158,7 @@ const UserDrawerComp = ({navigation}) => {
         delay={100}
         easing={'linear'}
         direction={'normal'}
-        animation="fadeInUpBig">
+        animation="fadeInRight">
         <Pressable
           onPress={() => navigation.goBack()}
           style={{
@@ -169,7 +169,6 @@ const UserDrawerComp = ({navigation}) => {
             },
             shadowOpacity: 0.58,
             shadowRadius: 16.0,
-
             elevation: 24,
           }}>
           <Image

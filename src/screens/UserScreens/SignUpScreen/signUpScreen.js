@@ -18,7 +18,7 @@ import {
   errorMessage,
   successMessage,
 } from '../../../components/NotificationMessage';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+// import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp';
 import CheckBox from '@react-native-community/checkbox';
@@ -138,7 +138,7 @@ export default function SignUpScreen({navigation}) {
   };
 
   useEffect(() => {
-    getAllCountryName();
+    // getAllCountryName();
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       () => {
@@ -157,38 +157,38 @@ export default function SignUpScreen({navigation}) {
       keyboardDidShowListener.remove();
     };
   }, []);
-  const pickImagesFromGalary = () => {
-    launchImageLibrary(
-      {
-        selectionLimit: 1,
-        mediaType: 'photo',
-        quality: 0.5,
-        maxWidth: 300,
-        maxHeight: 300,
-      },
-      res => {
-        if (!res?.didCancel) {
-          updateState({userImage: res?.assets});
-        }
-      },
-    );
-  };
-  const pickImagefromCamera = () => {
-    launchCamera(
-      {
-        selectionLimit: 1,
-        mediaType: 'photo',
-        quality: 0.5,
-        maxWidth: 300,
-        maxHeight: 300,
-      },
-      res => {
-        if (!res?.didCancel) {
-          updateState({userImage: res?.assets});
-        }
-      },
-    );
-  };
+  // const pickImagesFromGalary = () => {
+  //   launchImageLibrary(
+  //     {
+  //       selectionLimit: 1,
+  //       mediaType: 'photo',
+  //       quality: 0.5,
+  //       maxWidth: 300,
+  //       maxHeight: 300,
+  //     },
+  //     res => {
+  //       if (!res?.didCancel) {
+  //         updateState({userImage: res?.assets});
+  //       }
+  //     },
+  //   );
+  // };
+  // const pickImagefromCamera = () => {
+  //   launchCamera(
+  //     {
+  //       selectionLimit: 1,
+  //       mediaType: 'photo',
+  //       quality: 0.5,
+  //       maxWidth: 300,
+  //       maxHeight: 300,
+  //     },
+  //     res => {
+  //       if (!res?.didCancel) {
+  //         updateState({userImage: res?.assets});
+  //       }
+  //     },
+  //   );
+  // };
 
   //TIMER FUNCTION
 
