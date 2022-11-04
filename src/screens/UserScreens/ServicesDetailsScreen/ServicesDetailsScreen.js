@@ -148,7 +148,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
     <>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
-        heading={items?.text}
+        heading={items?.innerText}
       />
       <ScrollView>
         <Image
@@ -218,7 +218,7 @@ const ServicesDetailsScreen = ({route, navigation}) => {
               color: color.lightBlueColor,
               fontSize: hp('2'),
             }}>
-            per hour
+            {items?.priceType}
           </Text>
         </View>
         <CommonButtonComp

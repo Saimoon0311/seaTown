@@ -15,7 +15,11 @@ export const HeaderComp = props => {
           <Image
             source={require('../../images/Menu.png')}
             resizeMode="contain"
-            style={{height: hp('5'), width: wp('5')}}
+            style={{
+              height: hp('5'),
+              width: wp('5'),
+              marginLeft: wp('5.5'),
+            }}
           />
         </TouchableOpacity>
       </View>
@@ -37,7 +41,7 @@ export const HeaderComp = props => {
             name="notifications-outline"
             color={'black'}
             size={hp('3')}
-            style={{marginRight: wp('3')}}
+            style={{marginRight: wp('4')}}
             onPress={() => props.notificationPress()}
           />
         )}
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
   headerLeftView: {
     width: wp('22.5'),
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   headerCenterView: {
     width: wp('55'),

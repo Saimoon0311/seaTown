@@ -38,7 +38,6 @@ const UserDrawerComp = ({navigation}) => {
       style={styles.mainView}>
       <Animatable.View
         delay={150}
-        easing={'linear'}
         direction={'normal'}
         animation="fadeInLeft"
         style={styles.leftView}>
@@ -70,7 +69,7 @@ const UserDrawerComp = ({navigation}) => {
               <Text style={styles.labelStyle}>Permit</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigateScreens('SelectPaymentScreen')}
+              onPress={() => navigateScreens('AddPaymentMethod')}
               style={styles.innerView}>
               <Ionicons
                 name="wallet-outline"
@@ -135,7 +134,7 @@ const UserDrawerComp = ({navigation}) => {
           style={{
             ...styles.innerView,
             position: 'absolute',
-            bottom: hp('10'),
+            bottom: hp('7'),
             marginLeft: wp('5'),
           }}>
           <Ionicons
@@ -154,22 +153,18 @@ const UserDrawerComp = ({navigation}) => {
           </Text>
         </TouchableOpacity>
       </Animatable.View>
-      <Animatable.View
-        delay={100}
-        easing={'linear'}
-        direction={'normal'}
-        animation="fadeInRight">
+      <Animatable.View delay={100} direction={'normal'} animation="fadeInRight">
         <Pressable
           onPress={() => navigation.goBack()}
           style={{
             shadowColor: '#000',
             shadowOffset: {
-              width: 0,
-              height: 12,
+              width: -10,
+              height: 20,
             },
-            shadowOpacity: 0.58,
-            shadowRadius: 16.0,
-            elevation: 24,
+            shadowOpacity: 1,
+            shadowRadius: 30.0,
+            elevation: 30,
           }}>
           <Image
             source={require('../../images/userDrawer.png')}

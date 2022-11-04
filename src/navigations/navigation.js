@@ -97,12 +97,21 @@ const StackNavigatior = ({style, navigation}) => {
         ) : ( */}
       <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
       <Stack.Screen
+        name="AllPaymentMethod"
+        component={screens.AllPaymentMethod}
+      />
+      <Stack.Screen
         name="CaptainLoginScreen"
         component={captionScreens.CaptainLoginScreen}
       />
       <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
+      <Stack.Screen
+        name="AddPaymentMethod"
+        component={screens.AddPaymentMethod}
+      />
       <Stack.Screen name="ForgetScreen" component={screens.ForgetScreen} />
       <Stack.Screen name="ProfileScreen" component={screens.ProfileScreen} />
+      <Stack.Screen name="WeatherScreen" component={screens.WeatherScreen} />
       <Stack.Screen
         name="SailingPermitDetails"
         component={screens.SailingPermitDetails}

@@ -24,5 +24,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: wp('95'),
     alignItems: 'center',
+    marginTop: hp('2'),
   },
 });

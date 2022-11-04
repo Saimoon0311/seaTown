@@ -26,7 +26,8 @@ import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp'
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 
 export default function SignUpScreen({navigation}) {
-  const [isKeyboardVisible, setKeyboardVisible] = useState(hp('45'));
+  const [isKeyboardVisible, setKeyboardVisible] = useState('flex');
+
   const [signUpUser, setSignUpUser] = useState({
     userName: '',
     email: '',
@@ -138,17 +139,16 @@ export default function SignUpScreen({navigation}) {
   };
 
   useEffect(() => {
-    // getAllCountryName();
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       () => {
-        setKeyboardVisible(hp('60')); // or some other action
+        setKeyboardVisible('none'); // or some other action
       },
     );
     const keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       () => {
-        setKeyboardVisible(hp('45')); // or some other action
+        setKeyboardVisible('flex'); // or some other action
       },
     );
 
@@ -216,7 +216,7 @@ export default function SignUpScreen({navigation}) {
           value={email}
           onChangeText={email => updateState({email})}
           inputText="Email"
-          placeholder="mail@gmail.com"
+          placeholder="Email"
           onFocus={() => {
             handleInputFocus('email');
           }}
@@ -228,26 +228,28 @@ export default function SignUpScreen({navigation}) {
           value={userName}
           onChangeText={userName => updateState({userName})}
           inputText="Username"
-          placeholder="User Name"
+          placeholder="Full Name"
           onFocus={() => handleInputFocus('userName')}
           onBlur={() => handleInputBlur('userName')}
+          style={{marginTop: hp('2')}}
           isFocused={isFocused.userName}
         />
         <LoginInputComp
           value={phone}
           onChangeText={phone => updateState({phone})}
           inputText="Phone Number"
-          placeholder="+1 254536"
+          placeholder="Phone"
           onFocus={() => handleInputFocus('phone')}
           onBlur={() => handleInputBlur('phone')}
           isFocused={isFocused.phone}
+          style={{marginTop: hp('2')}}
           keyboardType="number-pad"
         />
         <LoginInputComp
           value={password}
           onChangeText={password => updateState({password})}
           inputText="Password"
-          placeholder="password"
+          placeholder="Password"
           onFocus={() => handleInputFocus('password')}
           onBlur={() => handleInputBlur('password')}
           secureTextEntry={show ? false : true}
@@ -286,9 +288,10 @@ export default function SignUpScreen({navigation}) {
         />
       </ScrollView>
       <BottomTextComp
+        style={{display: isKeyboardVisible}}
         onPress={() => navigation.navigate('LoginScreen')}
         note={"Don't have account ? "}
-        heading={'Sign Up'}
+        heading={'Login'}
       />
     </KeyboardAvoidingView>
   );

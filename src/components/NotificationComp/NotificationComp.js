@@ -13,7 +13,11 @@ export const NotificationComp = props => {
       <View style={styles.renderView}>
         <View style={styles.leftView}>
           <View style={styles.leftInnerView}>
-            <Image source={data?.image} resizeMode="contain" />
+            <Image
+              source={data?.image}
+              resizeMode="contain"
+              style={{width: wp('8')}}
+            />
           </View>
         </View>
         <View style={styles.centerView}>

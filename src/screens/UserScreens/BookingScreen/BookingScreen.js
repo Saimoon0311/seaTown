@@ -87,7 +87,6 @@ const BookingScreen = ({navigation}) => {
         search={true}
         openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
-      {/* <View style={{marginTop: hp('3')}} /> */}
       <UserBookingViewComp onPress={item => navigates(item)} data={bookings} />
     </View>
   );

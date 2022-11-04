@@ -22,6 +22,7 @@ import {globalStyles} from '../../../config/globalStyles';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 import TextInputWithTextCom from '../../../components/TextInputWithTextCom/TextInputWithTextCom';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 
 const PermitFormScreen = ({route, navigation}) => {
@@ -80,8 +81,8 @@ const PermitFormScreen = ({route, navigation}) => {
       <View>
         <View style={{...styles.button}}>
           <Image
-            style={{...styles.image, width: wp('8'), height: hp('4')}}
-            resizeMode="contain"
+            style={{...styles.image, ...props.imageStyle}}
+            // resizeMode="contain"
             source={props?.image}
           />
           <View>
@@ -121,8 +122,7 @@ const PermitFormScreen = ({route, navigation}) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           ...styles,
-        }}
-      >
+        }}>
         <Image
           source={require('../../../images/Plus.png')}
           resizeMode="contain"
@@ -143,8 +143,7 @@ const PermitFormScreen = ({route, navigation}) => {
             flex: 1,
             paddingBottom: hp('3'),
             justifyContent: 'space-evenly',
-          }}
-        >
+          }}>
           <TextInputWithTextCom
             placeholder={'Boat Number'}
             upperText={'Boat Number'}
@@ -209,6 +208,24 @@ const PermitFormScreen = ({route, navigation}) => {
               }}
             />
           </View>
+          <TextInputWithTextCom
+            placeholder={'Port of Jebel Ali'}
+            upperText={'Port of Departure'}
+            textInputstyle={{
+              width: wp('80'),
+            }}
+            changeIcon={
+              <Entypo
+                size={hp('2')}
+                name="chevron-thin-down"
+                color={color.textPrimaryColor}
+                style={{marginRight: wp('2')}}
+              />
+            }
+            showIcon={true}
+            iconName={'calendar-outline'}
+          />
+
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TextInputWithTextCom
               placeholder={'Time of Arrival'}
@@ -270,6 +287,11 @@ const PermitFormScreen = ({route, navigation}) => {
           <DocumentView
             image={require('../../../images/pdf.png')}
             title={'Dubai Marine license'}
+            imageStyle={{
+              height: wp('13'),
+              width: wp('9'),
+              // backgroundColor: 'red',
+            }}
             work={'55kb'}
           />
           <CommonButtonComp

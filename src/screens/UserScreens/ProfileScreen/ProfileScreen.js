@@ -20,6 +20,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
 import TextButtonComp from '../../../components/TextButtonComp/TextButtonComp';
+import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 
 const ProfileScreen = ({navigation}) => {
   const ExperienceView = props => {
@@ -76,11 +77,17 @@ const ProfileScreen = ({navigation}) => {
   };
   return (
     <>
-      <HeaderComp
+      {/* <HeaderComp
         editPress={() => navigation.navigate('UpadateProfileScreen')}
         heading={'Profile'}
         edit={true}
         openDrawer={() => navigation.navigate('UserDrawerComp')}
+      /> */}
+      <BackHeaderComp
+        edit={true}
+        editPress={() => navigation.navigate('UpadateProfileScreen')}
+        onPress={() => navigation.goBack()}
+        heading={'Profile'}
       />
       <ScrollView>
         <CircleImage

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 import {WeatherHomeComp} from '../../../components/WeatherHomeComp/WeatherHomeComp';
@@ -22,30 +22,32 @@ const HomeScreen = ({navigation}) => {
       innerText: 'Towing Services',
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       rating: 4,
+      priceType: 'Per hour',
     },
     {
       id: 2,
       innerText: 'Passenger Transfer',
-
       text: 'Passenger Transfer',
       image: require('../../../images/Passenger.png'),
       innerImage: require('../../../images/PassengerTranfer.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       rating: 4,
+      priceType: 'Per mile',
     },
     {
       id: 3,
-      innerText: 'Refueling',
-
+      innerText: 'Refueling Service',
       image: require('../../../images/Fuel.png'),
       text: 'Refueling',
       innerImage: require('../../../images/RefullingServices.png'),
       des: `he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum`,
       rating: 4,
+      priceType: 'Per Service',
     },
     {
       id: 4,
       innerText: 'Electrical Services',
+      priceType: 'Per 30 mins',
 
       image: require('../../../images/Electrician.png'),
       text: 'Electrical Services',
@@ -79,6 +81,7 @@ const HomeScreen = ({navigation}) => {
     },
     {
       id: 5,
+      priceType: '30 mins',
       innerText: 'Mechanical Services',
       image: require('../../../images/Mechanical.png'),
       text: 'Mechanical Services',
@@ -111,8 +114,8 @@ const HomeScreen = ({navigation}) => {
     },
     {
       id: 6,
-
       rating: 4,
+      priceType: 'Per Mile',
       image: require('../../../images/Road.png'),
       innerText: 'Road Insurance',
       innerImage: require('../../../images/RoadInsurance.png'),
@@ -158,26 +161,35 @@ const HomeScreen = ({navigation}) => {
         openDrawer={() => navigation.navigate('UserDrawerComp')}
       />
       <ScrollView
-        contentContainerStyle={{paddingBottom: hp('2'), paddingTop: hp('2')}}>
-        <WeatherHomeComp onPress={() => console.log(71)} />
+        contentContainerStyle={{paddingBottom: hp('2'), paddingTop: hp('1')}}>
+        <WeatherHomeComp onPress={() => navigation.navigate('WeatherScreen')} />
         <View style={styles.serContainer}>
           <TextHeadingCom
             heading="Services"
-            style={{marginTop: hp('2'), marginLeft: hp('3')}}
+            style={{
+              marginTop: hp('2'),
+              marginLeft: hp('3'),
+            }}
           />
           <TouchableOpacity
             onPress={() => navigation.navigate('RequestOfServices')}
             style={styles.requestSmallButton}>
-            <Foundation
+            <Image
+              source={require('../../../images/requestButtonIcon.png')}
+              resizeMode="contain"
+            />
+            {/* <Foundation
               name="page-edit"
               color={color.textPrimaryColor}
               size={hp('3')}
-            />
+            /> */}
             <Text
               style={{
                 color: 'black',
                 fontSize: hp('2'),
                 marginLeft: wp('2'),
+                fontSize: hp('1.7'),
+                fontWeight: 'bold',
               }}>
               Request a service
             </Text>

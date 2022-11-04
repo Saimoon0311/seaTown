@@ -31,8 +31,7 @@ const TextInputWithTextCom = props => {
           shadowRadius: 1.41,
 
           elevation: 2,
-        }}
-      >
+        }}>
         <TextInput
           style={{...props.textInputstyle}}
           ref={props?.ref}
@@ -47,14 +46,17 @@ const TextInputWithTextCom = props => {
           onBlur={props?.onBlur}
           autoCapitalize={props?.autoCapitalize}
         />
-        {props.showIcon == true && (
-          <Ionicons
-            size={hp('2')}
-            color={color.textPrimaryColor}
-            name={props?.iconName}
-            style={{marginRight: wp('2')}}
-          />
-        )}
+        {props.showIcon == true &&
+          (props?.changeIcon ? (
+            props?.changeIcon
+          ) : (
+            <Ionicons
+              size={hp('2')}
+              color={color.textPrimaryColor}
+              name={props?.iconName}
+              style={{marginRight: wp('2')}}
+            />
+          ))}
       </View>
 
       {/* </View> */}

@@ -105,6 +105,7 @@ export const UserBookingViewComp = props => {
     <FlatList
       data={props?.data}
       keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={{paddingTop: hp('2')}}
       renderItem={({item}) => {
         return <RenderView data={item} />;
       }}
@@ -130,9 +131,10 @@ export const styles = StyleSheet.create({
     marginBottom: hp('2'),
     alignSelf: 'center',
     paddingBottom: hp('1'),
+    padding: 2,
   },
   leftView: {
-    width: wp('88'),
+    width: wp('86'),
     marginLeft: wp('2'),
     flexDirection: 'row',
     justifyContent: 'space-between',

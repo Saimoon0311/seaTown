@@ -22,7 +22,7 @@ export const UserHomeServicesComp = props => {
         onPress={() => props?.onPress(data)}
         style={{
           ...styles.touchView,
-          backgroundColor: data?.id == 2 ? 'yellow' : 'white',
+          backgroundColor: data?.id == 2 ? color.yellowTxtColor : 'white',
         }}>
         <Image
           source={data?.image}

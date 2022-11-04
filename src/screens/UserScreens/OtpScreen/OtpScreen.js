@@ -180,10 +180,20 @@ const OtpScreen = ({route, navigation}) => {
           }}>
           A 4 digit Code has been sent to your email
         </Text>
-        <View style={{height: hp('10'), width: wp('80')}}>
+        <View style={{height: hp('10'), width: wp('60')}}>
           <OTPInputView
             autoFocusOnLoad={false}
             pinCount={4}
+            style={{borderRadius: 20}}
+            codeInputHighlightStyle={{
+              borderRadius: 10,
+              backgroundColor: 'white',
+              borderColor: color.onPressInpur,
+            }}
+            codeInputFieldStyle={{
+              borderRadius: 10,
+              backgroundColor: color.themeColorDarkinputColor,
+            }}
             // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
             // onCodeChanged = {code => { this.setState({code})}}
             // codeInputFieldStyle={styles.underlineStyleBase}
@@ -194,7 +204,7 @@ const OtpScreen = ({route, navigation}) => {
           />
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('ResetPasswordScreen')}
+          onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Submit'}
           style={{marginTop: hp('2')}}
         />

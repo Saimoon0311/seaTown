@@ -66,30 +66,22 @@ const PackagesScreen = ({navigation}) => {
       text: 'Aditional Passenger 80 AED',
     },
   ];
+
   const yearlyText = [
     {
-      text: 'Starup to 5 m 600 AED',
+      text: 'Personal recreational Use 100% of the Time',
     },
     {
-      text: 'Additional Mile 750 AED',
+      text: 'Every Boat owned by the Member regardless of the operator',
     },
     {
-      text: 'Mechanical Services 30 min 250 AED',
+      text: 'Any Boat for the Member',
     },
     {
-      text: 'Electrical Services 30 min 250 AED',
+      text: '24/7/365 Priority Service ',
     },
     {
-      text: 'Delivery of Fuel / Parts 100 AED Each',
-    },
-    {
-      text: 'Passenger Transfer 100 AED each Mile',
-    },
-    {
-      text: 'Passenger Transfer 100 AED each Mile For 2 Person',
-    },
-    {
-      text: 'Aditional Passenger 80 AED',
+      text: 'Online Account Mangement',
     },
   ];
   const [packages, setPackages] = useState([
@@ -104,6 +96,7 @@ const PackagesScreen = ({navigation}) => {
       type: 'Yearly',
       text: yearlyText,
       buttonColor: 'white',
+      texViewStyle: {height: hp('30')},
     },
   ]);
   const PackagesCard = props => {
@@ -118,7 +111,7 @@ const PackagesScreen = ({navigation}) => {
           heading={data.type}
           style={{color: color.yellowTxtColor, fontSize: hp('1.6')}}
         />
-        <View style={styles.centerView}>
+        <View style={{...styles.centerView, ...data.texViewStyle}}>
           {data.text.map(res => {
             return (
               <View style={styles.detailsView}>

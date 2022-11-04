@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     width: wp('60'),
     backgroundColor: color.yellowTxtColor,
     borderRadius: 30,
-    marginTop: hp('3'),
+    bottom: hp('2'),
+    position: 'absolute',
   },
 });

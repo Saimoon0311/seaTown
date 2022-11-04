@@ -159,8 +159,7 @@ const ResetPasswordScreen = ({route, navigation}) => {
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}
-    >
+      style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
           source={require('../../../images/Loginogo.png')}
@@ -177,8 +176,7 @@ const ResetPasswordScreen = ({route, navigation}) => {
             color: 'gray',
             textAlign: 'center',
             marginTop: hp('2'),
-          }}
-        >
+          }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </Text>
         <LoginInputComp
@@ -211,7 +209,7 @@ const ResetPasswordScreen = ({route, navigation}) => {
         />
 
         <ButtonThemeComp
-          onPress={() => navigation.navigate('UserBottomnavigation')}
+          onPress={() => navigation.navigate('OtpScreen')}
           text={'Submit'}
           style={{marginTop: hp('2')}}
         />

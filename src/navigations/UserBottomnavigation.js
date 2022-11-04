@@ -7,7 +7,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Platform, Dimensions, StyleSheet} from 'react-native';
+import {View, Platform, Dimensions, StyleSheet, Image} from 'react-native';
 import {screens} from '../screens/UserScreens/index';
 import * as Animatable from 'react-native-animatable';
 import {color} from '../components/color';
@@ -45,7 +45,11 @@ function UserBottomnavigation() {
               animation="fadeInUpBig"
               direction={'normal'}
               delay={200}>
-              <Ionicons name={'home-outline'} color={color} size={hp('3')} />
+              <Image
+                source={require('../images/homeactive.png')}
+                resizeMode="contain"
+                style={{width: wp('7'), tintColor: color}}
+              />
             </Animatable.View>
           ),
           title: 'Home',
@@ -63,10 +67,10 @@ function UserBottomnavigation() {
               animation="fadeInRightBig"
               direction={'normal'}
               delay={300}>
-              <Ionicons
-                name={'calendar-outline'}
-                color={color}
-                size={hp('3')}
+              <Image
+                source={require('../images/Bookingsactive.png')}
+                resizeMode="contain"
+                style={{width: wp('7'), tintColor: color}}
               />
             </Animatable.View>
           ),
@@ -81,27 +85,33 @@ function UserBottomnavigation() {
         name="EmergncySOSScreen"
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Animatable.View
-              animation="fadeInRightBig"
-              direction={'normal'}
-              delay={300}
-              style={{
-                width: wp('10'),
-                height: hp('5'),
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'red',
-                bottom: hp('1'),
-                borderRadius: 10,
-              }}>
-              <Feather name={'phone-call'} color={'white'} size={hp('2')} />
-            </Animatable.View>
+            <Image
+              source={require('../images/callSoS.png')}
+              resizeMode="contain"
+              style={{width: wp('10'), height: hp('10'), marginBottom: hp('2')}}
+            />
+            // <Animatable.View
+            //   animation="fadeInRightBig"
+            //   direction={'normal'}
+            //   delay={300}
+            //   style={{
+            //     width: wp('10'),
+            //     height: hp('5'),
+            //     justifyContent: 'center',
+            //     alignItems: 'center',
+            //     backgroundColor: 'red',
+            //     bottom: hp('1'),
+            //     borderRadius: 10,
+            //   }}>
+            //   <Feather name={'phone-call'} color={'white'} size={hp('2')} />
+            // </Animatable.View>
           ),
           title: 'SOS Call',
           tabBarLabelStyle: {
             fontSize: hp('1.5'),
             bottom: hp('2'),
             color: 'black',
+            fontWeight: 'bold',
           },
         }}
         component={screens.EmergncySOSScreen}
@@ -114,11 +124,16 @@ function UserBottomnavigation() {
               animation="fadeInRightBig"
               direction={'normal'}
               delay={300}>
-              <MaterialCommunityIcons
+              <Image
+                source={require('../images/crown.png')}
+                resizeMode="contain"
+                style={{width: wp('7'), tintColor: color}}
+              />
+              {/* <MaterialCommunityIcons
                 name={'crown-outline'}
                 color={color}
                 size={hp('3.9')}
-              />
+              /> */}
             </Animatable.View>
           ),
           title: '',

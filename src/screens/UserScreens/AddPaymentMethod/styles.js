@@ -1,5 +1,4 @@
-import React from 'react';
-import {Platform, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -7,20 +6,14 @@ import {
 import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
-  Container: {
-    // flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  button: {
-    flexDirection: 'row',
-    backgroundColor: 'white',
+  cardView: {
     width: wp('90'),
-    height: hp('8'),
-    marginBottom: hp('1'),
-    alignItems: 'center',
-    borderRadius: 10,
+    height: hp('10'),
+    backgroundColor: 'white',
     alignSelf: 'center',
+    borderRadius: 10,
+    marginTop: hp('2'),
+    flexDirection: 'row',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -29,29 +22,23 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 10,
-    marginTop: hp('1'),
   },
-  image: {
-    marginHorizontal: wp('3'),
-    width: wp('8'),
-    height: hp('4'),
+  imageView: {
+    width: wp('20'),
+    height: hp('10'),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  text: {
-    fontSize: hp('1.7'),
-    color: color.textColor,
+  centerView: {
+    width: wp('50'),
+    height: hp('10'),
+    justifyContent: 'center',
   },
-  yearText: {
-    color: color.lightBlueColor,
-    marginLeft: 'auto',
-    marginRight: wp('2'),
-  },
-
-  headingView: {
-    flexDirection: 'row',
-    marginTop: hp('3'),
-    width: wp('90'),
-    alignSelf: 'center',
-    marginBottom: hp('2'),
+  rightView: {
+    width: wp('20'),
+    height: hp('10'),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   trackMainView: {
     position: 'absolute',
@@ -65,7 +52,7 @@ export const styles = StyleSheet.create({
     zIndex: 1,
   },
   trackInnerView: {
-    width: wp('80'),
+    width: wp('85'),
     height: hp('35'),
     backgroundColor: 'white',
     borderRadius: 10,
