@@ -29,10 +29,19 @@ export const BackHeaderComp = props => {
           color: 'black',
           fontSize: hp('2'),
           fontWeight: 'bold',
-          width: wp('68'),
+          width: wp("59"),
         }}>
         {props.heading}
       </Text>
+      {props.Status &&(
+        <Text style={{ 
+          // marginRight: wp('5'),
+          color:props.statusColor,
+          fontSize:hp("2"),
+        }}>
+          {props.Status}
+        </Text>
+      )}
       {props.edit && (
         <Feather
           name="edit-3"

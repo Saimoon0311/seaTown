@@ -33,13 +33,13 @@ const AllPaymentMethod = ({navigation}) => {
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInputWithTextCom
-            placeholder={'Expiry date'}
+            placeholder={'Time of Arriva'}
             upperText={'Time of Arrival'}
             style={{width: wp('43')}}
             textInputstyle={{width: wp('32')}}
           />
           <TextInputWithTextCom
-            placeholder={'CVV / CVC'}
+            placeholder={'Date of Arrival'}
             upperText={'Date of Arrival'}
             style={{width: wp('43')}}
             textInputstyle={{

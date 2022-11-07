@@ -109,14 +109,14 @@ const SailingPermitDetails = ({navigation}) => {
     {
       id: 13,
       image: require('../../../images/Road.png'),
-      text: 'No. Passengers',
+      text: 'No. of passenger',
       status: '37',
       innerImage: require('../../../images/MechinacalServices.png'),
     },
     {
       id: 14,
       image: require('../../../images/Road.png'),
-      text: 'No.Crew',
+      text: 'No. of crew',
       status: '4',
       innerImage: require('../../../images/MechinacalServices.png'),
     },

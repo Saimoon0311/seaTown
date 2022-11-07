@@ -10,7 +10,7 @@ export const ActionButtonComp = props => {
   return (
     <View
       style={{
-        width: wp('12'),
+        width: wp('10'),
         height: hp('5'),
         backgroundColor: 'white',
         shadowColor: '#000',

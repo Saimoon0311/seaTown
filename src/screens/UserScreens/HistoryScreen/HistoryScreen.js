@@ -49,7 +49,9 @@ const HistoryScreen = () => {
           />
           <View style={styles.leftView}>
             <TextHeadingCom style={styles.smallText} heading={'Start Date'} />
+            <View style={styles.leftViews}>
             <TextHeadingCom style={styles.smallText} heading={'End Date'} />
+          </View>
           </View>
           <View style={styles.leftView}>
             <TextHeadingCom style={styles.smallText} heading={'23 Jun, 2021'} />

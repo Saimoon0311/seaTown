@@ -61,6 +61,9 @@ const RequestOfServices = ({route, navigation}) => {
       <ScrollView contentContainerStyle={styles.container}>
         <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
         <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
+       
+
+     
         {items?.text === 'Report Incident' ? (
           <View></View>
         ) : (

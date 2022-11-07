@@ -151,14 +151,16 @@ const InvoiceScreen = ({navigation}) => {
           style={{
             flexDirection: 'row',
             marginRight: wp('8'),
+           
           }}>
           <Image
             resizeMode="contain"
             style={{
               alignSelf: 'center',
-              width: wp('20'),
+              width: wp('18'),
               height: hp('8'),
-              marginRight: wp('3'),
+              marginRight: wp('2'),
+        
             }}
             source={require('../../../images/5.png')}
           />
@@ -177,13 +179,14 @@ const InvoiceScreen = ({navigation}) => {
               style={{
                 color: color.textInputColor,
                 marginRight: hp('0.5'),
+              
               }}>
               21 feb, 2022
             </Text>
           </View>
         </View>
 
-        <View>
+        <View style={{marginLeft:"auto",marginRight:wp("2")}}>
           {getData.paid == true ? (
             <View
               style={{
@@ -233,7 +236,6 @@ const InvoiceScreen = ({navigation}) => {
       <FlatList
         data={services}
         keyExtractor={(item, index) => index.toString()}
-        style={{}}
         contentContainerStyle={styles.flatListView}
         renderItem={({item}) => {
           return <InvoiceComponent getData={item} />;

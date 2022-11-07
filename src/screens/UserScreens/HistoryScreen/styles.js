@@ -32,6 +32,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: hp('0.5'),
   },
+  leftViews:{
+marginRight:hp("3")
+  },
   smallText: {color: color.lightBlueColor, fontSize: hp('1.6')},
   rightView: {
     width: wp('23'),

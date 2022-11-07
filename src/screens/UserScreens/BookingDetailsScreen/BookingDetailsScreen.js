@@ -98,8 +98,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              width: wp('43'),
-              marginLeft: hp('1'),
+              width: wp('35'),
+              marginLeft: "auto",
             }}>
             <ActionButtonComp image={require('../../../images/Vector.png')} />
             <ActionButtonComp image={require('../../../images/Chat.png')} />
@@ -469,11 +469,23 @@ const BookingDetailsScreen = ({route, navigation}) => {
   const CheckStatus = status => {
     return checkStatus[status];
   };
+  let statusValue = {
+    Completed: 'green',
+    'In Progress': color.textPrimaryColor,
+    Cancelled: 'red',
+    Schedule: color.yellowTxtColor,
+  };
+
+  const checkStatusValue = status => {
+    return statusValue[status];
+  };
   return (
     <View>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={'Services Request'}
+        statusColor={checkStatusValue(item.status)}
+        Status={item?.status}
       />
       <ScrollView contentContainerStyle={{paddingBottom: hp('20')}}>
         <Image

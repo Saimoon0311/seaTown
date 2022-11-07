@@ -8,7 +8,9 @@ import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
   topTextContainer: {
-    marginLeft: wp('4'),
+    // marginLeft: wp('4'),
+    width:wp("85"),
+    alignSelf:"center",
     marginTop: hp('2'),
   },
   bottomBarView: {

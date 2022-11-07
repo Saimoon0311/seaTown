@@ -7,7 +7,7 @@ import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
   requestSmallButton: {
-    width: wp('50'),
+    width: wp('33'),
     height: hp('5'),
     borderColor: color.textPrimaryColor,
     borderWidth: 1,

@@ -88,7 +88,7 @@ function UserBottomnavigation() {
             <Image
               source={require('../images/callSoS.png')}
               resizeMode="contain"
-              style={{width: wp('10'), height: hp('10'), marginBottom: hp('2')}}
+              style={{width: wp('10'), height: hp('10'), marginBottom: hp('1'),marginTop:hp("1")}}
             />
             // <Animatable.View
             //   animation="fadeInRightBig"
@@ -109,7 +109,7 @@ function UserBottomnavigation() {
           title: 'SOS Call',
           tabBarLabelStyle: {
             fontSize: hp('1.5'),
-            bottom: hp('2'),
+            bottom: hp('1'),
             color: 'black',
             fontWeight: 'bold',
           },
