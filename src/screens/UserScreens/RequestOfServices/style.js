@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     paddingHorizontal: wp('5'),
+    paddingBottom: hp('30'),
   },
 
   coordenatesView: {
@@ -92,6 +93,7 @@ export const styles = StyleSheet.create({
     height: hp('15'),
     width: wp('90'),
     paddingTop: hp('1'),
+    color: 'black',
   },
   ImageBackgroundContainer: {
     width: wp('25'),

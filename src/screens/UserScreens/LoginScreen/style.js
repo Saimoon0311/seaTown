@@ -9,7 +9,6 @@ import {color} from '../../../components/color';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
   },
   scrollView: {
     justifyContent: 'center',

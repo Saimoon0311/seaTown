@@ -6,6 +6,8 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {CircleImage} from '../../../components/CircleImage/CircleImage';
@@ -140,11 +142,11 @@ const UpadateProfileScreen = ({route, navigation}) => {
       </TouchableOpacity>
     );
   };
+  const height = Dimensions.get('screen').height;
   return (
-    <View
-      style={{
-        flex: 1,
-      }}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+      style={{flex: 1}}>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={'Edit Profile'}
@@ -152,9 +154,7 @@ const UpadateProfileScreen = ({route, navigation}) => {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: 'white',
-          flex: 1,
-
-          // height: hp('100'),
+          height: height,
         }}>
         <View>
           <CircleImage
@@ -305,17 +305,17 @@ const UpadateProfileScreen = ({route, navigation}) => {
           title={'Dubai Marine license'}
           work={'55kb'}
         /> */}
-        <CommonButtonComp
-          viewStyle={{
-            width: wp('90'),
-            bottom: hp('7'),
-            position: 'absolute',
-          }}
-          onPress={() => console.log('djhsfbkb')}
-          text="Save Change"
-        />
       </ScrollView>
-    </View>
+      <CommonButtonComp
+        viewStyle={{
+          width: wp('90'),
+          bottom: hp('20'),
+          position: 'absolute',
+        }}
+        onPress={() => console.log('djhsfbkb')}
+        text="Save Change"
+      />
+    </KeyboardAvoidingView>
   );
 };
 

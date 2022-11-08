@@ -150,17 +150,17 @@ const InvoiceScreen = ({navigation}) => {
         <View
           style={{
             flexDirection: 'row',
-            marginRight: wp('8'),
-           
+            // marginRight: wp('8'),
           }}>
           <Image
             resizeMode="contain"
             style={{
               alignSelf: 'center',
-              width: wp('18'),
+              width: wp('17'),
               height: hp('8'),
               marginRight: wp('2'),
-        
+              marginLeft: wp('2'),
+              // backgroundColor: 'red',
             }}
             source={require('../../../images/5.png')}
           />
@@ -179,14 +179,13 @@ const InvoiceScreen = ({navigation}) => {
               style={{
                 color: color.textInputColor,
                 marginRight: hp('0.5'),
-              
               }}>
               21 feb, 2022
             </Text>
           </View>
         </View>
 
-        <View style={{marginLeft:"auto",marginRight:wp("2")}}>
+        <View style={{marginLeft: 'auto', marginRight: wp('2')}}>
           {getData.paid == true ? (
             <View
               style={{

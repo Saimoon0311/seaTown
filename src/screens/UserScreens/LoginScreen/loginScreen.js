@@ -129,7 +129,8 @@ const LoginScreen = ({route, navigation}) => {
   return (
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
-      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+      behavior={Platform.OS == 'ios' ? 'position' : 'position'}
+      // contentContainerStyle={{backgroundColor: 'red'}}
       style={styles.container}>
       <StatusBar
         hidden={false}

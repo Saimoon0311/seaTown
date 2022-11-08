@@ -51,7 +51,6 @@ const RequestOfServices = ({route, navigation}) => {
   };
   return (
     <>
-      {console.log(55, items?.text)}
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={
@@ -61,9 +60,7 @@ const RequestOfServices = ({route, navigation}) => {
       <ScrollView contentContainerStyle={styles.container}>
         <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
         <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
-       
 
-     
         {items?.text === 'Report Incident' ? (
           <View></View>
         ) : (
@@ -95,7 +92,7 @@ const RequestOfServices = ({route, navigation}) => {
           onChangeText={onChangeNumber}
           value={number}
           placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum."
-          keyboardType="numeric"
+          // keyboardType="numeric"
         />
         <Text
           style={{

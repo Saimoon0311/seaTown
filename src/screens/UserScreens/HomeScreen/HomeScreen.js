@@ -183,16 +183,7 @@ const HomeScreen = ({navigation}) => {
               color={color.textPrimaryColor}
               size={hp('3')}
             /> */}
-            <Text
-              style={{
-                color: 'black',
-                fontSize: hp('2'),
-                marginLeft: wp('2'),
-                fontSize: hp('1.7'),
-                fontWeight: 'bold',
-              }}>
-              Request a service
-            </Text>
+            <Text style={styles.serviceText}>Request a service</Text>
           </TouchableOpacity>
         </View>
         <UserHomeServicesComp

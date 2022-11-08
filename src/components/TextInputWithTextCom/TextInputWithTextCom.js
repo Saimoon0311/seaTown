@@ -33,7 +33,7 @@ const TextInputWithTextCom = props => {
           elevation: 2,
         }}>
         <TextInput
-          style={{...props.textInputstyle}}
+          style={{...props.textInputstyle, color: 'black'}}
           ref={props?.ref}
           placeholder={props?.placeholder}
           placeholderTextColor={color.themeColorDark}

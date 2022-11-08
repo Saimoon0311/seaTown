@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     // flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
+    paddingBottom: hp('15'),
   },
   button: {
     flexDirection: 'row',

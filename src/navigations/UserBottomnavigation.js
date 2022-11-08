@@ -29,7 +29,7 @@ function UserBottomnavigation() {
         animationEnabled: true,
         tabBarStyle: {
           height: hp('10'),
-          paddingBottom: hp('0'),
+          paddingBottom: Platform.OS == 'ios' ? hp('1') : hp('0'),
           // bottom: Platform.OS == 'ios' ? hp('4') : hp('2'),
           width: wp('100'),
           alignSelf: 'center',
@@ -88,7 +88,12 @@ function UserBottomnavigation() {
             <Image
               source={require('../images/callSoS.png')}
               resizeMode="contain"
-              style={{width: wp('10'), height: hp('10'), marginBottom: hp('1'),marginTop:hp("1")}}
+              style={{
+                width: wp('10'),
+                height: hp('10'),
+                marginBottom: hp('1'),
+                marginTop: hp('1'),
+              }}
             />
             // <Animatable.View
             //   animation="fadeInRightBig"

@@ -4,11 +4,9 @@ import {
   Text,
   ScrollView,
   Image,
-  StyleSheet,
-  FlatList,
-  ImageBackground,
-  Dimensions,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {
@@ -16,9 +14,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {styles} from './styles';
-import StarRating from 'react-native-star-rating-widget';
 import {color} from '../../../components/color';
-import {globalStyles} from '../../../config/globalStyles';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 import TextInputWithTextCom from '../../../components/TextInputWithTextCom/TextInputWithTextCom';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -132,7 +128,9 @@ const PermitFormScreen = ({route, navigation}) => {
     );
   };
   return (
-    <>
+    <KeyboardAvoidingView
+      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+      style={{flex: 1}}>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={'Sailing Permit Form'}
@@ -307,7 +305,7 @@ const PermitFormScreen = ({route, navigation}) => {
         </View>
       </ScrollView>
       {ServicesRequestCompleted && <ServicesRequestView />}
-    </>
+    </KeyboardAvoidingView>
   );
 };
 

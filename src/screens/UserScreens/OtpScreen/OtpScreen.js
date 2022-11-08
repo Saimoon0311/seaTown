@@ -189,9 +189,11 @@ const OtpScreen = ({route, navigation}) => {
               borderRadius: 10,
               backgroundColor: 'white',
               borderColor: color.onPressInpur,
+              color: 'black',
             }}
             codeInputFieldStyle={{
               borderRadius: 10,
+              color: 'black',
               backgroundColor: color.themeColorDarkinputColor,
             }}
             // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.

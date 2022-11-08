@@ -6,7 +6,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '../../../components/color';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
 
 const AllPaymentMethod = ({navigation}) => {
@@ -18,7 +17,7 @@ const AllPaymentMethod = ({navigation}) => {
       />
       <View style={{width: wp('90'), alignSelf: 'center'}}>
         <TextInputWithTextCom
-          placeholder={'Cardholder name'}
+          placeholder={'Cardholder Name'}
           upperText={'Cardholder name'}
           textInputstyle={{
             width: wp('80'),
@@ -33,14 +32,14 @@ const AllPaymentMethod = ({navigation}) => {
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInputWithTextCom
-            placeholder={'Time of Arriva'}
-            upperText={'Time of Arrival'}
+            upperText={'Expiry Date'}
+            placeholder={'06 / 2024'}
             style={{width: wp('43')}}
             textInputstyle={{width: wp('32')}}
           />
           <TextInputWithTextCom
-            placeholder={'Date of Arrival'}
-            upperText={'Date of Arrival'}
+            placeholder={'000'}
+            upperText={'CVV / CVC'}
             style={{width: wp('43')}}
             textInputstyle={{
               width: wp('32'),

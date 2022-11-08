@@ -79,9 +79,7 @@ export const UserBookingViewComp = props => {
                   Martin Kenter
                 </Text>
                 <View style={styles.captainView}>
-                  <Text style={{color: color.black, marginRight: hp('0.5')}}>
-                    Captain
-                  </Text>
+                  <Text style={{color: color.black}}>Captain</Text>
                 </View>
               </View>
               <Text

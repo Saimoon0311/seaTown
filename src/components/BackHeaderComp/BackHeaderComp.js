@@ -29,16 +29,17 @@ export const BackHeaderComp = props => {
           color: 'black',
           fontSize: hp('2'),
           fontWeight: 'bold',
-          width: wp("59"),
+          width: wp('59'),
         }}>
         {props.heading}
       </Text>
-      {props.Status &&(
-        <Text style={{ 
-          // marginRight: wp('5'),
-          color:props.statusColor,
-          fontSize:hp("2"),
-        }}>
+      {props.Status && (
+        <Text
+          style={{
+            marginRight: wp('2'),
+            color: props.statusColor,
+            fontSize: hp('1.7'),
+          }}>
           {props.Status}
         </Text>
       )}
@@ -47,7 +48,7 @@ export const BackHeaderComp = props => {
           name="edit-3"
           color={'black'}
           size={hp('3')}
-          style={{marginRight: wp('3')}}
+          style={{marginLeft: wp('9')}}
           onPress={() => props.editPress()}
         />
       )}
