@@ -23,6 +23,7 @@ import SignUpScreen from './SignUpScreen/signUpScreen';
 import UpadateProfileScreen from './UpadateProfileScreen/UpadateProfileScreen';
 import AddPaymentMethod from './AddPaymentMethod/AddPaymentMethod';
 import AllPaymentMethod from './AllPaymentMethod/AllPaymentMethod';
+import InvoiceDetailsScreen from './InvoiceDetailsScreen/InvoiceDetailsScreen';
 export const screens = {
   LoginScreen,
   SignUpScreen,
@@ -49,4 +50,5 @@ export const screens = {
   WeatherScreen,
   AddPaymentMethod,
   AllPaymentMethod,
+  InvoiceDetailsScreen,
 };

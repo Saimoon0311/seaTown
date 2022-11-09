@@ -132,6 +132,10 @@ const StackNavigatior = ({style, navigation}) => {
         name="ResetPasswordScreen"
         component={screens.ResetPasswordScreen}
       />
+      <Stack.Screen
+        name="InvoiceDetailsScreen"
+        component={screens.InvoiceDetailsScreen}
+      />
       <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
       {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
       <Stack.Screen name="Home" component={Home} />

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {
   widthPercentageToDP as wp,
@@ -146,7 +146,9 @@ const InvoiceScreen = ({navigation}) => {
   ]);
   const InvoiceComponent = ({getData}) => {
     return (
-      <View style={styles.topView}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('InvoiceDetailsScreen')}
+        style={styles.topView}>
         <View
           style={{
             flexDirection: 'row',
@@ -223,7 +225,7 @@ const InvoiceScreen = ({navigation}) => {
             AED 750
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   return (
