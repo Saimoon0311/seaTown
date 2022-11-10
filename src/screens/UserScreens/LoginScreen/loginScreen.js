@@ -27,6 +27,7 @@ import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp'
 import CheckBox from '@react-native-community/checkbox';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp';
+import {color} from '../../../components/color';
 
 const LoginScreen = ({route, navigation}) => {
   const disptach = useDispatch();
@@ -193,6 +194,15 @@ const LoginScreen = ({route, navigation}) => {
           // onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Login'}
           style={{marginTop: hp('2')}}
+        />
+        <TextHeadingCom
+          heading="Become a Captain"
+          style={{
+            textAlign: 'center',
+            color: color.textPrimaryColor,
+            marginTop: hp('2'),
+            textDecorationLine: 'underline',
+          }}
         />
         {/* <ButtonThemeComp
           onPress={() => navigation.navigate('CaptionBottomNavigation')}
