@@ -47,15 +47,29 @@ const HistoryScreen = () => {
             style={{fontSize: hp('2.3')}}
             heading={'Anual Membership'}
           />
-          <View style={styles.leftView}>
-            <TextHeadingCom style={styles.smallText} heading={'Start Date'} />
-            <View style={styles.leftViews}>
-            <TextHeadingCom style={styles.smallText} heading={'End Date'} />
-          </View>
-          </View>
-          <View style={styles.leftView}>
-            <TextHeadingCom style={styles.smallText} heading={'23 Jun, 2021'} />
-            <TextHeadingCom style={styles.smallText} heading={'23 Jun, 2021'} />
+          <View style={{flexDirection: 'row'}}>
+            <View
+              style={{
+                ...styles.leftView,
+                flexDirection: 'column',
+              }}>
+              <TextHeadingCom style={styles.smallText} heading={'Start Date'} />
+              <View style={{...styles.leftViews}}>
+                <TextHeadingCom
+                  style={styles.smallText}
+                  heading={'23 Jun, 2021'}
+                />
+              </View>
+            </View>
+            <View style={{...styles.leftView, flexDirection: 'column'}}>
+              <TextHeadingCom style={styles.smallText} heading={'End Date'} />
+              <View style={{...styles.leftViews}}>
+                <TextHeadingCom
+                  style={styles.smallText}
+                  heading={'23 Jun, 2021'}
+                />
+              </View>
+            </View>
           </View>
         </View>
         <View style={styles.rightView}>

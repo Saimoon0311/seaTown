@@ -106,7 +106,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     padding: 10,
-    paddingTop: hp('2'),
+    // paddingTop: hp('2'),
     borderRadius: 10,
     alignSelf: 'center',
     // marginTop: hp('2'),

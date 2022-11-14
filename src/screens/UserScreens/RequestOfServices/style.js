@@ -8,10 +8,10 @@ import {color} from '../../../components/color';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: 'white',
     paddingHorizontal: wp('5'),
-    paddingBottom: hp('30'),
+    // paddingBottom: hp('40'),
   },
 
   coordenatesView: {
@@ -94,6 +94,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     paddingTop: hp('1'),
     color: 'black',
+    paddingTop: hp('-2'),
   },
   ImageBackgroundContainer: {
     width: wp('25'),

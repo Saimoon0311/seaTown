@@ -28,14 +28,19 @@ export const styles = StyleSheet.create({
   },
   leftView: {
     flexDirection: 'row',
-    width: wp('50'),
-    justifyContent: 'space-between',
+    // width: wp('50'),
+    // justifyContent: 'space-between',
     marginTop: hp('0.5'),
+    // backgroundColor: 'red',
   },
-  leftViews:{
-marginRight:hp("3")
+  leftViews: {
+    marginRight: hp('3'),
   },
-  smallText: {color: color.lightBlueColor, fontSize: hp('1.6')},
+  smallText: {
+    color: color.lightBlueColor,
+    fontSize: hp('1.6'),
+    // backgroundColor: 'red',
+  },
   rightView: {
     width: wp('23'),
     height: hp('9'),

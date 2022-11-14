@@ -41,7 +41,7 @@ export const UserBookingViewComp = props => {
                 Running Out of Gas on a boat
               </Text>
               <Text style={{color: color.themeColorDark, marginTop: hp('0.5')}}>
-                21, feb 2022| 12:32 Am
+                21, feb 2022 | 12:32 Am
               </Text>
             </View>
 

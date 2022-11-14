@@ -128,14 +128,19 @@ const PermitFormScreen = ({route, navigation}) => {
     );
   };
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={{flex: 1}}>
+    <View>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={'Sailing Permit Form'}
       />
-      <ScrollView contentContainerStyle={styles.Container}>
+      {/* <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+        // enabled={true}
+        // keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('-1')}
+        contentContainerStyle={{flex: 1}}> */}
+      <ScrollView
+        keyboardShouldPersistTaps={'always'}
+        contentContainerStyle={styles.Container}>
         <View
           style={{
             flex: 1,
@@ -147,12 +152,14 @@ const PermitFormScreen = ({route, navigation}) => {
             upperText={'Boat Number'}
             textInputstyle={{
               width: wp('80'),
+              color: 'black',
             }}
           />
           <TextInputWithTextCom
             placeholder={'Boat Name'}
             upperText={'Boat Name'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
           />
@@ -162,6 +169,7 @@ const PermitFormScreen = ({route, navigation}) => {
             showIcon={true}
             iconName={'calendar-outline'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
           />
@@ -169,6 +177,7 @@ const PermitFormScreen = ({route, navigation}) => {
             placeholder={'Boat Owner'}
             upperText={'Boat Owner'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
           />
@@ -176,6 +185,7 @@ const PermitFormScreen = ({route, navigation}) => {
             placeholder={'Captain Name'}
             upperText={'Captain Name'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
           />
@@ -183,6 +193,7 @@ const PermitFormScreen = ({route, navigation}) => {
             placeholder={'Phone'}
             upperText={'Phone Number'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
           />
@@ -193,7 +204,7 @@ const PermitFormScreen = ({route, navigation}) => {
               showIcon={true}
               iconName={'calendar-outline'}
               style={{width: wp('43')}}
-              textInputstyle={{width: wp('32')}}
+              textInputstyle={{width: wp('32'), color: 'black'}}
             />
             <TextInputWithTextCom
               placeholder={'Time of Departure'}
@@ -202,6 +213,7 @@ const PermitFormScreen = ({route, navigation}) => {
               showIcon={true}
               iconName={'ios-time-outline'}
               textInputstyle={{
+                color: 'black',
                 width: wp('32'),
               }}
             />
@@ -210,6 +222,7 @@ const PermitFormScreen = ({route, navigation}) => {
             placeholder={'Port of Jebel Ali'}
             upperText={'Port of Departure'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
             changeIcon={
@@ -248,21 +261,23 @@ const PermitFormScreen = ({route, navigation}) => {
             placeholder={'Distination'}
             upperText={'Distination'}
             textInputstyle={{
+              color: 'black',
               width: wp('80'),
             }}
           />
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TextInputWithTextCom
-              placeholder={'No of Passenger'}
-              upperText={'No of Passenger'}
+              placeholder={'No. of Passenger'}
+              upperText={'No. of Passenger'}
               style={{width: wp('43')}}
-              textInputstyle={{width: wp('32')}}
+              textInputstyle={{width: wp('32'), color: 'black'}}
             />
             <TextInputWithTextCom
-              placeholder={'No of Crew'}
-              upperText={'No of Crew'}
+              placeholder={'No. of Crew'}
+              upperText={'No. of Crew'}
               style={{width: wp('43')}}
               textInputstyle={{
+                color: 'black',
                 width: wp('32'),
               }}
             />
@@ -305,7 +320,8 @@ const PermitFormScreen = ({route, navigation}) => {
         </View>
       </ScrollView>
       {ServicesRequestCompleted && <ServicesRequestView />}
-    </KeyboardAvoidingView>
+      {/* </KeyboardAvoidingView> */}
+    </View>
   );
 };
 

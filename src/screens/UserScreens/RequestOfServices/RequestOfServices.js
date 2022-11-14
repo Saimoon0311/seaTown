@@ -1,5 +1,7 @@
 import {
   ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -57,105 +59,116 @@ const RequestOfServices = ({route, navigation}) => {
           items?.text === 'Report Incident' ? items?.text : 'Request a Services'
         }
       />
-      <ScrollView contentContainerStyle={styles.container}>
-        <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
-        <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
+      <ScrollView
+        contentContainerStyle={styles.container}
+        // automaticallyAdjustKeyboardInsets={true}
+      >
+        <KeyboardAvoidingView
+          // style={styles.container}
+          behavior={Platform.OS ? 'position' : 'height'}>
+          <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
+          <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
 
-        {items?.text === 'Report Incident' ? (
-          <View></View>
-        ) : (
-          <View style={styles.dateTimeViewStyle}>
-            <CoordenatesView
-              width={'40'}
-              name={'calendar'}
-              coordArea={`13 May,2012`}
-              coordenates={''}
-            />
+          {items?.text === 'Report Incident' ? (
+            <View></View>
+          ) : (
+            <View style={styles.dateTimeViewStyle}>
+              <CoordenatesView
+                width={'40'}
+                name={'calendar'}
+                coordArea={`13 May,2012`}
+                coordenates={''}
+              />
 
-            <CoordenatesView
-              width={'40'}
-              name={'time-outline'}
-              coordArea={`08:00 AM`}
-              coordenates={''}
+              <CoordenatesView
+                width={'40'}
+                name={'time-outline'}
+                coordArea={`08:00 AM`}
+                coordenates={''}
+              />
+            </View>
+          )}
+          <CoordenatesView
+            coordArea={`Need Ice and Sunglases`}
+            coordenates={''}
+            icoNotShow={true}
+          />
+          <View style={styles.input}>
+            <TextInput
+              multiline
+              // numberOfLines={10}
+              style={{alignSelf: 'flex-start', flex: 1, color: 'black'}}
+              // onChangeText={onChangeNumber}
+              // value={number}
+              placeholder="Type your message"
+              placeholderTextColor={'gray'}
             />
           </View>
-        )}
-        <CoordenatesView
-          coordArea={`Need Ice and Sunglases`}
-          coordenates={''}
-          icoNotShow={true}
-        />
-        <TextInput
-          multiline
-          numberOfLines={10}
-          style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum."
-          // keyboardType="numeric"
-        />
-        <Text
-          style={{
-            textAlign: 'right',
-            marginTop: hp('0.5'),
-            color: color.themeColorDark,
-          }}>
-          0/500
-        </Text>
-        <View style={{flexDirection: 'row'}}>
-          <ImageBackground
-            resizeMode="contain"
-            style={styles.ImageBackgroundContainer}
-            source={require('../../../images/image1.png')}>
-            <MaterialIcons
-              name="cancel"
-              size={hp('2.5')}
-              color={color.textColor}
-              style={{
-                textAlign: 'right',
-                marginTop: hp('0.3'),
-                marginRight: wp('3.1'),
-              }}
-            />
-          </ImageBackground>
+          <Text
+            style={{
+              textAlign: 'right',
+              marginTop: hp('0.5'),
+              color: color.themeColorDark,
+            }}>
+            0/500
+          </Text>
+          <View style={{flexDirection: 'row'}}>
+            <ImageBackground
+              resizeMode="contain"
+              style={styles.ImageBackgroundContainer}
+              source={require('../../../images/image1.png')}>
+              <MaterialIcons
+                name="cancel"
+                size={hp('2.5')}
+                color={color.textColor}
+                style={{
+                  textAlign: 'right',
+                  marginTop: hp('0.3'),
+                  marginRight: wp('3.1'),
+                }}
+              />
+            </ImageBackground>
 
-          <ImageBackground
-            resizeMode="contain"
-            style={styles.ImageBackgroundContainer}
-            source={require('../../../images/image2.png')}>
-            <MaterialIcons
-              name="cancel"
-              size={hp('2.5')}
-              color={color.textColor}
-              style={{
-                textAlign: 'right',
-                marginTop: hp('0.3'),
-                marginRight: wp('3.1'),
-              }}
-            />
-          </ImageBackground>
-        </View>
-        <TextButtonComp
-          onPress={() => console.log('oejdoejd')}
-          viewStyle={{marginTop: hp('3')}}
-          text={'Attachments'}
-          name={'attachment'}
-        />
-        <ButtonThemeComp
-          onPress={() => console.log('oejdoejd')}
-          style={{
-            // backgroundColor: 'red',
-            // marginLeft: wp('6'),
+            <ImageBackground
+              resizeMode="contain"
+              style={styles.ImageBackgroundContainer}
+              source={require('../../../images/image2.png')}>
+              <MaterialIcons
+                name="cancel"
+                size={hp('2.5')}
+                color={color.textColor}
+                style={{
+                  textAlign: 'right',
+                  marginTop: hp('0.3'),
+                  marginRight: wp('3.1'),
+                }}
+              />
+            </ImageBackground>
+          </View>
+          <TextButtonComp
+            onPress={() => console.log('oejdoejd')}
+            viewStyle={{marginTop: hp('3')}}
+            text={'Attachments'}
+            name={'attachment'}
+          />
+          <ButtonThemeComp
+            onPress={() => console.log('oejdoejd')}
+            style={{
+              // backgroundColor: 'red',
+              // marginLeft: wp('6'),
 
-            marginTop: hp('3'),
-            width: wp('90'),
-            backgroundColor:
-              items?.text === 'Report Incident'
-                ? 'red'
-                : color.textPrimaryColor,
-          }}
-          text={items?.text === 'Report Incident' ? 'Report' : 'Submit Request'}
-        />
+              marginTop: hp('3'),
+              width: wp('90'),
+              backgroundColor:
+                items?.text === 'Report Incident'
+                  ? 'red'
+                  : color.textPrimaryColor,
+            }}
+            text={
+              items?.text === 'Report Incident' ? 'Report' : 'Submit Request'
+            }
+          />
+        </KeyboardAvoidingView>
       </ScrollView>
     </>
   );

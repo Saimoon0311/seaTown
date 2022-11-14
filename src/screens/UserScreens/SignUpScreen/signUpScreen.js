@@ -195,8 +195,11 @@ export default function SignUpScreen({navigation}) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
       style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
+      <ScrollView
+        keyboardShouldPersistTaps={'always'}
+        contentContainerStyle={styles.scrollView}>
         <Image
           source={require('../../../images/Loginogo.png')}
           style={styles.topImage}

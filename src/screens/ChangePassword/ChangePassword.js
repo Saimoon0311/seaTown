@@ -157,11 +157,17 @@ const ChangePasswordScreen = ({route, navigation}) => {
       keyboardDidShowListener.remove();
     };
   }, []);
+  const keyboardVerticalOffset = Platform.OS === 'ios' ? hp('0') : hp('1');
   return (
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
+      // behavior={'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}>
+      contentContainerStyle={{
+        ...styles.container,
+        backgroundColor: 'transparent',
+      }}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
           source={require('../../images/Loginogo.png')}

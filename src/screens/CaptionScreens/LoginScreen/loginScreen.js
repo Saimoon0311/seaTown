@@ -130,8 +130,9 @@ const CaptainLoginScreen = ({route, navigation}) => {
   return (
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
+      keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}>
+      contentContainerStyle={styles.container}>
       <StatusBar hidden={false} barStyle={'dark-content'} />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image

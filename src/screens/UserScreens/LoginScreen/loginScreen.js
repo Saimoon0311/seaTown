@@ -130,14 +130,17 @@ const LoginScreen = ({route, navigation}) => {
   return (
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
-      behavior={Platform.OS == 'ios' ? 'position' : 'position'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
+      behavior={Platform.OS == 'ios' ? 'position' : 'height'}
       // contentContainerStyle={{backgroundColor: 'red'}}
       style={styles.container}>
       <StatusBar
         hidden={false}
         barStyle={Platform.OS == 'ios' ? 'dark-content' : 'default'}
       />
-      <ScrollView contentContainerStyle={styles.scrollView}>
+      <ScrollView
+        keyboardShouldPersistTaps={'always'}
+        contentContainerStyle={styles.scrollView}>
         <Image
           source={require('../../../images/Loginogo.png')}
           style={styles.topImage}

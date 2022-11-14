@@ -163,7 +163,8 @@ const OtpScreen = ({route, navigation}) => {
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-      style={styles.container}>
+      keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
+      contentContainerStyle={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Image
           source={require('../../../images/Loginogo.png')}

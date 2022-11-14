@@ -99,7 +99,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
               flexDirection: 'row',
               justifyContent: 'space-between',
               width: wp('35'),
-              marginLeft: "auto",
+              marginLeft: 'auto',
             }}>
             <ActionButtonComp image={require('../../../images/Vector.png')} />
             <ActionButtonComp image={require('../../../images/Chat.png')} />
@@ -313,15 +313,17 @@ const BookingDetailsScreen = ({route, navigation}) => {
               <Text style={styles.rememberText}>Weather Condition</Text>
             </View>
           </View>
-          <TextInput
-            multiline
-            numberOfLines={10}
-            style={styles.input}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder="Type your message"
-            keyboardType="numeric"
-          />
+          <View style={styles.input}>
+            <TextInput
+              multiline
+              // numberOfLines={10}
+              style={{alignSelf: 'flex-start', flex: 1, color: 'black'}}
+              // onChangeText={onChangeNumber}
+              // value={number}
+              placeholder="Type your message"
+              placeholderTextColor={'gray'}
+            />
+          </View>
 
           {/* <Text
             style={{
@@ -368,7 +370,32 @@ const BookingDetailsScreen = ({route, navigation}) => {
   const LeaveAReviewView = () => {
     return (
       <View style={styles.trackMainView}>
-        <View style={{...styles.trackInnerView, height: hp('60')}}>
+        {/* <View
+          style={{
+            // ...styles.trackInnerView,
+            // height: hp('60'),
+            overflow: 'hidden',
+            justifyContent: 'center',
+            backgroundColor: 'red',
+            alignItems: 'center',
+            alignContent: 'center',
+          }}> */}
+        <ScrollView
+          // keyboardShouldPersistTaps={true}
+          contentContainerStyle={{
+            ...styles.trackInnerView,
+            height: hp('60'),
+            // overflow: 'hidden',
+            marginTop: hp('19'),
+            // backgroundColor: 'green',
+            // flex: 1,
+            alignSelf: 'center',
+            // paddingBottom: hp('20'),
+          }}
+          style={{
+            height: hp('20'),
+            alignSelf: 'center',
+          }}>
           <View style={styles.centerViewTopText}>
             <TextHeadingCom
               style={{
@@ -399,18 +426,17 @@ const BookingDetailsScreen = ({route, navigation}) => {
             />
             <InputView coordArea={'Good Work'} width={'70'} icoNotShow={true} />
           </View>
-
-          <TextInput
-            multiline
-            numberOfLines={10}
-            style={styles.input}
-            onChangeText={onChangeNumber}
-            value={'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
-            // value={number}
-            placeholder="Type your message"
-            keyboardType="numeric"
-          />
-
+          <View style={styles.input}>
+            <TextInput
+              multiline
+              // numberOfLines={10}
+              style={{alignSelf: 'flex-start', flex: 1, color: 'black'}}
+              // onChangeText={onChangeNumber}
+              // value={number}
+              placeholder="Type your message"
+              placeholderTextColor={'gray'}
+            />
+          </View>
           {/* <Text
             style={{
               textAlign: 'right',
@@ -426,7 +452,8 @@ const BookingDetailsScreen = ({route, navigation}) => {
             viewStyle={{width: wp('70')}}
             text={'Submit'}
           />
-        </View>
+        </ScrollView>
+        {/* </View> */}
       </View>
     );
   };
@@ -527,11 +554,11 @@ const BookingDetailsScreen = ({route, navigation}) => {
         <CoordenatesView
           style={{marginTop: hp('6')}}
           coordArea={'North Coordinates'}
-          coordenates={"30°00'0.00' N"}
+          coordenates={"30°00'0.00' N 30°00'0' N"}
         />
         <CoordenatesView
           coordArea={'East Coordinates'}
-          coordenates={"125°00'0.00' E"}
+          coordenates={"125°00'0.00' E 125°0.00' E"}
         />
         <TextHeadingCom
           heading="Message"

@@ -146,6 +146,7 @@ const UpadateProfileScreen = ({route, navigation}) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
       style={{flex: 1}}>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
@@ -154,7 +155,7 @@ const UpadateProfileScreen = ({route, navigation}) => {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: 'white',
-          height: height,
+          // height: height,
         }}>
         <View>
           <CircleImage
@@ -225,7 +226,7 @@ const UpadateProfileScreen = ({route, navigation}) => {
           firstIcon="ios-mail-outline"
         />
         <LoginInputComp
-          style={styles.inputStyle}
+          style={{...styles.inputStyle, marginBottom: hp('16')}}
           value={area}
           onChangeText={area => updateState({area})}
           inputText="area"
@@ -305,16 +306,16 @@ const UpadateProfileScreen = ({route, navigation}) => {
           title={'Dubai Marine license'}
           work={'55kb'}
         /> */}
+        <CommonButtonComp
+          viewStyle={{
+            width: wp('90'),
+            // bottom: hp('20'),
+            // position: 'absolute',
+          }}
+          onPress={() => console.log('djhsfbkb')}
+          text="Save Change"
+        />
       </ScrollView>
-      <CommonButtonComp
-        viewStyle={{
-          width: wp('90'),
-          bottom: hp('20'),
-          position: 'absolute',
-        }}
-        onPress={() => console.log('djhsfbkb')}
-        text="Save Change"
-      />
     </KeyboardAvoidingView>
   );
 };
