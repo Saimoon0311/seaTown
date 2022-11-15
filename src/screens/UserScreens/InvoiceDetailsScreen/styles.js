@@ -37,4 +37,18 @@ export const styles = StyleSheet.create({
     width: wp('38'),
     alignItems: 'flex-end',
   },
+  bottomYellowView: {
+    width: wp('85'),
+    backgroundColor: color.yellowTxtColor,
+    height: hp('6'),
+    alignSelf: 'center',
+    marginTop: hp('-2'),
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: wp('4'),
+    paddingRight: wp('4'),
+    alignItems: 'center',
+  },
 });

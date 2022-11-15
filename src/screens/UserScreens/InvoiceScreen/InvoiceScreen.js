@@ -147,7 +147,7 @@ const InvoiceScreen = ({navigation}) => {
   const InvoiceComponent = ({getData}) => {
     return (
       <TouchableOpacity
-        // onPress={() => navigation.navigate('InvoiceDetailsScreen')}
+        onPress={() => navigation.navigate('InvoiceDetailsScreen')}
         style={styles.topView}>
         <View
           style={{

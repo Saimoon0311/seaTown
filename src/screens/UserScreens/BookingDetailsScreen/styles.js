@@ -75,12 +75,13 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     height: hp('100'),
     width: wp('100'),
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(42,42,42,0.6)',
     top: 0,
     bottom: 0,
     zIndex: 1,
+    flex: 1,
   },
   trackInnerView: {
     width: wp('80'),
@@ -119,9 +120,9 @@ export const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   centerViewTopText: {
-    width: wp('70'),
+    width: wp('75'),
     alignSelf: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   bottomScheduleText: {
     color: color.textPrimaryColor,

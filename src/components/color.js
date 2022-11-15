@@ -41,4 +41,5 @@ export const color = {
   lightRed: '#F3D2D2',
   orangeColo: '#FE9400',
   onPressInpur: '#52C3FF',
+  iconColor: '#A4B2C3',
 };

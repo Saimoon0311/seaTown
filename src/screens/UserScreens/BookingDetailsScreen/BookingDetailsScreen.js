@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
   TextInput,
+  Keyboard,
 } from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import {
@@ -22,10 +23,12 @@ import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButto
 import StarRating from 'react-native-star-rating-widget';
 import {ActionButtonComp} from '../../../components/ActionButtonComp/ActionButtonComp';
 import CheckBox from '@react-native-community/checkbox';
+import {useEffect} from 'react';
 
 const BookingDetailsScreen = ({route, navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [number, onChangeNumber] = React.useState(null);
+  // const [isKeyboardVisible, setKeyboardVisible] = useState(hp('17'));
 
   const item = route.params.item;
   const [checkRenderView, setcheckRenderView] = useState({
@@ -33,6 +36,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
     ServicesRequestCompleted: false,
     BookingCancellReason: false,
     LeaveAReview: false,
+    isKeyboardVisible: hp('17'),
   });
   const [reviewRating, setReviewRating] = useState('2');
   const {
@@ -40,6 +44,7 @@ const BookingDetailsScreen = ({route, navigation}) => {
     ServicesRequestCompleted,
     BookingCancellReason,
     LeaveAReview,
+    isKeyboardVisible,
   } = checkRenderView;
   const updateState = data =>
     setcheckRenderView(() => ({...checkRenderView, ...data}));
@@ -260,13 +265,23 @@ const BookingDetailsScreen = ({route, navigation}) => {
   const BookingCancellReasonView = () => {
     return (
       <View style={styles.trackMainView}>
-        <View style={{...styles.trackInnerView, height: hp('60')}}>
-          <View style={{...styles.centerViewTopText, flexDirection: 'row'}}>
+        <View
+          style={{
+            ...styles.trackInnerView,
+            height: hp('60'),
+            marginTop: Platform.OS == 'ios' ? hp('15') : hp('12'),
+          }}>
+          <View
+            style={{
+              ...styles.centerViewTopText,
+              flexDirection: 'row',
+              // backgroundColor: 'green',
+            }}>
             <TextHeadingCom
               style={{
                 fontSize: hp('1.9'),
                 width: wp('60'),
-                paddingLeft: wp('3'),
+                // paddingLeft: wp('3'),
               }}
               heading="Select or type your reason for booking cancellation"
             />
@@ -275,9 +290,11 @@ const BookingDetailsScreen = ({route, navigation}) => {
               color={color.lightBlueColor}
               size={hp('3')}
               onPress={() => updateState({BookingCancellReason: false})}
-              style={{
-                marginRight: wp('2'),
-              }}
+              style={
+                {
+                  // marginRight: wp('2'),
+                }
+              }
             />
           </View>
           <View
@@ -380,28 +397,44 @@ const BookingDetailsScreen = ({route, navigation}) => {
             alignItems: 'center',
             alignContent: 'center',
           }}> */}
-        <ScrollView
-          // keyboardShouldPersistTaps={true}
-          contentContainerStyle={{
-            ...styles.trackInnerView,
+        <View
+          scrollEnabled={true}
+          // keyboardShouldPersistTaps={'always'}
+          style={{
+            margin: wp('4'),
+            alignItems: 'center',
+            borderRadius: 15,
+            // overflow: Platform.OS == 'ios' ? 'visible' : 'hidden',
+            // marginBottom: hp('10'),
             height: hp('60'),
-            // overflow: 'hidden',
-            marginTop: hp('19'),
-            // backgroundColor: 'green',
-            // flex: 1,
-            alignSelf: 'center',
+            zIndex: 1,
+            // marginTop: isKeyboardVisible,
+            marginTop: Platform.OS == 'ios' ? hp('6') : hp('3'),
+            backgroundColor: 'white',
+            width: wp('85'),
+            justifyContent: 'space-between',
+            // alignSelf: 'center',
+            // marginBottom: isKeyboardVisible,
+            // ...styles.trackInnerView,
+            // height: hp('60'),
+            // // overflow: 'hidden',
+            // // backgroundColor: 'green',
+            // // flex: 1,
+            // alignSelf: 'center',
             // paddingBottom: hp('20'),
           }}
-          style={{
-            height: hp('20'),
-            alignSelf: 'center',
-          }}>
+          // style={{
+          //   height: hp('20'),
+          //   alignSelf: 'center',
+          // }}
+        >
           <View style={styles.centerViewTopText}>
             <TextHeadingCom
               style={{
                 fontSize: hp('1.9'),
                 fontWeight: 'normal',
                 textAlign: 'center',
+                marginTop: hp('5'),
               }}
               heading="Review"
             />
@@ -449,10 +482,10 @@ const BookingDetailsScreen = ({route, navigation}) => {
             onPress={() => {
               updateState({LeaveAReview: false});
             }}
-            viewStyle={{width: wp('70')}}
+            viewStyle={{width: wp('70'), marginBottom: hp('5')}}
             text={'Submit'}
           />
-        </ScrollView>
+        </View>
         {/* </View> */}
       </View>
     );
@@ -506,6 +539,50 @@ const BookingDetailsScreen = ({route, navigation}) => {
   const checkStatusValue = status => {
     return statusValue[status];
   };
+  // const keyBoardCheck = () => {
+  //   const keyboardDidShowListener = Keyboard.addListener(
+  //     'keyboardDidShow',
+  //     () => {
+  //       updateState({isKeyboardVisible: hp('6')});
+  //       // setKeyboardVisible(hp('6')); // or some other action
+  //     },
+  //   );
+  //   const keyboardDidHideListener = Keyboard.addListener(
+  //     'keyboardDidHide',
+  //     () => {
+  //       updateState({isKeyboardVisible: hp('17')});
+  //       // setKeyboardVisible(hp('17')); // or some other action
+  //     },
+  //   );
+
+  //   // return () => {
+  //   //   keyboardDidHideListener.remove();
+  //   //   keyboardDidShowListener.remove();
+  //   // };
+  // };
+  // keyBoardCheck();
+
+  // useEffect(() => {
+  //   const keyboardDidShowListener = Keyboard.addListener(
+  //     'keyboardDidShow',
+  //     () => {
+  //       updateState({isKeyboardVisible: hp('6')});
+  //       // setKeyboardVisible(hp('6')); // or some other action
+  //     },
+  //   );
+  //   const keyboardDidHideListener = Keyboard.addListener(
+  //     'keyboardDidHide',
+  //     () => {
+  //       updateState({isKeyboardVisible: hp('17')});
+  //       // setKeyboardVisible(hp('17')); // or some other action
+  //     },
+  //   );
+
+  //   return () => {
+  //     keyboardDidHideListener.remove();
+  //     keyboardDidShowListener.remove();
+  //   };
+  // }, []);
   return (
     <View>
       <BackHeaderComp

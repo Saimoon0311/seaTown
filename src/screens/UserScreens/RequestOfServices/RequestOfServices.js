@@ -1,4 +1,5 @@
 import {
+  Image,
   ImageBackground,
   KeyboardAvoidingView,
   Platform,
@@ -21,13 +22,64 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {color} from '../../../components/color';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
+import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 const RequestOfServices = ({route, navigation}) => {
   const [text, onChangeText] = useState('Useless Text');
   const [number, onChangeNumber] = useState(
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum.',
   );
+  const [openConfirmView, setOpenConfirmView] = useState(false);
+
   let items = route?.params?.item;
   console.log(12, items);
+  const ProfileUpdateView = () => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView, height: hp('45'), padding: 12}}>
+          <Ionicons
+            name="close-sharp"
+            color={color.textInputColor}
+            size={hp('3')}
+            onPress={() => {
+              setOpenConfirmView(false);
+              // navigation.navigate('CaptionBottomNavigation');
+            }}
+            style={{
+              alignSelf: 'flex-end',
+              //   marginRight: wp('2'),
+            }}
+          />
+          <Image
+            source={require('../../../images/yellowTick.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          />
+          <TextHeadingCom
+            heading="Your request has been submitted"
+            style={{textAlign: 'center', marginTop: hp('2')}}
+          />
+          <TextHeadingCom
+            heading="successfully!"
+            style={{
+              textAlign: 'center',
+              marginTop: hp('2'),
+              fontSize: hp('2.4'),
+              fontWeight: 'bold',
+            }}
+          />
+          <TextHeadingCom
+            heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus nulla aliquet malesuada morbi purus."
+            style={{
+              textAlign: 'center',
+              color: color.iconColor,
+              fontSize: hp('1.6'),
+              marginTop: hp('2'),
+            }}
+          />
+        </View>
+      </View>
+    );
+  };
   const CoordenatesView = props => {
     let width = props.width ?? '90';
     let height = props.height ?? '6';
@@ -97,7 +149,12 @@ const RequestOfServices = ({route, navigation}) => {
             <TextInput
               multiline
               // numberOfLines={10}
-              style={{alignSelf: 'flex-start', flex: 1, color: 'black'}}
+              style={{
+                alignSelf: 'flex-start',
+                flex: 1,
+                color: 'black',
+                marginTop: Platform.OS == 'ios' ? hp('1') : hp('0'),
+              }}
               // onChangeText={onChangeNumber}
               // value={number}
               placeholder="Type your message"
@@ -152,7 +209,7 @@ const RequestOfServices = ({route, navigation}) => {
             name={'attachment'}
           />
           <ButtonThemeComp
-            onPress={() => console.log('oejdoejd')}
+            onPress={() => setOpenConfirmView(true)}
             style={{
               // backgroundColor: 'red',
               // marginLeft: wp('6'),
@@ -170,6 +227,7 @@ const RequestOfServices = ({route, navigation}) => {
           />
         </KeyboardAvoidingView>
       </ScrollView>
+      {openConfirmView && <ProfileUpdateView />}
     </>
   );
 };

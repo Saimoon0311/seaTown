@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Platform, Keyboard, ScrollView} from 'react-native';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
 import TextInputWithTextCom from '../../../components/TextInputWithTextCom/TextInputWithTextCom';
 import {
@@ -15,48 +15,58 @@ const AllPaymentMethod = ({navigation}) => {
         heading="Add Payment Method"
         onPress={() => navigation.goBack()}
       />
-      <View style={{width: wp('90'), alignSelf: 'center'}}>
-        <TextInputWithTextCom
-          placeholder={'Cardholder Name'}
-          upperText={'Cardholder name'}
-          textInputstyle={{
-            width: wp('80'),
-          }}
-        />
-        <TextInputWithTextCom
-          placeholder={'Card Number'}
-          upperText={'Card Number'}
-          textInputstyle={{
-            width: wp('80'),
-          }}
-        />
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <ScrollView contentContainerStyle={{flex: 1}}>
+        <View
+          style={{
+            width: wp('90'),
+            alignSelf: 'center',
+            // backgroundColor: 'red',
+            marginBottom: hp('40'),
+          }}>
           <TextInputWithTextCom
-            upperText={'Expiry Date'}
-            placeholder={'06 / 2024'}
-            style={{width: wp('43')}}
-            textInputstyle={{width: wp('32')}}
-          />
-          <TextInputWithTextCom
-            placeholder={'000'}
-            upperText={'CVV / CVC'}
-            style={{width: wp('43')}}
+            placeholder={'Cardholder Name'}
+            upperText={'Cardholder name'}
             textInputstyle={{
-              width: wp('32'),
+              width: wp('80'),
             }}
           />
+          <TextInputWithTextCom
+            placeholder={'Card Number'}
+            upperText={'Card Number'}
+            textInputstyle={{
+              width: wp('80'),
+            }}
+          />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <TextInputWithTextCom
+              upperText={'Expiry Date'}
+              placeholder={'06 / 2024'}
+              style={{width: wp('43')}}
+              textInputstyle={{width: wp('32')}}
+            />
+            <TextInputWithTextCom
+              placeholder={'000'}
+              upperText={'CVV / CVC'}
+              style={{width: wp('43')}}
+              textInputstyle={{
+                width: wp('32'),
+              }}
+            />
+          </View>
         </View>
-      </View>
-      <CommonButtonComp
-        text={'Add Card'}
-        onPress={() => navigation.goBack()}
-        viewStyle={{
-          marginTop: hp('2'),
-          width: wp('90'),
-          position: 'absolute',
-          bottom: hp('6'),
-        }}
-      />
+
+        <CommonButtonComp
+          text={'Add Card'}
+          onPress={() => navigation.goBack()}
+          viewStyle={{
+            marginTop: hp('2'),
+            width: wp('90'),
+            // position: 'absolute',
+            // marginBottom: hp('-60'),
+            // bottom: hp('2'),
+          }}
+        />
+      </ScrollView>
     </View>
   );
 };
