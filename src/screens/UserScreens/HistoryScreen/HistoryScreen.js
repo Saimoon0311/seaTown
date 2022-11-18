@@ -45,7 +45,7 @@ const HistoryScreen = () => {
           }}>
           <TextHeadingCom
             style={{fontSize: hp('2.3')}}
-            heading={'Anual Membership'}
+            heading={'Annual Membership'}
           />
           <View style={{flexDirection: 'row'}}>
             <View

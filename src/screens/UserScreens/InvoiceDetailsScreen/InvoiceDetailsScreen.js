@@ -15,7 +15,7 @@ const InvoiceDetailsScreen = ({route, navigation}) => {
     <View style={{flex: 1}}>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
-        heading={'Services Request'}
+        heading={'Invoice Detail'}
         statusColor={color.alertBackgroundColor}
         Status={'Download'}
       />

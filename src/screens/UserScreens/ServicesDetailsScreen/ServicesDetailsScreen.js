@@ -134,8 +134,8 @@ const ServicesDetailsScreen = ({route, navigation}) => {
     <SellingPermitForn />
   ) : items?.text == 'Customer Services' ? (
     <ImageBackground
-    resizeMode='contain'
-      style={{flex:1,backgroundColor:"white"}}
+      resizeMode="contain"
+      style={{flex: 1, backgroundColor: 'white'}}
       source={require('../../../images/chatScreen.jpg')}>
       <Ionicons
         name="ios-arrow-back"

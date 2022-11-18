@@ -165,7 +165,7 @@ const ChangePasswordScreen = ({route, navigation}) => {
       keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('1')}
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
       contentContainerStyle={{
-        ...styles.container,
+        // ...styles.container,
         backgroundColor: 'transparent',
       }}>
       <ScrollView contentContainerStyle={styles.scrollView}>

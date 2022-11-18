@@ -19,7 +19,9 @@ import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButto
 import TextInputWithTextCom from '../../../components/TextInputWithTextCom/TextInputWithTextCom';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import KeyboardAdaptableView from 'react-native-keyboard-adaptable-view';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const PermitFormScreen = ({route, navigation}) => {
   const [checkRenderView, setcheckRenderView] = useState({
@@ -128,200 +130,205 @@ const PermitFormScreen = ({route, navigation}) => {
     );
   };
   return (
-    <View>
+    // {/* //{' '} */}
+    // <>
+    <KeyboardAwareScrollView contentContainerStyle={styles.Container}>
       <BackHeaderComp
         onPress={() => navigation.goBack()}
         heading={'Sailing Permit Form'}
       />
-      {/* <KeyboardAvoidingView
-        behavior={Platform.OS == 'ios' ? 'position' : 'height'}
-        // enabled={true}
-        // keyboardVerticalOffset={Platform.OS === 'ios' ? hp('0') : hp('-1')}
-        contentContainerStyle={{flex: 1}}> */}
-      <ScrollView
+      {/* <ScrollView
         keyboardShouldPersistTaps={'always'}
-        contentContainerStyle={styles.Container}>
-        <View
-          style={{
-            flex: 1,
-            paddingBottom: hp('3'),
-            justifyContent: 'space-evenly',
-          }}>
+        contentContainerStyle={styles.Container}> */}
+      {/* <KeyboardAvoidingView
+          behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+          // enabled={true}
+          // keyboardVerticalOffset={Platform.OS === 'ios' ? hp('2') : hp('-1')}
+          // contentContainerStyle={{backgroundColor: 'transparent'}}
+          style={{backgroundColor: 'transparent', flexGrow: 1}}> */}
+      <View
+        style={{
+          // flex: 1,
+          // paddingBottom: hp('3'),
+          justifyContent: 'space-evenly',
+        }}>
+        <TextInputWithTextCom
+          placeholder={'Boat Number'}
+          upperText={'Boat Number'}
+          textInputstyle={{
+            width: wp('80'),
+            color: 'black',
+          }}
+        />
+        <TextInputWithTextCom
+          placeholder={'Boat Name'}
+          upperText={'Boat Name'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+        />
+        <TextInputWithTextCom
+          placeholder={'Date of Expiry'}
+          upperText={'Date of Expiry'}
+          showIcon={true}
+          iconName={'calendar-outline'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+        />
+        <TextInputWithTextCom
+          placeholder={'Boat Owner'}
+          upperText={'Boat Owner'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+        />
+        <TextInputWithTextCom
+          placeholder={'Captain Name'}
+          upperText={'Captain Name'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+        />
+        <TextInputWithTextCom
+          placeholder={'Phone'}
+          upperText={'Phone Number'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+        />
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInputWithTextCom
-            placeholder={'Boat Number'}
-            upperText={'Boat Number'}
-            textInputstyle={{
-              width: wp('80'),
-              color: 'black',
-            }}
-          />
-          <TextInputWithTextCom
-            placeholder={'Boat Name'}
-            upperText={'Boat Name'}
-            textInputstyle={{
-              color: 'black',
-              width: wp('80'),
-            }}
-          />
-          <TextInputWithTextCom
-            placeholder={'Date of Expiry'}
-            upperText={'Date of Expiry'}
+            placeholder={'D.O.Departure'}
+            upperText={'D.O.Departure'}
             showIcon={true}
             iconName={'calendar-outline'}
-            textInputstyle={{
-              color: 'black',
-              width: wp('80'),
-            }}
+            style={{width: wp('43')}}
+            textInputstyle={{width: wp('32'), color: 'black'}}
           />
           <TextInputWithTextCom
-            placeholder={'Boat Owner'}
-            upperText={'Boat Owner'}
-            textInputstyle={{
-              color: 'black',
-              width: wp('80'),
-            }}
-          />
-          <TextInputWithTextCom
-            placeholder={'Captain Name'}
-            upperText={'Captain Name'}
-            textInputstyle={{
-              color: 'black',
-              width: wp('80'),
-            }}
-          />
-          <TextInputWithTextCom
-            placeholder={'Phone'}
-            upperText={'Phone Number'}
-            textInputstyle={{
-              color: 'black',
-              width: wp('80'),
-            }}
-          />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <TextInputWithTextCom
-              placeholder={'D.O.Departure'}
-              upperText={'D.O.Departure'}
-              showIcon={true}
-              iconName={'calendar-outline'}
-              style={{width: wp('43')}}
-              textInputstyle={{width: wp('32'), color: 'black'}}
-            />
-            <TextInputWithTextCom
-              placeholder={'Time of Departure'}
-              upperText={'Time of Departure'}
-              style={{width: wp('43')}}
-              showIcon={true}
-              iconName={'ios-time-outline'}
-              textInputstyle={{
-                color: 'black',
-                width: wp('32'),
-              }}
-            />
-          </View>
-          <TextInputWithTextCom
-            placeholder={'Port of Jebel Ali'}
-            upperText={'Port of Departure'}
-            textInputstyle={{
-              color: 'black',
-              width: wp('80'),
-            }}
-            changeIcon={
-              <Entypo
-                size={hp('2')}
-                name="chevron-thin-down"
-                color={color.textPrimaryColor}
-                style={{marginRight: wp('2')}}
-              />
-            }
+            placeholder={'Time of Departure'}
+            upperText={'Time of Departure'}
+            style={{width: wp('43')}}
             showIcon={true}
-            iconName={'calendar-outline'}
-          />
-
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <TextInputWithTextCom
-              placeholder={'Time of Arrival'}
-              upperText={'Time of Arrival'}
-              showIcon={true}
-              iconName={'ios-time-outline'}
-              style={{width: wp('43')}}
-              textInputstyle={{width: wp('32')}}
-            />
-            <TextInputWithTextCom
-              placeholder={'Date of Arrival'}
-              upperText={'Date of Arrival'}
-              style={{width: wp('43')}}
-              showIcon={true}
-              iconName={'calendar-outline'}
-              textInputstyle={{
-                width: wp('32'),
-              }}
-            />
-          </View>
-          <TextInputWithTextCom
-            placeholder={'Distination'}
-            upperText={'Distination'}
+            iconName={'ios-time-outline'}
             textInputstyle={{
               color: 'black',
-              width: wp('80'),
-            }}
-          />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <TextInputWithTextCom
-              placeholder={'No. of Passenger'}
-              upperText={'No. of Passenger'}
-              style={{width: wp('43')}}
-              textInputstyle={{width: wp('32'), color: 'black'}}
-            />
-            <TextInputWithTextCom
-              placeholder={'No. of Crew'}
-              upperText={'No. of Crew'}
-              style={{width: wp('43')}}
-              textInputstyle={{
-                color: 'black',
-                width: wp('32'),
-              }}
-            />
-          </View>
-          <View style={styles.headingView}>
-            <TextHeadingCom heading="Document" />
-            <PlusButtonText
-              styles={{
-                marginLeft: 'auto',
-                width: wp('30'),
-              }}
-              text="Upload More"
-            />
-          </View>
-          <DocumentView
-            image={require('../../../images/doc.png')}
-            title={'Emirates ID'}
-            work={'1.59mb'}
-          />
-          <DocumentView
-            image={require('../../../images/pdf.png')}
-            title={'Dubai Marine license'}
-            imageStyle={{
-              height: wp('13'),
-              width: wp('9'),
-              // backgroundColor: 'red',
-            }}
-            work={'55kb'}
-          />
-          <CommonButtonComp
-            text="Submit"
-            textStyle={{fontWeight: 'bold'}}
-            onPress={() => updateState({ServicesRequestCompleted: true})}
-            viewStyle={{
-              width: wp('85'),
-              marginTop: hp('2'),
-              marginBottom: hp('2'),
+              width: wp('32'),
             }}
           />
         </View>
-      </ScrollView>
-      {ServicesRequestCompleted && <ServicesRequestView />}
+        <TextInputWithTextCom
+          placeholder={'Port of Jebel Ali'}
+          upperText={'Port of Departure'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+          changeIcon={
+            <Entypo
+              size={hp('2')}
+              name="chevron-thin-down"
+              color={color.textPrimaryColor}
+              style={{marginRight: wp('2')}}
+            />
+          }
+          showIcon={true}
+          iconName={'calendar-outline'}
+        />
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <TextInputWithTextCom
+            placeholder={'Time of Arrival'}
+            upperText={'Time of Arrival'}
+            showIcon={true}
+            iconName={'ios-time-outline'}
+            style={{width: wp('43')}}
+            textInputstyle={{width: wp('32')}}
+          />
+          <TextInputWithTextCom
+            placeholder={'Date of Arrival'}
+            upperText={'Date of Arrival'}
+            style={{width: wp('43')}}
+            showIcon={true}
+            iconName={'calendar-outline'}
+            textInputstyle={{
+              width: wp('32'),
+            }}
+          />
+        </View>
+        <TextInputWithTextCom
+          placeholder={'Destination'}
+          upperText={'Destination'}
+          textInputstyle={{
+            color: 'black',
+            width: wp('80'),
+          }}
+        />
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <TextInputWithTextCom
+            placeholder={'No. of Passenger'}
+            upperText={'No. of Passenger'}
+            style={{width: wp('43')}}
+            textInputstyle={{width: wp('32'), color: 'black'}}
+          />
+          <TextInputWithTextCom
+            placeholder={'No. of Crew'}
+            upperText={'No. of Crew'}
+            style={{width: wp('43')}}
+            textInputstyle={{
+              color: 'black',
+              width: wp('32'),
+            }}
+          />
+        </View>
+        <View style={styles.headingView}>
+          <TextHeadingCom heading="Document" />
+          <PlusButtonText
+            styles={{
+              marginLeft: 'auto',
+              width: wp('30'),
+            }}
+            text="Upload More"
+          />
+        </View>
+        <DocumentView
+          image={require('../../../images/doc.png')}
+          title={'Emirates ID'}
+          work={'1.59mb'}
+        />
+        <DocumentView
+          image={require('../../../images/pdf.png')}
+          title={'Dubai Marine license'}
+          imageStyle={{
+            height: wp('13'),
+            width: wp('9'),
+            // backgroundColor: 'red',
+          }}
+          work={'55kb'}
+        />
+        <CommonButtonComp
+          text="Submit"
+          textStyle={{fontWeight: 'bold'}}
+          onPress={() => updateState({ServicesRequestCompleted: true})}
+          viewStyle={{
+            width: wp('85'),
+            marginTop: hp('2'),
+            marginBottom: hp('2'),
+          }}
+        />
+      </View>
       {/* </KeyboardAvoidingView> */}
-    </View>
+      {/* </ScrollView> */}
+      {ServicesRequestCompleted && <ServicesRequestView />}
+    </KeyboardAwareScrollView>
+    // {/* // // </KeyboardAdaptableView> */}
+    // </>
   );
 };
 

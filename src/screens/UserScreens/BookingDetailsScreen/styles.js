@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {color} from '../../../components/color';
 import {
   widthPercentageToDP as wp,
@@ -39,6 +39,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: hp('0.5'),
     alignItems: 'center',
+    // backgroundColor: 'red',
+    width: Platform.OS == 'ios' ? wp('65') : wp('60'),
   },
   dateTimeText: {color: color.lightBlueColor, fontSize: hp('1.5')},
   priceButton: {
