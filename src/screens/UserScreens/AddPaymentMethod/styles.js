@@ -59,4 +59,12 @@ export const styles = StyleSheet.create({
     top: hp('-3'),
     justifyContent: 'space-around',
   },
+  desText: {
+    textAlign: 'center',
+    color: color.textInputColor,
+    fontSize: hp('1.6'),
+    width: wp('65'),
+    alignSelf: 'center',
+    fontWeight: 'normal',
+  },
 });

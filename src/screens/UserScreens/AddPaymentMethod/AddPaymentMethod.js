@@ -58,14 +58,7 @@ const AddPaymentMethod = ({navigation}) => {
           />
           <TextHeadingCom
             heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus nulla aliquet malesuada morbi purus."
-            style={{
-              textAlign: 'center',
-              color: color.textInputColor,
-              fontSize: hp('1.6'),
-              width: wp('65'),
-              alignSelf: 'center',
-              fontWeight: 'normal',
-            }}
+            style={styles.desText}
           />
           <CommonButtonComp
             onPress={() => {
