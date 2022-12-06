@@ -117,6 +117,10 @@ export const styles = StyleSheet.create({
   ImageBackgroundContainer: {
     width: wp('25'),
     height: hp('10'),
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginRight: wp('6'),
+    marginTop: hp('1'),
   },
   dateTimeViewStyle: {flexDirection: 'row', justifyContent: 'space-between'},
 });

@@ -19,8 +19,12 @@ import * as Animatable from 'react-native-animatable';
 import {Switch} from 'react-native-paper';
 // import {Radio, RadioGroup} from '@ui-kitten/components';
 import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button';
+import {useDispatch} from 'react-redux';
+import type from '../../Redux/type';
+import {successMessage} from '../NotificationMessage';
 
 const UserDrawerComp = ({navigation}) => {
+  const dispatch = useDispatch();
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [checked, setChecked] = useState('first');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -130,7 +134,11 @@ const UserDrawerComp = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-          onPress={() => navigateScreens('LoginScreen')}
+          // onPress={() => navigateScreens('LoginScreen')}
+          onPress={() => {
+            dispatch({type: type.LogoutType}),
+              successMessage('You have been successfully logged out!');
+          }}
           style={{
             ...styles.innerView,
             position: 'absolute',

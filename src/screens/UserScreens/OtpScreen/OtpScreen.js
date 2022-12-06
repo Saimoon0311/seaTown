@@ -22,11 +22,16 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import {OtpVerifiedUrl} from '../../../config/Urls';
+import axios from 'react-native-axios';
+import {errorMessage} from '../../../components/NotificationMessage';
+import {errorHandler} from '../../../config/helperFunction';
+import types from '../../../Redux/type';
 
 const OtpScreen = ({route, navigation}) => {
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
   const emailRef = useRef();
-  const LoginType = route.params;
+  const otpData = route.params;
   const [isKeyboardVisible, setKeyboardVisible] = useState(hp('0'));
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [loginUser, setLoginUser] = useState({
@@ -40,54 +45,11 @@ const OtpScreen = ({route, navigation}) => {
   const handleClick = () => setShow(!show);
   const [show, setShow] = useState(false);
   const [alertState, setALertState] = useState(false);
-  const AwesomeAlertMessage = () => {
-    return (
-      <AwesomeAlert
-        show={alertState}
-        showProgress={false}
-        title="Warning!"
-        message="Account deletion is in process, please verify your email to delete your ivacay account."
-        contentContainerStyle={{
-          width: wp('80%'),
-          backgroundColor: 'white',
-        }}
-        closeOnTouchOutside={false}
-        closeOnHardwareBackPress={false}
-        showCancelButton={false}
-        showConfirmButton={true}
-        confirmText="Ok"
-        confirmButtonStyle={styles.buttonstyle}
-        cancelButtonStyle={styles.buttonstyle}
-        confirmButtonTextStyle={{
-          textAlign: 'center',
-          color: color?.textPrimaryColor,
-          fontSize: hp('2.2%'),
-        }}
-        titleStyle={{
-          color: color.textPrimaryColor,
-          textAlign: 'center',
-          fontWeight: 'bold',
-        }}
-        messageStyle={{color: 'gray', textAlign: 'center', color: 'black'}}
-        onConfirmPressed={() => {
-          setALertState(false);
-        }}
-      />
-    );
-  };
+
   const {email, code} = loginUser;
-  const updateState = data => setLoginUser(() => ({...loginUser, ...data}));
+  const updateState = data => setLoginUser(prev => ({...prev, ...data}));
   // Focused handler
-  const handleInputFocus = textinput => {
-    setIsFocused({
-      [textinput]: true,
-    });
-  };
-  const handleInputBlur = textinput => {
-    setIsFocused({
-      [textinput]: false,
-    });
-  };
+
   // XXXXXXXXXXXX
 
   //   const loginFunction = () => {
@@ -131,6 +93,7 @@ const OtpScreen = ({route, navigation}) => {
   //       setLoading(false);
   //     }
   //   };
+
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -158,6 +121,40 @@ const OtpScreen = ({route, navigation}) => {
 
   const setText = () => {
     otpInput.current.setValue('1234');
+  };
+  const getApiData = loading => {
+    // updateLoadingState({[loading]: true});
+    const url = OtpVerifiedUrl + code;
+    setLoading(true);
+    axios
+      .get(url, {
+        headers: {
+          // Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${otpData?.token}`,
+        },
+      })
+      .then(function (response) {
+        if (response?.data.user?.is_email_verified == 1) {
+          setLoading(false);
+          dispatch({
+            type: types.LoginType,
+            payload: response?.data,
+          });
+        } else {
+          setLoading(false);
+
+          errorMessage('Email is not verified!!!');
+        }
+        // updateState({[state]: response.data.data});
+        // updateLoadingState({[loading]: false});
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // updateLoadingState({[loading]: false});
+        setLoading(false);
+
+        errorMessage(errorHandler(error));
+      });
   };
   return (
     // <KeyboardAvoidingComponent />
@@ -203,12 +200,16 @@ const OtpScreen = ({route, navigation}) => {
             // codeInputFieldStyle={styles.underlineStyleBase}
             // codeInputHighlightStyle={styles.underlineStyleHighLighted}
             onCodeFilled={code => {
+              updateState({code: code});
+
               console.log(`Code is ${code}, you are good to go!`);
             }}
           />
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('UserBottomnavigation')}
+          isloading={isloading}
+          // onPress={() => navigation.navigate('UserBottomnavigation')}
+          onPress={() => getApiData(isloading)}
           text={'Submit'}
           style={{marginTop: hp('2')}}
         />

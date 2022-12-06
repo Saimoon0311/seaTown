@@ -56,7 +56,7 @@ const DrawerContent = props => {
 };
 
 const StackNavigatior = ({style, navigation}) => {
-  const {userData} = useSelector(state => state.userData);
+  const {userData, token} = useSelector(state => state.userData);
   return (
     // <Animated.View>
     // <Animated.View style={{flex: 1, backgroundColor: 'red', colors: 'yellow'}}>
@@ -95,7 +95,27 @@ const StackNavigatior = ({style, navigation}) => {
             component={GuiderBottomNavigation}
           />
         ) : ( */}
-      <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
+      {token == '' ? (
+        <>
+          <Stack.Screen name="LoginScreen" component={screens.LoginScreen} />
+          <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
+          <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen
+            name="UserBottomnavigation"
+            component={UserBottomnavigation}
+          />
+          <Stack.Screen
+            options={{
+              animation: 'none',
+            }}
+            name="UserDrawerComp"
+            component={screens.UserDrawerComp}
+          />
+        </>
+      )}
       <Stack.Screen
         name="AllPaymentMethod"
         component={screens.AllPaymentMethod}
@@ -104,7 +124,7 @@ const StackNavigatior = ({style, navigation}) => {
         name="CaptainLoginScreen"
         component={captionScreens.CaptainLoginScreen}
       />
-      <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} />
+      {/* <Stack.Screen name="SignUpScreen" component={screens.SignUpScreen} /> */}
       <Stack.Screen
         name="AddPaymentMethod"
         component={screens.AddPaymentMethod}
@@ -136,7 +156,6 @@ const StackNavigatior = ({style, navigation}) => {
         name="InvoiceDetailsScreen"
         component={screens.InvoiceDetailsScreen}
       />
-      <Stack.Screen name="OtpScreen" component={screens.OtpScreen} />
       {/* <Stack.Screen name="MybottomTabs" component={MybottomTabs} /> */}
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="About" component={About} />
@@ -154,10 +173,7 @@ const StackNavigatior = ({style, navigation}) => {
         name="SelectPaymentScreen"
         component={screens.SelectPaymentScreen}
       />
-      <Stack.Screen
-        name="UserBottomnavigation"
-        component={UserBottomnavigation}
-      />
+
       <Stack.Screen name="UserTopTabs" component={UserTopTabs} />
       <Stack.Screen
         options={{
@@ -166,13 +182,7 @@ const StackNavigatior = ({style, navigation}) => {
         name="DrawerComp"
         component={DrawerComp}
       />
-      <Stack.Screen
-        options={{
-          animation: 'none',
-        }}
-        name="UserDrawerComp"
-        component={screens.UserDrawerComp}
-      />
+
       <Stack.Screen
         name="CaptionBottomNavigation"
         component={CaptionBottomNavigation}

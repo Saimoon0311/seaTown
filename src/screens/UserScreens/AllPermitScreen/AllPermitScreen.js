@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -18,8 +18,45 @@ import {color} from '../../../components/color';
 import {CircleImage} from '../../../components/CircleImage/CircleImage';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import axios from 'react-native-axios';
+import {useSelector} from 'react-redux';
+import {errorMessage} from '../../../components/NotificationMessage';
+import {errorHandler} from '../../../config/helperFunction';
+import {SalingPermitUrl} from '../../../config/Urls';
+import moment from 'moment/moment';
 
 const AllPermitScreen = ({navigation}) => {
+  var time = new Date();
+  const {userData, token} = useSelector(state => state.userData);
+  const [loading, setLoading] = useState(false);
+  const [allState, setAllState] = useState({
+    allPermitState: [],
+  });
+  const {allPermitState} = allState;
+  const updateState = data => setAllState(prev => ({...prev, ...data}));
+
+  const getApiData = loading => {
+    // updateLoadingState({[loading]: true});
+    const url = SalingPermitUrl;
+    setLoading(true);
+    axios
+      .get(url, {
+        headers: {
+          // Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(function (response) {
+        console.log('res=>', response.data);
+        updateState({allPermitState: response.data.data});
+        setLoading(false);
+      })
+      .catch(function (error) {
+        setLoading(false);
+        errorMessage(errorHandler(error));
+      });
+  };
+
   const [allPermits, setAllPermits] = useState([
     {
       id: 1,
@@ -86,8 +123,12 @@ const AllPermitScreen = ({navigation}) => {
       innerImage: require('../../../images/MechinacalServices.png'),
     },
   ]);
+  useEffect(() => {
+    getApiData();
+  }, []);
   const PermitsView = prop => {
     const {data} = prop;
+    let timeData = moment(data.time_of_departure, 'h:mm').format('LT');
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate('SailingPermitDetails', data)}
@@ -98,7 +139,7 @@ const AllPermitScreen = ({navigation}) => {
               width: Dimensions.get('window').width * 0.12,
               height: Dimensions.get('window').width * 0.12,
             }}
-            image={data.innerImage}
+            image={data?.innerImage}
           />
         </View>
         <View style={styles.centerView}>
@@ -112,7 +153,7 @@ const AllPermitScreen = ({navigation}) => {
               color: color.lightBlueColor,
               fontSize: hp('1.7'),
             }}
-            heading="21 feb,2022 | 12:43 AM"
+            heading={`${data?.date_of_departure} | ${timeData}`}
           />
         </View>
         <View style={styles.rightView}>
@@ -136,7 +177,7 @@ const AllPermitScreen = ({navigation}) => {
     <View style={{flex: 1}}>
       <BackHeaderComp onPress={() => navigation.goBack()} heading="Permits" />
       <FlatList
-        data={allPermits}
+        data={allPermitState}
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={{paddingBottom: hp('4')}}
         renderItem={({item}) => {

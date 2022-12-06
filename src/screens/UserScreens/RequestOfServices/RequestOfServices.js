@@ -8,6 +8,8 @@ import {
   Text,
   TextInput,
   View,
+  PermissionsAndroid,
+  FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './style';
@@ -23,15 +25,157 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {color} from '../../../components/color';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
-const RequestOfServices = ({route, navigation}) => {
-  const [text, onChangeText] = useState('Useless Text');
-  const [number, onChangeNumber] = useState(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum.',
-  );
-  const [openConfirmView, setOpenConfirmView] = useState(false);
+import Geolocation from 'react-native-geolocation-service';
+import {useEffect} from 'react';
+import TextInputWithTextCom from '../../../components/TextInputWithTextCom/TextInputWithTextCom';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {ReportIncidentUrl} from '../../../config/Urls';
+import {
+  errorMessage,
+  successMessage,
+} from '../../../components/NotificationMessage';
+import axios from 'react-native-axios';
+import {useSelector} from 'react-redux';
 
+const RequestOfServices = ({route, navigation}) => {
+  const {userData, token} = useSelector(state => state.userData);
+  const [getPosition, setGetPosition] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [stateChange, setStateChange] = useState({
+    userImage: [],
+    subject: '',
+    message: '',
+  });
+
+  const updateState = data => setStateChange(prev => ({...prev, ...data}));
+  const {userImage, subject, message} = stateChange;
+
+  // const [number, onChangeNumber] = useState(
+  //   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus eros platea amet, ut adipiscing aliquet. Metus blandit non amet, ultricies gravida nisi, dapibus interdum.',
+  // );
+  const [openConfirmView, setOpenConfirmView] = useState(false);
   let items = route?.params?.item;
-  console.log(12, items);
+  const pickImagesFromGalary = () => {
+    launchImageLibrary(
+      {
+        selectionLimit: 0,
+        mediaType: 'photo',
+        quality: 0.5,
+        maxWidth: 300,
+        maxHeight: 300,
+      },
+      res => {
+        if (!res?.didCancel) {
+          updateState({userImage: res?.assets});
+          // updateImage(res?.assets);
+        }
+      },
+    );
+  };
+  async function requestPermissions() {
+    if (Platform.OS === 'ios') {
+      Geolocation.requestAuthorization();
+      Geolocation.setRNConfiguration({
+        skipPermissionRequests: false,
+        authorizationLevel: 'whenInUse',
+      });
+    }
+
+    if (Platform.OS === 'android') {
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      );
+    }
+  }
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        // socket.emit(userData.data.id, position);
+        console.log(82, position);
+        setGetPosition(position);
+        // setLocation(position);
+      },
+      error => {
+        // See error code charts below.
+        console.log(error.code, error.message);
+      },
+      {enableHighAccuracy: true},
+    );
+  };
+
+  function RemoveImage(value) {
+    const found = userImage.filter(item => {
+      return item !== value;
+    });
+    updateState({userImage: found});
+    console.log(105, found);
+  }
+
+  const ReportIncidentFunc = () => {
+    var bodyFormData = new FormData();
+    setLoading(true);
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (
+      getPosition?.coords != '' &&
+      subject != '' &&
+      message != '' &&
+      userImage != ''
+    ) {
+      // let body = {
+      //   north_coordinates: getPosition?.coords?.latitude,
+      //   east_coordinates: getPosition?.coords?.longitude,
+      //   subject: subject,
+      //   note: message,
+      //   image: userImage,
+      // };
+
+      userImage.length > 0 &&
+        bodyFormData.append('image', {
+          name: userImage[0]?.fileName,
+          uri: userImage[0]?.uri,
+          type: userImage[0]?.type,
+        });
+      bodyFormData.append(
+        'north_coordinates',
+        getPosition?.coords?.latitude.toString(),
+      );
+
+      bodyFormData.append(
+        'east_coordinates',
+        getPosition?.coords?.longitude.toString(),
+      );
+      bodyFormData.append('subject', subject);
+      bodyFormData.append('note', message);
+
+      console.log(123, bodyFormData, ReportIncidentUrl);
+      axios
+        .post(ReportIncidentUrl, bodyFormData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(function (res) {
+          console.log(136, res.data);
+          successMessage('Your reports has been send!');
+          setLoading(false);
+          // dispatch({
+          //   type: types.LoginType,
+          //   payload: res?.data,
+          // });
+        })
+        .catch(function (error) {
+          console.log(162, error.response);
+
+          setLoading(false);
+          errorMessage(error?.response?.data?.message);
+        });
+    } else {
+      setLoading(false);
+      errorMessage('Please type correct information');
+    }
+  };
   const ProfileUpdateView = () => {
     return (
       <View style={styles.trackMainView}>
@@ -118,9 +262,35 @@ const RequestOfServices = ({route, navigation}) => {
         <KeyboardAvoidingView
           // style={styles.container}
           behavior={Platform.OS ? 'position' : 'height'}>
-          <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
-          <CoordenatesView coordArea={`30°00'0.00' N`} coordenates={''} />
+          {getPosition == '' ? (
+            <ButtonThemeComp
+              onPress={() => {
+                requestPermissions(), getCurrentLocation();
+              }}
+              style={{
+                // backgroundColor: 'red',
+                // marginLeft: wp('6'),
 
+                marginTop: hp('3'),
+                width: wp('90'),
+                backgroundColor: color.textPrimaryColor,
+                // items?.text === 'Report Incident'
+                //   ? 'red'
+              }}
+              text={'Get Location'}
+            />
+          ) : (
+            <>
+              <CoordenatesView
+                coordArea={`${getPosition?.coords?.latitude}`}
+                coordenates={''}
+              />
+              <CoordenatesView
+                coordArea={`${getPosition?.coords?.longitude}`}
+                coordenates={''}
+              />
+            </>
+          )}
           {items?.text === 'Report Incident' ? (
             <View></View>
           ) : (
@@ -140,11 +310,17 @@ const RequestOfServices = ({route, navigation}) => {
               />
             </View>
           )}
-          <CoordenatesView
-            coordArea={`Need Ice and Sunglases`}
-            coordenates={''}
-            icoNotShow={true}
-          />
+          <View style={{marginTop: hp('-3.5')}}>
+            <TextInputWithTextCom
+              onChangeText={text => updateState({subject: text})}
+              placeholder={'subject'}
+              // upperText={'Boat Number'}
+              textInputstyle={{
+                width: wp('80'),
+                color: 'black',
+              }}
+            />
+          </View>
           <View style={styles.input}>
             <TextInput
               multiline
@@ -155,65 +331,69 @@ const RequestOfServices = ({route, navigation}) => {
                 color: 'black',
                 marginTop: Platform.OS == 'ios' ? hp('1') : hp('0'),
               }}
-              // onChangeText={onChangeNumber}
-              // value={number}
+              onChangeText={text => updateState({message: text})}
+              value={message}
               placeholder="Type your message"
               placeholderTextColor={'gray'}
             />
           </View>
-          <Text
+          {/* <Text
             style={{
               textAlign: 'right',
               marginTop: hp('0.5'),
               color: color.themeColorDark,
             }}>
             0/500
-          </Text>
-          <View style={{flexDirection: 'row'}}>
-            <ImageBackground
-              resizeMode="contain"
-              style={styles.ImageBackgroundContainer}
-              source={require('../../../images/image1.png')}>
-              <MaterialIcons
-                name="cancel"
-                size={hp('2.5')}
-                color={color.textColor}
-                style={{
-                  textAlign: 'right',
-                  marginTop: hp('0.3'),
-                  marginRight: wp('3.1'),
-                }}
-              />
-            </ImageBackground>
+          </Text> */}
+          <FlatList
+            data={userImage}
+            scrollEnabled={false}
+            // contentContainerStyle={{
+            //   width: wp('95'),
+            //   backgroundColor: 'red',
+            //   flexDirection: 'row',
 
-            <ImageBackground
-              resizeMode="contain"
-              style={styles.ImageBackgroundContainer}
-              source={require('../../../images/image2.png')}>
-              <MaterialIcons
-                name="cancel"
-                size={hp('2.5')}
-                color={color.textColor}
-                style={{
-                  textAlign: 'right',
-                  marginTop: hp('0.3'),
-                  marginRight: wp('3.1'),
-                }}
-              />
-            </ImageBackground>
-          </View>
+            //   display: 'flex',
+            //   flexWrap: 'wrap',
+            // }}
+            keyExtractor={(item, index) => index.toString()}
+            numColumns={3}
+            renderItem={({item, index}) => {
+              return (
+                <ImageBackground
+                  style={styles.ImageBackgroundContainer}
+                  source={{
+                    uri: item?.uri,
+                  }}>
+                  <MaterialIcons
+                    onPress={() => RemoveImage(item)}
+                    name="cancel"
+                    size={hp('2.5')}
+                    color={'white'}
+                    style={{
+                      textAlign: 'right',
+                      marginTop: hp('0.4'),
+                      marginRight: wp('1.5'),
+                    }}
+                  />
+                </ImageBackground>
+              );
+            }}
+          />
           <TextButtonComp
-            onPress={() => console.log('oejdoejd')}
+            onPress={() => pickImagesFromGalary()}
             viewStyle={{marginTop: hp('3')}}
             text={'Attachments'}
             name={'attachment'}
           />
           <ButtonThemeComp
-            onPress={() => setOpenConfirmView(true)}
+            // onPress={() => {
+            //   requestPermissions(), getCurrentLocation();
+            // }}
+            isloading={loading}
+            // onPress={() => setOpenConfirmView(true)}
+            onPress={() => ReportIncidentFunc()}
             style={{
-              // backgroundColor: 'red',
-              // marginLeft: wp('6'),
-
               marginTop: hp('3'),
               width: wp('90'),
               backgroundColor:

@@ -39,7 +39,6 @@ const ServicesDetailsScreen = ({route, navigation}) => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.flatListView}
             renderItem={({item}) => {
-              console.log(item);
               return (
                 <View style={styles.boxView}>
                   <Image source={item?.image} />

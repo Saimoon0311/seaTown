@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  StatusBar,
+} from 'react-native';
 import {HeaderComp} from '../../../components/HeaderComp/HeaderComp';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 import {WeatherHomeComp} from '../../../components/WeatherHomeComp/WeatherHomeComp';
@@ -154,6 +161,10 @@ const HomeScreen = ({navigation}) => {
   }, 2000);
   return (
     <View style={{flex: 1}}>
+      <StatusBar
+        hidden={false}
+        barStyle={Platform.OS == 'ios' ? 'dark-content' : 'default'}
+      />
       <HeaderComp
         notificationPress={() => navigation.navigate('NotificationScreen')}
         heading={'Home'}

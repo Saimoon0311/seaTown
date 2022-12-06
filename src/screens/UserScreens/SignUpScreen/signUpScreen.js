@@ -11,7 +11,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {ApiGet, ApiPost, ApiPostFormData} from '../../../config/helperFunction';
+import {
+  ApiGet,
+  ApiPost,
+  ApiPostFormData,
+  errorHandler,
+} from '../../../config/helperFunction';
 import {CountryNameUrl, resendEmailUrl, SignUpUrl} from '../../../config/Urls';
 import {styles} from './styles';
 import {
@@ -24,16 +29,25 @@ import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp'
 import CheckBox from '@react-native-community/checkbox';
 import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
+import axios from 'react-native-axios';
+import {useDispatch} from 'react-redux';
+import type from '../../../Redux/type';
 
 export default function SignUpScreen({navigation}) {
   const [isKeyboardVisible, setKeyboardVisible] = useState('flex');
+  const dispatch = useDispatch();
 
   const [signUpUser, setSignUpUser] = useState({
-    userName: '',
-    email: '',
-    phone: '',
-    password: '',
-    ConfirmPassword: '',
+    // userName: '',
+    // email: '',
+    // phone: '',
+    // password: '',
+    // ConfirmPassword: '',
+    userName: 'b',
+    email: 'vivise4154@edinel.com',
+    phone: '125252525252',
+    password: '12345678',
+    ConfirmPassword: '12345678',
   });
   // sb-ktzwd14471324@personal.example.com
   // p)FUl>U3
@@ -55,8 +69,16 @@ export default function SignUpScreen({navigation}) {
   const handleClick = () => setShow(!show);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
-  const {userName, email, password, countryId, userImage, phone, userRole} =
-    signUpUser;
+  const {
+    userName,
+    email,
+    password,
+    ConfirmPassword,
+    countryId,
+    userImage,
+    phone,
+    userRole,
+  } = signUpUser;
   const updateState = data => setSignUpUser(prev => ({...prev, ...data}));
 
   const handleInputFocus = textinput => {
@@ -69,47 +91,7 @@ export default function SignUpScreen({navigation}) {
       [textinput]: false,
     });
   };
-  const signUpFunction = () => {
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    setLoading(true);
-    if (
-      userName != '' &&
-      userName != null &&
-      email != '' &&
-      email != null &&
-      password != '' &&
-      password != null &&
-      phone != null &&
-      phone != '' &&
-      reg.test(email) === true
-    ) {
-      var formdata = new FormData();
-      formdata.append('userName', userName);
-      formdata.append('email', email);
-      formdata.append('password', password);
-      formdata.append('phone', Number(phone));
-      ApiPostFormData(SignUpUrl, formdata).then(res => {
-        if (res.status == 200) {
-          const {id} = res.json.data;
-          setLoading(false);
-          setSignUpConfirm(true);
-          setUserId(id);
-        } else if (res.status == 401) {
-          setLoading(false);
-          errorMessage(res.json.message);
-        } else {
-          errorMessage('Network request failed.');
-          setLoading(false);
-        }
-      });
-    } else if (userImage.length == 0) {
-      setLoading(false);
-      errorMessage('Kindly select an image');
-    } else {
-      errorMessage('Plesae type correct information.');
-      setLoading(false);
-    }
-  };
+
   const getAllCountryName = () => {
     ApiGet(CountryNameUrl).then(res => {
       if (res.status == 200) {
@@ -191,7 +173,48 @@ export default function SignUpScreen({navigation}) {
   // };
 
   //TIMER FUNCTION
+  const signUpFun = () => {
+    setLoading(true);
+    if (!toggleCheckBox) {
+      setLoading(false);
+      errorMessage('Please accept term and conditions');
+    } else if (toggleCheckBox) {
+      if (
+        password != '' &&
+        password.length >= 8 &&
+        ConfirmPassword != '' &&
+        email != '' &&
+        phone != '' &&
+        userName != ''
+      ) {
+        let body = {
+          email: email,
+          password: password,
+          password_confirmation: ConfirmPassword,
+          phone: phone,
+          name: userName,
+        };
+        axios
+          .post(SignUpUrl, body)
+          .then(function (res) {
+            // dispatch({
+            //   type: type.LoginType,
+            //   payload: res.data.data,
+            // });
+          })
+          .catch(function (error) {
+            console.log(78, error?.response?.data?.message);
 
+            setLoading(false);
+            // errorMessage(error?.response?.data?.message);
+            errorMessage(errorHandler(error));
+          });
+      } else {
+        setLoading(false);
+        errorMessage('Please complete all fields');
+      }
+    }
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'position' : 'height'}
@@ -285,18 +308,21 @@ export default function SignUpScreen({navigation}) {
           />
           <Text style={styles.rememberText}>Accept Terms of Services</Text>
         </View>
+        {console.log(350, toggleCheckBox)}
         <ButtonThemeComp
-          onPress={() => navigation.navigate('OtpScreen')}
+          isloading={isloading}
+          onPress={() => signUpFun()}
+          // onPress={() => navigation.navigate('OtpScreen')}
           text={'Sign Up'}
           style={{marginTop: hp('2')}}
         />
+        <BottomTextComp
+          style={{display: isKeyboardVisible}}
+          onPress={() => navigation.navigate('LoginScreen')}
+          note={"Don't have account ? "}
+          heading={'Login'}
+        />
       </ScrollView>
-      <BottomTextComp
-        style={{display: isKeyboardVisible}}
-        onPress={() => navigation.navigate('LoginScreen')}
-        note={"Don't have account ? "}
-        heading={'Login'}
-      />
     </KeyboardAvoidingView>
   );
 }

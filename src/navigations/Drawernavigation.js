@@ -59,8 +59,7 @@ const DrawerContent = props => {
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={{flex: 1}}
-      scrollEnabled={false}
-    >
+      scrollEnabled={false}>
       {isDrawerOpen == true && (
         <Lottie
           autoPlay
@@ -76,16 +75,14 @@ const DrawerContent = props => {
           marginLeft: wp('5'),
           color: 'white',
           marginTop: hp('2'),
-        }}
-      >
+        }}>
         Menu
       </Text>
       <View
         style={{
           justifyContent: 'space-between',
           height: hp('85'),
-        }}
-      >
+        }}>
         <View style={{marginTop: hp('5'), marginLeft: wp('2')}}>
           <DrawerItem
             icon={({focused, size}) => (
@@ -183,12 +180,10 @@ function CustomDrawerContent(props) {
           style={[
             styles.menuItemsCard,
             {backgroundColor: '#fff2df', width: width, height: width},
-          ]}
-        >
+          ]}>
           <>
             <View
-              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}
-            >
+              style={[styles.circleContainer, {backgroundColor: '#FFC56F'}]}>
               <Feather travel name="briefcase" size={25} color="#fbae41" />
               <DrawerItem
                 label="Screen1"
@@ -217,8 +212,7 @@ function CustomDrawerContent(props) {
           style={[
             styles.menuItemsCard,
             {backgroundColor: '#EFFFD5', width: width, height: width},
-          ]}
-        >
+          ]}>
           <View style={[styles.circleContainer, {backgroundColor: '#b5ff39'}]}>
             <Feather Medical name="briefcase" size={25} color="#609806" />
           </View>
@@ -244,7 +238,6 @@ function CustomDrawerContent(props) {
 
 const Drawernavigation = () => {
   const [progress, setProgress] = useState(new Animated.Value(0));
-  console.log(1002, progress);
   const scale = Animated.interpolateNode(progress, {
     inputRange: [0, 1],
     outputRange: [1, 0.8],
@@ -280,8 +273,7 @@ const Drawernavigation = () => {
               <DrawerContent {...props} />
             </View>
           );
-        }}
-      >
+        }}>
         <Drawer.Screen name="CaptionBottomNavigation">
           {props => <CaptionBottomNavigation />}
         </Drawer.Screen>

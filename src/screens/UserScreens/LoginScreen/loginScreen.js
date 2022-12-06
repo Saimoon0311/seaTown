@@ -19,29 +19,35 @@ import {
 } from 'react-native-responsive-screen';
 import {ApiGet, ApiPost} from '../../../config/helperFunction';
 import {LoginUrl, UserUrl} from '../../../config/Urls';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import types from '../../../Redux/type';
-import {errorMessage} from '../../../components/NotificationMessage';
+import {
+  errorMessage,
+  successMessage,
+} from '../../../components/NotificationMessage';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
 import CheckBox from '@react-native-community/checkbox';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import {BottomTextComp} from '../../../components/BottomTextComp/BottomTextComp';
 import {color} from '../../../components/color';
+import axios from 'react-native-axios';
 
 const LoginScreen = ({route, navigation}) => {
-  const disptach = useDispatch();
+  const userData = useSelector(state => state.userData);
+  const dispatch = useDispatch();
   const LoginType = route.params;
   const [isKeyboardVisible, setKeyboardVisible] = useState('flex');
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
+  39, userData;
   const [loginUser, setLoginUser] = useState({
-    email: '',
-    password: '',
-    // email: 'secowog808@geekjun.com',
+    // email: '',
+    email: 'yruxwork@gmail.com',
+    // password: '',
+    // email: 'vivise4154@edinel.com',
     // email: 'kihosiw869@dnitem.com',
     // email: 'bilal1@gmail.com',
-    // password: 'password',
+    password: '12345678',
   });
   const [isloading, setLoading] = useState(false);
   const [isFocused, setIsFocused] = useState({
@@ -67,45 +73,83 @@ const LoginScreen = ({route, navigation}) => {
   };
   // XXXXXXXXXXXX
 
-  const loginFunction = () => {
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  // const loginFunction = () => {
+  //   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  //   setLoading(true);
+  //   if (
+  //     email != '' &&
+  //     email != null &&
+  //     password != '' &&
+  //     password != null &&
+  //     reg.test(email) === true
+  //   ) {
+  //     let body = JSON.stringify({
+  //       email: email,
+  //       password: password,
+  //     });
+  //     ApiPost(LoginUrl, body, false).then(res => {
+  //       console.warn(res, 115);
+  //       if (res.status == 200) {
+  //         disptach({
+  //           type: types.LoginType,
+  //           payload: res.json,
+  //         });
+  //         setLoading(false);
+  //       } else if (
+  //         res.status == 401 &&
+  //         res.json.message == 'Please check email'
+  //       ) {
+  //         setLoading(false);
+  //         setALertState(true);
+  //       } else if (res.status == 401) {
+  //         setLoading(false);
+  //         errorMessage(res.json.message);
+  //       } else {
+  //         errorMessage('Network Request Failed.');
+  //         setLoading(false);
+  //       }
+  //     });
+  //   } else {
+  //     errorMessage('Plesae type correct information.');
+  //     setLoading(false);
+  //   }
+  // };
+  const loginUserFun = () => {
     setLoading(true);
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (
       email != '' &&
-      email != null &&
       password != '' &&
-      password != null &&
-      reg.test(email) === true
+      reg.test(email) === true &&
+      password.length >= 8
     ) {
-      let body = JSON.stringify({
+      let body = {
         email: email,
         password: password,
-      });
-      ApiPost(LoginUrl, body, false).then(res => {
-        console.warn(res, 115);
-        if (res.status == 200) {
-          disptach({
-            type: types.LoginType,
-            payload: res.json,
-          });
+      };
+      axios
+        .post(LoginUrl, body)
+        .then(function (res) {
           setLoading(false);
-        } else if (
-          res.status == 401 &&
-          res.json.message == 'Please check email'
-        ) {
+          if (res?.data.user?.is_email_verified == 1) {
+            setLoading(false);
+            dispatch({
+              type: types.LoginType,
+              payload: res?.data,
+            });
+          } else {
+            setLoading(false);
+            errorMessage('Email is not verified!!!');
+          }
+          successMessage('You have been successfully logged In!');
+        })
+        .catch(function (error) {
           setLoading(false);
-          setALertState(true);
-        } else if (res.status == 401) {
-          setLoading(false);
-          errorMessage(res.json.message);
-        } else {
-          errorMessage('Network Request Failed.');
-          setLoading(false);
-        }
-      });
+          errorMessage(error?.response?.data?.message);
+        });
     } else {
-      errorMessage('Plesae type correct information.');
       setLoading(false);
+      errorMessage('Please type correct information');
     }
   };
   useEffect(() => {
@@ -193,7 +237,9 @@ const LoginScreen = ({route, navigation}) => {
           </TouchableOpacity>
         </View>
         <ButtonThemeComp
-          onPress={() => navigation.navigate('UserBottomnavigation')}
+          isloading={isloading}
+          onPress={() => loginUserFun()}
+          // onPress={() => navigation.navigate('UserBottomnavigation')}
           // onPress={() => navigation.navigate('UserBottomnavigation')}
           text={'Login'}
           style={{marginTop: hp('2')}}

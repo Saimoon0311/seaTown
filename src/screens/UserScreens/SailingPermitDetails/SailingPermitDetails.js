@@ -18,8 +18,11 @@ import {styles} from './styles';
 import {color} from '../../../components/color';
 import {CircleImage} from '../../../components/CircleImage/CircleImage';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import moment from 'moment/moment';
 
-const SailingPermitDetails = ({navigation}) => {
+const SailingPermitDetails = ({navigation, route}) => {
+  const data2 = route.params;
+  let timeData = moment(data2.time_of_departure, 'h:mm').format('LT');
   const [data, setData] = useState([
     {
       id: 1,
@@ -147,15 +150,14 @@ const SailingPermitDetails = ({navigation}) => {
       </View>
     );
   };
-  const PermitDetailsText = prop => {
-    const {data} = prop;
+  const PermitDetailsText = props => {
     return (
       <View style={styles.detailsView}>
         <TextHeadingCom
           style={{color: color.lightBlueColor, fontWeight: 'normal'}}
-          heading={data.text}
+          heading={props?.heading}
         />
-        <TextHeadingCom style={{fontWeight: 'normal'}} heading={data.status} />
+        <TextHeadingCom style={{fontWeight: 'normal'}} heading={props?.name} />
       </View>
     );
   };
@@ -179,7 +181,7 @@ const SailingPermitDetails = ({navigation}) => {
           <View style={styles.centerView}>
             <TextHeadingCom
               style={{fontSize: hp('1.7')}}
-              heading="Alfonso Vaccaro"
+              heading={`${data2?.captain_name}`}
             />
             <TextHeadingCom
               style={{
@@ -187,18 +189,56 @@ const SailingPermitDetails = ({navigation}) => {
                 color: color.lightBlueColor,
                 fontSize: hp('1.7'),
               }}
-              heading="21 feb,2022 | 12:43 AM"
+              heading={`${data2?.date_of_departure} | ${timeData}`}
             />
           </View>
         </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          contentContainerStyle={{marginTop: hp('4')}}
-          renderItem={({item}) => {
-            return <PermitDetailsText data={item} />;
-          }}
-        />
+        <View style={{marginTop: hp('4')}}>
+          <PermitDetailsText
+            heading={'Boat Number'}
+            name={data2?.boat_number}
+          />
+          <PermitDetailsText heading={'Boat Name'} name={data2?.boat_name} />
+          <PermitDetailsText
+            heading={'Date of Expiry'}
+            name={data2?.boat_name}
+          />
+          <PermitDetailsText heading={'Boat Owner'} name={data2?.boat_owner} />
+          <PermitDetailsText heading={'Phone'} name={data2?.phone} />
+          <PermitDetailsText
+            heading={`Captain's Name`}
+            name={data2?.captain_name}
+          />
+          <PermitDetailsText
+            heading={'Date of Departure'}
+            name={data2?.date_of_departure}
+          />
+          <PermitDetailsText
+            heading={'Time of Departure'}
+            name={data2?.time_of_departure}
+          />
+          <PermitDetailsText
+            heading={'Port of Departure'}
+            name={data2?.port_of_departure}
+          />
+          <PermitDetailsText
+            heading={'Time of Arrival'}
+            name={data2?.time_of_departure}
+          />
+          <PermitDetailsText
+            heading={'Date of Arrival'}
+            name={data2?.date_of_arrival}
+          />
+          <PermitDetailsText
+            heading={'Destination'}
+            name={data2?.destination}
+          />
+          <PermitDetailsText
+            heading={'No. of passenger'}
+            name={data2?.no_of_passengers}
+          />
+          <PermitDetailsText heading={'No. of crew'} name={data2?.no_of_crew} />
+        </View>
         <TextHeadingCom
           heading="Document"
           style={{marginTop: hp('3'), marginLeft: wp('5')}}

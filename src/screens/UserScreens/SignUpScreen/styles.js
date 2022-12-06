@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     alignSelf: 'center',
     backgroundColor: 'white',
-    height: hp('100'),
+    height: hp('98'),
   },
   topImage: {
     width: wp('50'),
