@@ -82,7 +82,6 @@ const CaptainLoginScreen = ({route, navigation}) => {
         password: password,
       });
       ApiPost(LoginUrl, body, false).then(res => {
-        console.warn(res, 115);
         if (res.status == 200) {
           disptach({
             type: types.LoginType,

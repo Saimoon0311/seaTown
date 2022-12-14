@@ -10,6 +10,7 @@ import {
   Linking,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import {styles} from './style';
 import {
@@ -22,11 +23,15 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom';
 import {ButtonThemeComp} from '../../../components/ButtonThemeComp/ButtonThemeComp';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import {OtpVerifiedUrl} from '../../../config/Urls';
+import {OtpVerifiedUrl, ResendOtpUrl} from '../../../config/Urls';
 import axios from 'react-native-axios';
-import {errorMessage} from '../../../components/NotificationMessage';
+import {
+  errorMessage,
+  successMessage,
+} from '../../../components/NotificationMessage';
 import {errorHandler} from '../../../config/helperFunction';
 import types from '../../../Redux/type';
+import {SkypeIndicator} from 'react-native-indicators';
 
 const OtpScreen = ({route, navigation}) => {
   const dispatch = useDispatch();
@@ -39,6 +44,7 @@ const OtpScreen = ({route, navigation}) => {
     code: '',
   });
   const [isloading, setLoading] = useState(false);
+  const [isloading1, setLoading1] = useState(false);
   const [isFocused, setIsFocused] = useState({
     email: false,
   });
@@ -156,6 +162,28 @@ const OtpScreen = ({route, navigation}) => {
         errorMessage(errorHandler(error));
       });
   };
+  const ResendOtpFunction = () => {
+    const url = ResendOtpUrl;
+    setLoading1(true);
+    axios
+      .get(url, {
+        headers: {
+          // Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${otpData?.token}`,
+        },
+      })
+      .then(function (response) {
+        // updateState({[state]: response.data.data});
+        // updateLoadingState({[loading]: false});
+        successMessage('Email has been send!');
+
+        setLoading1(false);
+      })
+      .catch(function (error) {
+        setLoading1(false);
+        errorMessage(errorHandler(error));
+      });
+  };
   return (
     // <KeyboardAvoidingComponent />
     <KeyboardAvoidingView
@@ -213,8 +241,28 @@ const OtpScreen = ({route, navigation}) => {
           text={'Submit'}
           style={{marginTop: hp('2')}}
         />
-        <TouchableOpacity style={{...styles.resendContainer}}>
-          <Text style={{...styles.resendTxt}}>Resend Code</Text>
+        <TouchableOpacity
+          onPress={() => ResendOtpFunction()}
+          style={{...styles.resendContainer}}>
+          {isloading1 == true ? (
+            <View
+              style={{
+                height: hp('2'),
+              }}>
+              <SkypeIndicator
+                color={'yellow'}
+                size={hp('4')}
+                style={
+                  {
+                    // alignSelf: 'center',
+                    // justifyContent: 'center',
+                  }
+                }
+              />
+            </View>
+          ) : (
+            <Text style={{...styles.resendTxt}}>Resend Code</Text>
+          )}
         </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>

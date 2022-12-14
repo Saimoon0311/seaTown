@@ -88,5 +88,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>Privacy - Location When in Use Usage Description</key>
+	<string>Location required when app is in use</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Background tracking required</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>need permission</string>
 </dict>
 </plist>

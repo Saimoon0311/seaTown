@@ -38,16 +38,16 @@ export default function SignUpScreen({navigation}) {
   const dispatch = useDispatch();
 
   const [signUpUser, setSignUpUser] = useState({
-    // userName: '',
-    // email: '',
-    // phone: '',
-    // password: '',
-    // ConfirmPassword: '',
-    userName: 'b',
-    email: 'vivise4154@edinel.com',
-    phone: '125252525252',
-    password: '12345678',
-    ConfirmPassword: '12345678',
+    userName: '',
+    email: '',
+    phone: '',
+    password: '',
+    ConfirmPassword: '',
+    // userName: 'b',
+    // email: 'boxiyi1089@dmonies.com',
+    // phone: '125252525252',
+    // password: '12345678',
+    // ConfirmPassword: '12345678',
   });
   // sb-ktzwd14471324@personal.example.com
   // p)FUl>U3
@@ -197,13 +197,15 @@ export default function SignUpScreen({navigation}) {
         axios
           .post(SignUpUrl, body)
           .then(function (res) {
+            setLoading(false);
+            navigation.navigate('OtpScreen', res.data);
             // dispatch({
             //   type: type.LoginType,
             //   payload: res.data.data,
             // });
           })
           .catch(function (error) {
-            console.log(78, error?.response?.data?.message);
+            // console.log(78, error?.response?.data?.message);
 
             setLoading(false);
             // errorMessage(error?.response?.data?.message);
@@ -308,7 +310,6 @@ export default function SignUpScreen({navigation}) {
           />
           <Text style={styles.rememberText}>Accept Terms of Services</Text>
         </View>
-        {console.log(350, toggleCheckBox)}
         <ButtonThemeComp
           isloading={isloading}
           onPress={() => signUpFun()}

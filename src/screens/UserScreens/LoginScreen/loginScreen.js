@@ -41,13 +41,14 @@ const LoginScreen = ({route, navigation}) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   39, userData;
   const [loginUser, setLoginUser] = useState({
-    // email: '',
-    email: 'yruxwork@gmail.com',
-    // password: '',
+    email: '',
+    password: '',
+    // email: 'yruxwork@gmail.com',
+    // email: 'boxiyi1089@dmonies.com',
     // email: 'vivise4154@edinel.com',
     // email: 'kihosiw869@dnitem.com',
     // email: 'bilal1@gmail.com',
-    password: '12345678',
+    // password: '12345678',
   });
   const [isloading, setLoading] = useState(false);
   const [isFocused, setIsFocused] = useState({
@@ -139,9 +140,10 @@ const LoginScreen = ({route, navigation}) => {
             });
           } else {
             setLoading(false);
-            errorMessage('Email is not verified!!!');
+            navigation.navigate('OtpScreen', res.data);
+            // errorMessage('Email is not verified!!!');
           }
-          successMessage('You have been successfully logged In!');
+          // successMessage('You have been successfully logged In!');
         })
         .catch(function (error) {
           setLoading(false);

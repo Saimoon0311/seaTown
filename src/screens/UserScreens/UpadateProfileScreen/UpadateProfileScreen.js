@@ -21,12 +21,15 @@ import {TextHeadingCom} from '../../../components/TextHeadingCom/TextHeadingCom'
 import {styles} from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
+import {useSelector} from 'react-redux';
 
 const UpadateProfileScreen = ({route, navigation}) => {
+  const {userData} = useSelector(state => state.userData);
+
   const [captionProfile, setCaptionProfile] = useState({
-    captionName: 'Alfonso Vaccaro',
+    captionName: userData.name,
     phoneNumber: '55 648 021',
-    email: 'alfonso_vac@gmail.com',
+    email: userData.email,
     area: 'Sharjah',
     type: 'Captain',
     time: '9AM to 5PM',

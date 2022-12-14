@@ -53,6 +53,7 @@ export const styles = StyleSheet.create({
     width: wp('90'),
     alignSelf: 'center',
     marginBottom: hp('2'),
+    justifyContent: 'space-between',
   },
   trackMainView: {
     position: 'absolute',

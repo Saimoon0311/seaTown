@@ -24,6 +24,8 @@ import {errorMessage} from '../../../components/NotificationMessage';
 import {errorHandler} from '../../../config/helperFunction';
 import {SalingPermitUrl} from '../../../config/Urls';
 import moment from 'moment/moment';
+import {SkypeIndicator} from 'react-native-indicators';
+import {NoDataView} from '../../../components/NoDataView/NoDataView';
 
 const AllPermitScreen = ({navigation}) => {
   var time = new Date();
@@ -47,7 +49,6 @@ const AllPermitScreen = ({navigation}) => {
         },
       })
       .then(function (response) {
-        console.log('res=>', response.data);
         updateState({allPermitState: response.data.data});
         setLoading(false);
       })
@@ -139,7 +140,7 @@ const AllPermitScreen = ({navigation}) => {
               width: Dimensions.get('window').width * 0.12,
               height: Dimensions.get('window').width * 0.12,
             }}
-            image={data?.innerImage}
+            image={require('../../../images/TowingServices.png')}
           />
         </View>
         <View style={styles.centerView}>
@@ -176,14 +177,30 @@ const AllPermitScreen = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <BackHeaderComp onPress={() => navigation.goBack()} heading="Permits" />
-      <FlatList
-        data={allPermitState}
-        keyExtractor={(item, index) => index.toString()}
-        contentContainerStyle={{paddingBottom: hp('4')}}
-        renderItem={({item}) => {
-          return <PermitsView data={item} />;
-        }}
-      />
+
+      {loading == true ? (
+        <SkypeIndicator
+          color={'black'}
+          size={hp('4')}
+          style={
+            {
+              // alignSelf: 'center',
+              // justifyContent: 'center',
+            }
+          }
+        />
+      ) : allPermitState.length > 0 ? (
+        <FlatList
+          data={allPermitState}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={{paddingBottom: hp('4')}}
+          renderItem={({item}) => {
+            return <PermitsView data={item} />;
+          }}
+        />
+      ) : (
+        <NoDataView text={'No permit found'} />
+      )}
     </View>
   );
 };

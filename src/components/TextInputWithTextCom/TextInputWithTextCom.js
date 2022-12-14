@@ -42,9 +42,15 @@ const TextInputWithTextCom = props => {
           editable={props?.editable}
           onChangeText={props?.onChangeText}
           value={props?.value}
+          onPressIn={props?.onPressIn}
+          onPressOut={props?.onPressOut}
           onFocus={props?.onFocus}
           onBlur={props?.onBlur}
+          pointerEvents={'box-only'}
+          onKeyPress={props?.onKeyPress}
+          onPointerEnter={props?.onPointerEnter}
           autoCapitalize={props?.autoCapitalize}
+          onEndEditing={props?.onEndEditing}
         />
         {props.showIcon == true &&
           (props?.changeIcon ? (

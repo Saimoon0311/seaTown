@@ -9,34 +9,9 @@ const persistConfig1 = {
   storage: AsyncStorage,
   whitelist: ['userData', 'token'],
 };
-// const persistConfig2 = {
-//   key: 'isApplunchFirst',
-//   storage: AsyncStorage,
-//   whitelist: 'IsApplunchFirst',
-// };
-// const persistConfig2 = {
-//   key: 'AccesToken',
-//   storage: AsyncStorage,
-//   whitelist: 'token',
-// };
-
-// const persistConfig3 = {
-//   key: 'pendingPackages',
-//   storage: AsyncStorage,
-//   whitelist: 'PendingPackages',
-// };
-
-// const rootReducer = combineReducers({
-//   userData: persistReducer(persistConfig1, auth),
-// });
-
 export const store = configureStore({
   reducer: {
     userData: persistReducer(persistConfig1, auth),
-    // token: persistReducer(persistConfig2, TokenReducer),
-    // token: persistReducer(persistConfig2, token),
-    // IsApplunchFirst: persistReducer(persistConfig2, isApplunchFirst),
-    // PendingPackages: persistReducer(persistConfig3, pendingPackages),
   },
 });
 export const persistor = persistStore(store);

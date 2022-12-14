@@ -73,8 +73,8 @@ const RequestOfServices = ({route, navigation}) => {
     );
   };
   async function requestPermissions() {
-    if (Platform.OS === 'ios') {
-      Geolocation.requestAuthorization();
+    if (Platform.OS == 'ios') {
+      Geolocation.requestAuthorization('whenInUse');
       Geolocation.setRNConfiguration({
         skipPermissionRequests: false,
         authorizationLevel: 'whenInUse',
@@ -91,7 +91,6 @@ const RequestOfServices = ({route, navigation}) => {
     Geolocation.getCurrentPosition(
       position => {
         // socket.emit(userData.data.id, position);
-        console.log(82, position);
         setGetPosition(position);
         // setLocation(position);
       },
@@ -108,7 +107,6 @@ const RequestOfServices = ({route, navigation}) => {
       return item !== value;
     });
     updateState({userImage: found});
-    console.log(105, found);
   }
 
   const ReportIncidentFunc = () => {
@@ -130,11 +128,19 @@ const RequestOfServices = ({route, navigation}) => {
       //   image: userImage,
       // };
 
+      // userImage.length > 0 &&
+      //   bodyFormData.append('image', {
+      //     name: userImage[0]?.fileName,
+      //     uri: userImage[0]?.uri,
+      //     type: userImage[0]?.type,
+      //   });
       userImage.length > 0 &&
-        bodyFormData.append('image', {
-          name: userImage[0]?.fileName,
-          uri: userImage[0]?.uri,
-          type: userImage[0]?.type,
+        userImage.map(value => {
+          bodyFormData.append('image', {
+            name: value?.fileName,
+            uri: value?.uri,
+            type: value?.type,
+          });
         });
       bodyFormData.append(
         'north_coordinates',
@@ -148,7 +154,6 @@ const RequestOfServices = ({route, navigation}) => {
       bodyFormData.append('subject', subject);
       bodyFormData.append('note', message);
 
-      console.log(123, bodyFormData, ReportIncidentUrl);
       axios
         .post(ReportIncidentUrl, bodyFormData, {
           headers: {
@@ -157,7 +162,6 @@ const RequestOfServices = ({route, navigation}) => {
           },
         })
         .then(function (res) {
-          console.log(136, res.data);
           successMessage('Your reports has been send!');
           setLoading(false);
           // dispatch({
@@ -166,8 +170,6 @@ const RequestOfServices = ({route, navigation}) => {
           // });
         })
         .catch(function (error) {
-          console.log(162, error.response);
-
           setLoading(false);
           errorMessage(error?.response?.data?.message);
         });
@@ -261,7 +263,7 @@ const RequestOfServices = ({route, navigation}) => {
       >
         <KeyboardAvoidingView
           // style={styles.container}
-          behavior={Platform.OS ? 'position' : 'height'}>
+          behavior={Platform.OS == 'ios' ? 'position' : 'padding'}>
           {getPosition == '' ? (
             <ButtonThemeComp
               onPress={() => {

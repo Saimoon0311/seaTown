@@ -19,8 +19,13 @@ import {color} from '../../../components/color';
 import {CircleImage} from '../../../components/CircleImage/CircleImage';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment/moment';
+import {CommonButtonComp} from '../../../components/CommonButtonComp/CommonButtonComp';
+import QRCode from 'react-native-qrcode-svg';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const SailingPermitDetails = ({navigation, route}) => {
+  const [qr, setQr] = useState(false);
+
   const data2 = route.params;
   let timeData = moment(data2.time_of_departure, 'h:mm').format('LT');
   const [data, setData] = useState([
@@ -124,6 +129,69 @@ const SailingPermitDetails = ({navigation, route}) => {
       innerImage: require('../../../images/MechinacalServices.png'),
     },
   ]);
+
+  const ServicesRequestView = props => {
+    return (
+      <View style={styles.trackMainView}>
+        <View style={{...styles.trackInnerView, height: hp('40')}}>
+          <Ionicons
+            name="close-sharp"
+            color={color.lightBlueColor}
+            size={hp('3')}
+            onPress={() => setQr(false)}
+            style={{
+              alignSelf: 'flex-end',
+              marginRight: wp('2'),
+            }}
+          />
+          {/* <Image
+            source={require('../../../images/yellowTick.png')}
+            resizeMode={'contain'}
+            style={{alignSelf: 'center'}}
+          /> */}
+          {/*
+          <TextHeadingCom
+            heading="Your Form has been Submitted!"
+            style={{textAlign: 'center', fontWeight: '500'}}
+          /> */}
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <QRCode
+              value={props?.value}
+              // value="http://awesome.link.qr"
+            />
+            {/* 
+            <Image
+              source={{uri: data2?.image_url}}
+              resizeMode={'contain'}
+              style={{
+                height: 20,
+                width: 20,
+                backgroundColor: 'red',
+                alignSelf: 'center',
+              }}
+            /> */}
+          </View>
+          <TextHeadingCom
+            heading="Scan QR-Code!"
+            style={{textAlign: 'center'}}
+          />
+          <View style={{alignItems: 'center'}}>
+            <TextHeadingCom
+              heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus nulla aliquet malesuada morbi purus."
+              style={{
+                textAlign: 'center',
+                color: color.textInputColor,
+                width: wp('70'),
+                marginBottom: hp('3'),
+                fontWeight: '500',
+                fontSize: hp('1.5'),
+              }}
+            />
+          </View>
+        </View>
+      </View>
+    );
+  };
   const DocumentView = props => {
     return (
       <View>
@@ -162,99 +230,119 @@ const SailingPermitDetails = ({navigation, route}) => {
     );
   };
   return (
-    <View style={{flex: 1}}>
-      <BackHeaderComp
-        onPress={() => navigation.goBack()}
-        heading="Sailing Permit"
-      />
-      <ScrollView contentContainerStyle={{paddingBottom: hp('10')}}>
-        <View style={styles.mainView}>
-          <View style={styles.leftView}>
-            <CircleImage
-              styles={{
-                width: Dimensions.get('window').width * 0.12,
-                height: Dimensions.get('window').width * 0.12,
-              }}
-              image={data[0].innerImage}
+    <>
+      <View style={{flex: 1}}>
+        <BackHeaderComp
+          onPress={() => navigation.goBack()}
+          heading="Sailing Permit"
+        />
+        <ScrollView contentContainerStyle={{paddingBottom: hp('10')}}>
+          <View style={styles.mainView}>
+            <View style={styles.leftView}>
+              <CircleImage
+                styles={{
+                  width: Dimensions.get('window').width * 0.12,
+                  height: Dimensions.get('window').width * 0.12,
+                }}
+                image={data[0].innerImage}
+              />
+            </View>
+            <View style={styles.centerView}>
+              <TextHeadingCom
+                style={{fontSize: hp('1.7')}}
+                heading={`${data2?.captain_name}`}
+              />
+              <TextHeadingCom
+                style={{
+                  fontWeight: 'normal',
+                  color: color.lightBlueColor,
+                  fontSize: hp('1.7'),
+                }}
+                heading={`${data2?.date_of_departure} | ${timeData}`}
+              />
+            </View>
+          </View>
+          <View style={{marginTop: hp('4')}}>
+            <PermitDetailsText
+              heading={'Boat Number'}
+              name={data2?.boat_number}
+            />
+            <PermitDetailsText heading={'Boat Name'} name={data2?.boat_name} />
+            <PermitDetailsText
+              heading={'Date of Expiry'}
+              name={data2?.boat_name}
+            />
+            <PermitDetailsText
+              heading={'Boat Owner'}
+              name={data2?.boat_owner}
+            />
+            <PermitDetailsText heading={'Phone'} name={data2?.phone} />
+            <PermitDetailsText
+              heading={`Captain's Name`}
+              name={data2?.captain_name}
+            />
+            <PermitDetailsText
+              heading={'Date of Departure'}
+              name={data2?.date_of_departure}
+            />
+            <PermitDetailsText
+              heading={'Time of Departure'}
+              name={data2?.time_of_departure}
+            />
+            <PermitDetailsText
+              heading={'Port of Departure'}
+              name={data2?.port_of_departure}
+            />
+            <PermitDetailsText
+              heading={'Time of Arrival'}
+              name={data2?.time_of_departure}
+            />
+            <PermitDetailsText
+              heading={'Date of Arrival'}
+              name={data2?.date_of_arrival}
+            />
+            <PermitDetailsText
+              heading={'Destination'}
+              name={data2?.destination}
+            />
+            <PermitDetailsText
+              heading={'No. of passenger'}
+              name={data2?.no_of_passengers}
+            />
+            <PermitDetailsText
+              heading={'No. of crew'}
+              name={data2?.no_of_crew}
             />
           </View>
-          <View style={styles.centerView}>
-            <TextHeadingCom
-              style={{fontSize: hp('1.7')}}
-              heading={`${data2?.captain_name}`}
-            />
-            <TextHeadingCom
-              style={{
-                fontWeight: 'normal',
-                color: color.lightBlueColor,
-                fontSize: hp('1.7'),
-              }}
-              heading={`${data2?.date_of_departure} | ${timeData}`}
-            />
-          </View>
-        </View>
-        <View style={{marginTop: hp('4')}}>
-          <PermitDetailsText
-            heading={'Boat Number'}
-            name={data2?.boat_number}
+          <TextHeadingCom
+            heading="Document"
+            style={{marginTop: hp('3'), marginLeft: wp('5')}}
           />
-          <PermitDetailsText heading={'Boat Name'} name={data2?.boat_name} />
-          <PermitDetailsText
-            heading={'Date of Expiry'}
-            name={data2?.boat_name}
+          <DocumentView
+            image={require('../../../images/doc.png')}
+            title={'Emirates ID'}
+            work={'1.59mb'}
           />
-          <PermitDetailsText heading={'Boat Owner'} name={data2?.boat_owner} />
-          <PermitDetailsText heading={'Phone'} name={data2?.phone} />
-          <PermitDetailsText
-            heading={`Captain's Name`}
-            name={data2?.captain_name}
+          <DocumentView
+            image={require('../../../images/pdf.png')}
+            title={'Dubai Marine license'}
+            work={'55kb'}
           />
-          <PermitDetailsText
-            heading={'Date of Departure'}
-            name={data2?.date_of_departure}
+          <CommonButtonComp
+            // isloading={loading}
+            text="Generate a QR-Code"
+            textStyle={{fontWeight: 'bold'}}
+            onPress={() => setQr(true)}
+            viewStyle={{
+              width: wp('85'),
+              marginTop: hp('2'),
+              marginBottom: hp('2'),
+            }}
           />
-          <PermitDetailsText
-            heading={'Time of Departure'}
-            name={data2?.time_of_departure}
-          />
-          <PermitDetailsText
-            heading={'Port of Departure'}
-            name={data2?.port_of_departure}
-          />
-          <PermitDetailsText
-            heading={'Time of Arrival'}
-            name={data2?.time_of_departure}
-          />
-          <PermitDetailsText
-            heading={'Date of Arrival'}
-            name={data2?.date_of_arrival}
-          />
-          <PermitDetailsText
-            heading={'Destination'}
-            name={data2?.destination}
-          />
-          <PermitDetailsText
-            heading={'No. of passenger'}
-            name={data2?.no_of_passengers}
-          />
-          <PermitDetailsText heading={'No. of crew'} name={data2?.no_of_crew} />
-        </View>
-        <TextHeadingCom
-          heading="Document"
-          style={{marginTop: hp('3'), marginLeft: wp('5')}}
-        />
-        <DocumentView
-          image={require('../../../images/doc.png')}
-          title={'Emirates ID'}
-          work={'1.59mb'}
-        />
-        <DocumentView
-          image={require('../../../images/pdf.png')}
-          title={'Dubai Marine license'}
-          work={'55kb'}
-        />
-      </ScrollView>
-    </View>
+        </ScrollView>
+        {qr && <ServicesRequestView value={data2?.qr_view_url} />}
+      </View>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {SkypeIndicator} from 'react-native-indicators';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -21,9 +22,22 @@ export const CommonButtonComp = props => {
         alignSelf: 'center',
         ...viewStyle,
       }}>
-      <Text style={{color: 'white', fontSize: hp('1.6'), ...textStyle}}>
-        {props?.text}
-      </Text>
+      {props?.isloading ? (
+        <SkypeIndicator
+          color={'white'}
+          size={hp('4')}
+          style={
+            {
+              // alignSelf: 'center',
+              // justifyContent: 'center',
+            }
+          }
+        />
+      ) : (
+        <Text style={{color: 'white', fontSize: hp('1.6'), ...textStyle}}>
+          {props?.text}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

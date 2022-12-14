@@ -21,8 +21,11 @@ import Feather from 'react-native-vector-icons/Feather';
 import {LoginInputComp} from '../../../components/LoginInputComp/LoginInputComp';
 import TextButtonComp from '../../../components/TextButtonComp/TextButtonComp';
 import {BackHeaderComp} from '../../../components/BackHeaderComp/BackHeaderComp';
+import {useSelector} from 'react-redux';
 
 const ProfileScreen = ({navigation}) => {
+  const {userData} = useSelector(state => state.userData);
+  console.log(28, userData);
   const ExperienceView = props => {
     return (
       <View>
@@ -134,7 +137,7 @@ const ProfileScreen = ({navigation}) => {
               size={20}
               color={color.textPrimaryColor}
             />
-            <Text style={{...styles.text}}>alfoneso_vac@gmail.com</Text>
+            <Text style={{...styles.text}}>{userData.email}</Text>
           </TouchableOpacity>
           <TextButtonComp
             onPress={() => console.log('oejdoejd')}
